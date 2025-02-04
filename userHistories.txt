@@ -1,0 +1,30 @@
+Visitor: IT recruiter, potential client.
+1) I want to see what this person can do, his work, what he actually knows and is able to demonstrate.
+2) I want to contact this person easily by email, GitHub, LinkedIn.
+3) I want to see his CV.
+4) I want to know what he offers. (About me but more profesional section)
+5) If im intereseted on a Project and i want to know more I must be able to have more info (link to GitHub, redirect to a page with more Information, etc)
+
+
+ME:
+1) I want to showcase my habilities and knowledgment through my projects. 
+2) I want a clean and a minimalist UI.
+3) I want the visitors to have a nice Experience so check UX.
+4) I want a spanish/english speaking public MUST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+5) I want the visitors to be able to contact me easily, put a non selectable text for the email, and add a copy to clipboard button or a link to send email directly.
+6) I want them to know that im available to work 
+
+
+Layout:
+L1. Nav bar with contact info or social media logos. maybe a personal Brand
+L2. My profile photo
+L3. With the profile photo, a brief description about myself and my specialization (backend developer)
+L4. DOWNLOAD MY CV BUTTON
+L5. My technologies stack.
+L6. Projects
+L7. Education, mention key parts as key subjects or that i have 50% of the career done. Maybe a certificate of the subjects with the gpa.
+L8. footer with more contact info etc etc.
+L9. available to work advice.
+L10. Email copy to clipboard button
+L11. Buttons to switch between spanish and english, maybe add more languages if i learn them
+L12. MOBILE FIRST!!
