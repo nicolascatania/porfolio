@@ -1,37 +1,37 @@
 <footer id="contact" class="w-full bg-gray-800 p-8">
-    <section class="contact-me max-w-6xl mx-auto p-6 flex flex-col gap-8" aria-label="contact-me">
-      <h2 class="text-white text-center text-5xl font-extrabold font-title border-b-2 border-gray-600 pb-4">
-        Contact Me
-      </h2>
-      <article class="contact-me-contents flex flex-col items-center gap-6 font-body">
-        <div class="mail flex flex-col sm:flex-row items-center justify-center gap-4">
-          <p class="select-none text-xl sm:text-2xl text-gray-200">nicolas20032401&#64;.com</p>
+  <section class="contact-me max-w-6xl mx-auto p-6 flex flex-col gap-8" aria-label="contact-me">
+    <h2 class="text-white text-center text-5xl font-extrabold font-title border-b-2 border-gray-600 pb-4">
+      Contact Me
+    </h2>
+    <article class="contact-me-contents flex flex-col items-center gap-6 font-body">
+      <div class="mail flex flex-row items-center justify-center gap-4">
+        <p class="select-none text-xl sm:text-2xl text-gray-200">{{ email }}</p>
+        <img 
+          src="assets/icons/copy.svg" 
+          alt="Copy Email" 
+          class="w-12 h-12 sm:w-15 sm:h-15 cursor-pointer hover:scale-110 transition-transform"
+          (click)="copyEmail()"
+        >
+      </div>
+      <div class="social-links flex gap-6">
+        <a href="https://github.com/nicolascatania" target="_blank" rel="noopener noreferrer">
           <img 
-            src="assets/icons/copy.svg" 
-            alt="Copy Email" 
-            class="w-12 h-12 sm:w-15 sm:h-15 cursor-pointer hover:scale-110 transition-transform"
+            src="assets/icons/github-icon.svg" 
+            alt="GitHub" 
+            class="w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-110 transition-transform"
           >
-        </div>
-        <div class="social-links flex gap-6">
-          <a href="https://github.com/nicolascatania" target="_blank" rel="noopener noreferrer">
-            <img 
-              src="assets/icons/github-icon.svg" 
-              alt="GitHub" 
-              class="w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-110 transition-transform"
-            >
-          </a>
-          <a href="https://www.linkedin.com/in/ncatania1" target="_blank" rel="noopener noreferrer">
-            <img 
-              src="assets/icons/linkedIn.svg" 
-              alt="LinkedIn" 
-              class="w-10 h-10 sm:w-12 sm:h-12  cursor-pointer hover:scale-110 transition-transform"
-            >
-          </a>
-        </div>
-        <div class="copyright text-gray-400 text-sm">
-          <p>&copy; 2025 Nicolas Martin Catania. All rights reserved.</p>
-        </div>
-      </article>
-    </section>
-  </footer>
-  
+        </a>
+        <a href="https://www.linkedin.com/in/ncatania1" target="_blank" rel="noopener noreferrer">
+          <img 
+            src="assets/icons/linkedIn.svg" 
+            alt="LinkedIn" 
+            class="w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-110 transition-transform"
+          >
+        </a>
+      </div>
+      <div class="copyright text-gray-400 text-sm">
+        <p>&copy; 2025 Nicolas Martin Catania. All rights reserved.</p>
+      </div>
+    </article>
+  </section>
+</footer>
