@@ -1,0 +1,18 @@
+<section id="education" class="education-section p-8 scroll-mt-20 sm:max-w-7xl max-w-6xl mt-8 mx-auto" aria-labelledby="education-title">
+    <h2 id="education-title" class="font-title text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800">Education</h2>
+    @for(education of educations; track education.id) {
+      <article class="education-card grid md:flex my-7 p-4 gap-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+        <div class="education-content flex flex-col justify-between p-10 gap-4 md:p-8">
+          <header>
+            <h3 class="text-3xl font-bold font-title text-gray-800 mb-2">{{ education.title }}</h3>
+            <div class="flex items-center justify-between w-auto gap-4">
+              <h4 class="text-2xl font-title font-semibold text-gray-700">{{ education.institution }}</h4>
+              <span class="text-sm text-gray-600 font-title">({{ education.yearIn }} - {{ education.yearOut }})</span>
+            </div>
+          </header>
+          <p class="education-description text-gray-600 sm:text-xl font-body" [innerHTML]="education.description | highlightKeywords:highlightedKeywords"></p>
+        </div>
+      </article>
+    }
+  </section>
+  

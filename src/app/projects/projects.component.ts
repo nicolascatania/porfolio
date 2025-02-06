@@ -1,21 +1,25 @@
 import { Component } from '@angular/core';
 import { Project } from '../../models/Project';
+import { HighlightKeywordsPipe } from '../highlight-keywords.pipe';
 
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [],
+  imports: [HighlightKeywordsPipe],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
 
 export class ProjectsComponent {
+
+  highlightedKeywords: string[] = ['RESTful', 'Java', 'Spring', 'Angular', 'Algorithms', 'Data structures', 'C', 'API', 'Backend', 'MySQL', 'PostgreSQL', 'CRUD', 'Testing', 'UX', 'UI', 'Security', 'JWT', 'Design patterns', 'Prolog'];
+
   projects: Project[] = [
     {
       id: 1,
       name: 'MySongSet',
-      description: 'Web application for organizing guitar playlists with Spotify API integration, featuring song categorization and practice progress tracking.',
+      description: 'Web application for organizing songs that I play on the guitar in playlists, using Spotify API integration and a minimalistic UI desing, it helped me to not forget about the songs that I know, because I always end up playing the same 10 over and over.',
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
         { id: 2, name: 'PostgreSQL', src: 'assets/icons/postgres.svg' },

@@ -1,33 +1,29 @@
-<header class="hero flex flex-col items-center text-center py-10 bg-cover bg-center relative overflow-hidden" role="banner" aria-label="main-presentation" style="background-image: url('assets/images/herobgphoto.png');">
+<header class="hero flex flex-col items-center text-center py-10 bg-cover bg-center relative overflow-hidden min-h-screen" role="banner" aria-label="main-presentation" style="background-image: url('assets/images/herobgphoto.png');">
   
-    <!-- Pseudo-elemento para la superposición de la imagen -->
-    <div class="absolute inset-0 bg-black opacity-50 blur-lg z-0"></div>
-    
-    <section class="hero-content flex flex-col items-center gap-6 relative z-10" aria-labelledby="name-ocupation">
-    
-      <figure class="hero-image">
-          <img src="assets/images/pfoto.jpg"
-            alt="Nicolas Catania - Profile photo" 
-            width="250" 
-            height="250"
-            class="rounded-full object-cover w-64 h-64"
-          >
-          <figcaption class="sr-only">Nicolas Catania profile photo</figcaption>
-      </figure>
-    
-      <div class="hero-text flex flex-col items-center gap-y-4">
-        <h1 id="full-name" class="md:text-8xl font-bold text-white text-3xl">Nicolas Catania</h1>
-        <p class="ocupation md:text-4xl text-xl text-white">
-          <span class="sr-only">Specialist in</span>
-          Backend Developer | Software Engineering Student
-        </p>
-      </div>
-    
-      <nav class="hero-actions flex gap-4 mt-4 md:text-2xl" aria-label="main actions">
-        <a href="assets/cv/Catania_Nicolas_english_cv.pdf" target="_blank" rel="noopener noreferrer" class="button bg-gray-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">CV</a>
-        <a href="#contact" class="button bg-gray-800 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg ">Contact</a>
-      </nav>
-    
-    </section>
-  </header>
+  <div class="absolute inset-0 bg-black opacity-80 blur-lg z-0"></div>
   
+  <section class="hero-content flex flex-col items-center justify-center gap-6 relative z-10 my-auto" aria-labelledby="name-ocupation">
+    <figure class="hero-image">
+      <img src="assets/images/pfoto.jpg"
+           alt="Nicolas Catania - Profile photo" 
+           width="250" 
+           height="250"
+           class="rounded-full object-cover w-64 h-64">
+      <figcaption class="sr-only">Nicolas Catania profile photo</figcaption>
+    </figure>
+  
+    <div class="hero-text flex flex-col items-center gap-y-4">
+      <h1 id="full-name" class="sm:text-8xl font-title font-bold text-white text-4xl">Nicolas Catania</h1>
+      <p class="ocupation sm:text-4xl text-2xl text-white font-title">
+        <span class="sr-only">Specialist in</span>
+        Backend Developer | Software Engineering Student
+      </p>
+    </div>
+  
+    <nav class="hero-actions flex gap-4 mt-4 md:text-2xl text-xl justify-center items-center font-title" aria-label="main actions">
+      <a href="assets/cv/Catania_Nicolas_english_cv.pdf" target="_blank" rel="noopener noreferrer" class="button bg-gray-800 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg">CV</a>
+      <a href="#contact" class="button bg-primaryBlue text-black font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-lg">Contact</a>
+    </nav>
+  
+  </section>
+</header>
