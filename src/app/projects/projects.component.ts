@@ -12,7 +12,8 @@ import { HighlightKeywordsPipe } from '../highlight-keywords.pipe';
 })
 
 export class ProjectsComponent {
-
+  isModalVisible: Boolean = false;
+  selectedImage: string | null = '';
   highlightedKeywords: string[] = ['RESTful', 'Java', 'Spring', 'Angular', 'Algorithms', 'Data structures', 'C', 'API', 'Backend', 'MySQL', 'PostgreSQL', 'CRUD', 'Testing', 'UX', 'UI', 'Security', 'JWT', 'Design patterns', 'Prolog'];
 
   projects: Project[] = [
@@ -27,7 +28,8 @@ export class ProjectsComponent {
         { id: 4, name: 'Angular', src: 'assets/icons/angular.svg' }
       ],
       releaseYear: 2025,
-      githubLink: "https://github.com/nicolascatania/MySongSet"
+      githubLink: "https://github.com/nicolascatania/MySongSet",
+      imageSrc: "assets/images/mysongsetscreenshot.png"
     },
     {
       id: 2,
@@ -40,7 +42,8 @@ export class ProjectsComponent {
         { id: 4, name: 'Angular', src: 'assets/icons/angular.svg' }
       ],
       releaseYear: 2024,
-      githubLink: "https://github.com/nicolascatania/SpringAPI"
+      githubLink: "https://github.com/nicolascatania/SpringAPI",
+      imageSrc: "assets/images/webapp.jpg"
     },
     {
       id: 3,
@@ -50,7 +53,20 @@ export class ProjectsComponent {
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' }
       ],
       releaseYear: 2024,
-      githubLink: "https://github.com/Guzman5825/TP2-MagiaYHechizeria"
+      githubLink: "https://github.com/Guzman5825/TP2-MagiaYHechizeria",
+      imageSrc: "assets/images/wizardsvsmortifacs.jpg"
     }
   ];
+
+
+  closeModal(){
+    this.isModalVisible = false;
+    this.selectedImage = '';
+  }
+
+  openModal(projectImage: string){
+    this.isModalVisible = true;
+    this.selectedImage = projectImage;
+
+  }
 }

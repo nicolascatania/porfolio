@@ -1,47 +1,58 @@
 <section id="projects" class="projects mt-15 p-4 scroll-mt-20" aria-label="Main projects list">
-    <section class="projects-container p-4 sm:max-w-7xl mx-auto">
-        <h1 class="projects-title text-center text-3xl sm:text-5xl font-title font-bold mb-8 text-slate-800">Projects</h1>
-        
-        @for(project of projects; track project.id) {
-            <article class="project-card grid md:grid-cols-2 my-7 gap-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <figure class="project-image md:order-1">
-                <img 
-                  src="assets/images/herobgphoto.png" 
-                  alt="${{ project.name }} + project interface"
-                  class="w-full h-64 object-cover sm:h-full"
-                >
-              </figure>
-          
-              <div class="project-content flex flex-col justify-between p-6 md:p-8 sm:gap-8">
-                <div class="space-y-4">
-                  <header>
-                    <h2 class="project-name text-2xl sm:text-3xl font-bold font-title text-gray-800 mb-2">{{ project.name }}</h2>
-                    <div class="tech-list flex flex-wrap gap-2 mb-4">
-                      <div class="flex items-center gap-3 mt-2">
-                        @for(tech of project.technologies; track tech.id) {
-                          <img src="{{ tech.src }}" alt="{{ tech.name }}" class="w-6 h-6 sm:w-10 sm:h-10" title="{{ tech.name }}">
-                        }
-                      </div>
-                    </div>
-                  </header>
-          
-                  <p class="project-description text-gray-600 sm:text-xl font-body leading-relaxed" [innerHTML]="project.description | highlightKeywords:highlightedKeywords"></p>
-                </div>
-          
-                <div class="project-actions mt-6 flex justify-between items-center gap-3">
-                  <span class="text-sm text-gray-500 flex-shrink-0 font-body">{{ project.releaseYear }} Release</span>
-                  <a 
-                    href={{project.githubLink}} 
-                    class="github-btn flex items-center gap-2 px-4 py-2 sm:px-8 sm:py-4 bg-primaryBlue text-white rounded-md hover:bg-gray-300 transition-colors ml-auto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src="assets/icons/github-icon.svg" alt="github-icon" class="w-7 h-7">
-                    <span class="text-black font-body">View Code</span>
-                  </a>
+  <section class="projects-container p-4 sm:max-w-7xl mx-auto">
+    <h1 class="projects-title text-center text-3xl sm:text-5xl font-title font-bold mb-8 text-slate-800">Projects</h1>
+    
+    @for(project of projects; track project.id) {
+      <article class="project-card grid md:grid-cols-2 my-7 gap-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+        <figure class="project-image md:order-1">
+          <img 
+            src={{project.imageSrc}} 
+            alt="{{ project.name }} interface"
+            class="w-full h-64 object-cover sm:h-full cursor-pointer"
+            (click)="openModal(project.imageSrc)"
+          >
+        </figure>
+    
+        <div class="project-content flex flex-col justify-between p-6 md:p-8 sm:gap-8">
+          <div class="space-y-4">
+            <header>
+              <h2 class="project-name text-2xl sm:text-3xl font-bold font-title text-gray-800 mb-2">{{ project.name }}</h2>
+              <div class="tech-list flex flex-wrap gap-2 mb-4">
+                <div class="flex items-center gap-3 mt-2">
+                  @for(tech of project.technologies; track tech.id) {
+                    <img src="{{ tech.src }}" alt="{{ tech.name }}" class="w-6 h-6 sm:w-10 sm:h-10" title="{{ tech.name }}">
+                  }
                 </div>
               </div>
-            </article>
-          }
-    </section>
+            </header>
+    
+            <p class="project-description text-gray-600 sm:text-xl font-body leading-relaxed" [innerHTML]="project.description | highlightKeywords:highlightedKeywords"></p>
+          </div>
+    
+          <div class="project-actions mt-6 flex justify-between items-center gap-3">
+            <span class="text-sm text-gray-500 flex-shrink-0 font-body">{{ project.releaseYear }} Release</span>
+            <a 
+              href={{project.githubLink}} 
+              class="github-btn flex items-center gap-2 px-4 py-2 sm:px-8 sm:py-4 bg-primaryBlue text-white rounded-md hover:bg-gray-300 transition-colors ml-auto"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets/icons/github-icon.svg" alt="github-icon" class="w-7 h-7">
+              <span class="text-black font-body">View Code</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    }
   </section>
+</section>
+
+@if(isModalVisible){
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <img [src]="selectedImage" alt="Project Image" class="modal-image" />
+      <button class="close-button text-2xl p-2 bg-primaryBlue top-10 right-10 absolute cursor-pointer rounded-full" (click)="closeModal()">X</button>
+    </div>
+  </div>
+}
+
