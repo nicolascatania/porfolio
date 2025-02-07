@@ -1,28 +1,28 @@
 <nav class="sticky top-0 z-50 p-6 hidden md:flex justify-between items-center bg-slate-50 ">
   <ul class="flex space-x-6 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 sm:text-2xl text-sm text-black font-body">
     <li>
-      <a href="#projects" class="hover:text-primaryBlue transition duration-300">Projects</a>
+      <a href="#projects" class="hover:text-primaryBlue transition duration-300">{{'navbar.projects' | translate}}</a>
     </li>
     <li>
-      <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300">Tech stack</a>
+      <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300">{{'navbar.techStack' | translate}}</a>
     </li>
     <li>
-      <a href="#education" class="hover:text-primaryBlue transition duration-300">Education</a>
+      <a href="#education" class="hover:text-primaryBlue transition duration-300">{{'navbar.education' | translate}}</a>
     </li>
     <li>
-      <a href="#about-me" class="hover:text-primaryBlue transition duration-300">About me</a>
+      <a href="#about-me" class="hover:text-primaryBlue transition duration-300">{{'navbar.about' | translate}}</a>
     </li>
     <li>
-      <a href="#contact" class="hover:text-primaryBlue transition duration-300 font-bold">Contact</a>
+      <a href="#contact" class="hover:text-primaryBlue transition duration-300 font-bold">{{'navbar.contact' | translate}}</a>
     </li>
   </ul>
 
   <div class="flex space-x-4 ml-auto">
-    <button class="bg-white p-2 rounded-full hover:bg-gray-200 transition duration-300">
+    <button (click)="toggleLanguage('en')" class="bg-white p-2 rounded-full hover:bg-gray-200 transition duration-300">
       <img src="assets/icons/uk.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="UK">
     </button>
 
-    <button class="bg-white p-2 rounded-full hover:bg-gray-200 transition duration-300">
+    <button (click)="toggleLanguage('es')" class="bg-white p-2 rounded-full hover:bg-gray-200 transition duration-300">
       <img src="assets/icons/spain.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="Spain">
     </button>
 

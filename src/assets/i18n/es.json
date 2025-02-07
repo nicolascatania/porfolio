@@ -1,0 +1,17 @@
+{
+    "navbar": {
+        "projects": "Proyectos",
+        "techStack": "Tecnologías",
+        "education": "Educación",
+        "about": "Sobre Mí",
+        "contact": "Contacto"
+    },
+    "hero":{
+        "title": "Desarrollador Backend |  Estudiante de Ingeniería Informática",
+        "contact": "Contacto",
+        "imgAlt": "Nicolas Catania - Foto de perfil",
+        "figCaption": "Foto de perfil de Nicolás Catania",
+        "aria-label": "presentación-principal",
+        "aria-labelledBy": "nombre-ocupación"                  
+    }
+}

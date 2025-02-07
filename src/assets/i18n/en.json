@@ -1,0 +1,18 @@
+{
+    "navbar": {
+        "projects": "Projects",
+        "techStack": "Tech Stack",
+        "education": "Education",
+        "about": "About Me",
+        "contact": "Contact"
+    },
+    "hero":{
+        "title": "Backend Developer | Software Engineering Student",
+        "contact": "Contact",
+        "imgAlt": "Nicolas Catania - Profile photo",
+        "figCaption": "Nicolas Catania profile photo",
+        "aria-label": "main-presentation",
+        "aria-labelledBy": "name-ocupation"        
+    }
+
+}
