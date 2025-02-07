@@ -1,4 +1,4 @@
-<section id="projects" class="projects mt-15 p-4 scroll-mt-20" aria-label="Main projects list">
+<section id="projects" class="projects mt-10 p-4 " aria-label="Main projects list">
   <section class="projects-container p-4 sm:max-w-7xl mx-auto">
     <h1 class="projects-title text-center text-3xl sm:text-5xl font-title font-bold mb-8 text-slate-800">Projects</h1>
     
@@ -7,7 +7,7 @@
         <figure class="project-image md:order-1">
           <img 
             src={{project.imageSrc}} 
-            alt="{{ project.name }} interface"
+            alt="{{ project.name }}"
             class="w-full h-64 object-cover sm:h-full cursor-pointer"
             (click)="openModal(project.imageSrc)"
           >

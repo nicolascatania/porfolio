@@ -1,14 +1,14 @@
 <footer id="contact" class="w-full bg-gray-800 p-8">
-  <section class="contact-me max-w-6xl mx-auto p-6 flex flex-col gap-8" aria-label="contact-me">
+  <section class="contact-me max-w-6xl mx-auto p-6 flex flex-col gap-8" [ariaLabel]="'contactInfo.aria-label' | translate">
     <h2 class="text-white text-center text-5xl font-extrabold font-title border-b-2 border-gray-600 pb-4">
-      Contact Me
+      {{'contactInfo.title' | translate}}
     </h2>
     <article class="contact-me-contents flex flex-col items-center gap-6 font-body">
       <div class="mail flex flex-row items-center justify-center gap-4">
         <p class="select-none text-xl sm:text-2xl text-gray-200">{{ email }}</p>
         <img 
           src="assets/icons/copy.svg" 
-          alt="Copy Email" 
+          alt="{{'contactInfo.copyAlt' | translate}}" 
           class="w-12 h-12 sm:w-15 sm:h-15 cursor-pointer hover:scale-110 transition-transform"
           (click)="copyEmail()"
         >
@@ -30,7 +30,7 @@
         </a>
       </div>
       <div class="copyright text-gray-400 text-sm">
-        <p>&copy; 2025 Nicolas Martin Catania. All rights reserved.</p>
+        <p>{{'contactInfo.copy' | translate}}</p>
       </div>
     </article>
   </section>

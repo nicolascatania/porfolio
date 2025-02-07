@@ -13,5 +13,16 @@
         "figCaption": "Foto de perfil de Nicolás Catania",
         "aria-label": "presentación-principal",
         "aria-labelledBy": "nombre-ocupación"                  
+    },
+    "about":{
+        "aria-label": "sección-sobre-mí",
+        "title": "Sobre Mí",
+        "paragraph": "Soy Nicolás Martín Catania, un apasionado de la tecnología de 22 años. Aspiro a establecerme en la industria del desarrollo backend y comenzar mi carrera profesional. Aunque aún no he tenido la oportunidad de trabajar en la industria, estoy con muchas ganas de conseguir mi primera pasantía o empleo. Por otro lado, disfruto tocar la guitarra, ir al gimnasio, aprender nuevos idiomas, seguir aprendiendo y mejorando continuamente."
+    },
+    "contactInfo": {
+        "title": "Contactame",
+        "copy": "@2025 Nicolas Martin Catania. Todos los derechos reservados.",
+        "aria-label": "contactame",
+        "copyAlt": "copiar email"
     }
 }
