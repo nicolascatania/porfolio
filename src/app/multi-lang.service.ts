@@ -30,7 +30,6 @@ export class MultiLangService {
     effect(()=>{
       window.localStorage.setItem('languageSignal', JSON.stringify(this.languageSignal()));
       this.translateService.use(this.languageSignal());
-      console.log(this.languageSignal); //remove after finish testing
     })
   }
 }

@@ -15,10 +15,8 @@ export class NavBarComponent {
   mlangService = inject(MultiLangService);
 
   toggleLanguage(lang: string): void{
-    console.log('Trying to change to:', lang);
     if(this.mlangService.languageSignal() !== lang){
       this.mlangService.updateLanguage(lang);
-      console.log('Language changed to', lang); //remove after testing
     }
   }
 
