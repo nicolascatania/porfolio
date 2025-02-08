@@ -27,6 +27,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/assets",
+              "src/app/assets/i18n" ,
               {
                 "glob": "**/*",
                 "input": "public"

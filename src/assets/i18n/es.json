@@ -24,5 +24,58 @@
         "copy": "@2025 Nicolas Martin Catania. Todos los derechos reservados.",
         "aria-label": "contactame",
         "copyAlt": "copiar email"
+    },
+    "projectsInfo": {
+        "title": "Proyectos",
+        "aria-label": "MySongSet",
+        "release": "Lanzamiento",
+        "overlayImageAlt": "Imagen del proyecto",
+        "vc": "Ver código",
+        "project1": {
+            "name": "MySongSet",
+            "desc": "Aplicación web para organizar canciones que toco en la guitarra en listas de reproducción, utilizando integración con la API de Spotify y un diseño de interfaz minimalista. Me ayudó a no olvidar las canciones que sé, porque siempre termino tocando las mismas 10 una y otra vez.",
+            "releaseYear": "2025"
+        },
+        "project2": {
+            "name": "API de productos básica",
+            "desc": "API que incluye CRUD de diferentes entidades como productos y usuarios, roles de usuario, seguridad en Spring y autenticación JWT. Incluye un frontend básico.",
+            "releaseYear": "2024"
+        },
+        "project3": {
+            "name": "Simulación de batallas en Java",
+            "desc": "Proyecto final desarrollado en grupo para una asignatura de programación avanzada. Aplicación de consola construida en Java utilizando muchos patrones de diseño, con una pequeña conexión a Prolog. Simula una batalla por turnos entre magos y mortifagos.",
+            "releaseYear": "2024"
+        }
+    },
+    "ts":{
+        "title": "Tecnologías",
+        "aria-label": "Grilla de tecnologías"
+    },
+    "ed":{
+        "title": "Formación Académica",
+        "aria-labelledBy": "titulo-formación-académica",
+        "uni":{
+            "title": "Estudiante de Ingeniería en Informática",
+            "institution": "Universidad de La Matanza",
+            "yearIn": "2021",
+            "yearOut": "En curso",
+            "description": "Con el 50% de la carrera completada y un promedio de 8 sobre 10, esta carrera me brinda una sólida formación en ciencias de la computación, estructuras de datos y algoritmos con C, programación orientada a objetos con Java, así como análisis y diseño de sistemas y conocimientos básicos de redes y criptografía."   
+        },
+        "ap":{
+            "title": "Desarrollador Fullstack",
+            "institution": "\"Argentina Programa\", provisto por el Ministerio de Economía de la Nación",
+            "yearIn": "2022",
+            "yearOut": "2023",
+            "description": "Completé la primera etapa donde aprendimos POO con Ruby y JS. Por otro lado, la segunda parte abarcaba Angular, Java y Spring Boot para crear APIs RESTful y aplicaciones web, por problemas personales no pude concluir el proyecto final aunque aprendí muchos conocimientos valiosos."
+        },
+        "secu":{
+            "title": "Título secundario",
+            "institution": "Instituto Amancio Alcorta",
+            "yearIn": "2014",
+            "yearOut": "2020", 
+            "description": "Escuela secundaria orientada a las ciencias sociales."
+        }
     }
+
+      
 }

@@ -1,5 +1,5 @@
-<section id="tech-stack" class="tech-grid mt-8 p-8 scroll-mt-20 font-title" aria-label="Technology Grid">
-    <h2 class="text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800">Tech Stack</h2>
+<section id="tech-stack" class="tech-grid mt-8 p-8 scroll-mt-20 font-title" [ariaLabel]="'ts.aria-label' | translate">
+    <h2 class="text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800">{{'ts.title' | translate}}</h2>
     <div class="projects-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 sm:max-w-7xl max-w-6xl mx-auto">
       @for(tech of technologies; track tech.id) {
         <div class="tech-card bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-4 flex flex-col items-center">

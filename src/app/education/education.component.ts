@@ -1,42 +1,44 @@
 import { Component } from '@angular/core';
 import { HighlightKeywordsPipe } from '../highlight-keywords.pipe'; 
+import { TranslateModule } from '@ngx-translate/core';
+import { Education } from '../../models/Education';
+
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [HighlightKeywordsPipe],
+  imports: [HighlightKeywordsPipe, TranslateModule],
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss'],
 })
 export class EducationComponent {
-  highlightedKeywords: string[] = ['RESTful', 'Java', 'Spring', 'Angular', 'Algorithms', 'Data structures', 'C', 'API', 'Backend', 'Systems analysis', 'design'];
+  highlightedKeywords: string[] = ['Estructuras de datos', 'Algoritmos','Analisis', 'Diseño', 'Sistemas','RESTful', 'Java', 'Spring', 'Angular', 'Algorithms', 'Data structures', 'C', 'API', 'Backend', 'Systems analysis', 'design'];
 
-  educations = [
+
+  educations: Education[] = [
     {
       id: 1,
-      title: 'Software Engineer student',
-      institution: 'Universidad de La Matanza',
-      yearIn: 2021,
-      yearOut: 'In progress',
-      description:
-        'With 50% of the career completed and GPA of 8 out of 10, this career gives me a strong background in computer science, data structures, and algorithms with C, OOP with Java, as well as systems analysis, systems design and basic networking and cryptography knowledge.',
+      title: 'ed.uni.title',
+      institution: 'ed.uni.institution',
+      yearIn: 'ed.uni.yearIn',
+      yearOut: 'ed.uni.yearOut',
+      description: 'ed.uni.description'
     },
     {
       id: 2,
-      title: 'Fullstack software developer',
-      institution: '"Argentina Programa", provided by the National Ministry of Economy',
-      yearIn: 2022,
-      yearOut: 2023,
-      description:
-        'First stage completed where we learned OOP with Ruby and JS. On the other hand, I was not able to complete the second stage due to personal issues, which covered Angular, Java, and Spring Boot programming to create RESTful APIs and web applications, although I learned a lot of valuable knowledge.',
+      title: 'ed.ap.title',
+      institution: 'ed.ap.institution',
+      yearIn: 'ed.ap.yearIn',
+      yearOut: 'ed.ap.yearOut',
+      description: 'ed.ap.description'
     },
     {
       id: 3,
-      title: 'Highschool degree',
-      institution: 'Amancio Alcorta Institute',
-      yearIn: 2014,
-      yearOut: 2020,
-      description: 'Social sciences oriented highschool.',
+      title: 'ed.secu.title',
+      institution: 'ed.secu.institution',
+      yearIn: 'ed.secu.yearIn',
+      yearOut: 'ed.secu.yearOut',
+      description: 'ed.secu.description'
     },
   ];
 }

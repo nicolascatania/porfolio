@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Technology } from '../../models/Techology';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tech-stack',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './tech-stack.component.html',
   styleUrl: './tech-stack.component.scss'
 })
