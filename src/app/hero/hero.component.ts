@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { MultiLangService } from '../multi-lang.service';
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'app-hero',
@@ -14,16 +15,21 @@ export class HeroComponent implements OnInit {
   spaCv: string = 'assets/cv/Catania_Nicolas_espanol_cv.pdf';
   cvToRetrieve: string = '';
 
-  constructor(private multiLangService: MultiLangService) {}
+  constructor(
+    private multiLangService: MultiLangService,
+    private menuService: MenuService
+  ) {}
 
   ngOnInit() {
-    // Obtener el idioma actual al iniciar
     this.cvToRetrieve = this.multiLangService.languageSignal() === 'es' ? this.spaCv : this.engCv;
 
-    // Suscribirse a cambios de idioma
     this.multiLangService.language$.subscribe(lang => {
       this.cvToRetrieve = lang === 'es' ? this.spaCv : this.engCv;
     });
+  }
+
+  openMenu() {
+    this.menuService.toggleMenu();
   }
 }
 

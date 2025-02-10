@@ -1,5 +1,15 @@
 <header class="hero flex flex-col items-center text-center py-10 bg-cover bg-center relative overflow-hidden min-h-screen" role="banner" [ariaLabel]="'hero.aria-label' |translate " style="background-image: url('assets/images/herobgphoto.png');">
   
+  <figure class="flex w-full justify-end mr-10">
+    <img 
+      (click)="openMenu()" 
+      src="assets/icons/optionswhite.svg" 
+      class="size-10 rounded-full z-50 cursor-pointer"
+      alt="Menu icon"
+    >
+  </figure>
+  
+
   <div class="absolute inset-0 bg-black opacity-80 blur-lg z-0"></div>
   
   <section class="hero-content flex flex-col items-center justify-center gap-6 relative z-10 my-auto" aria-labelledby="name-ocupation" [attr.aria-labelledBy]="'hero.aria-labelledBy' | translate">
