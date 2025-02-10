@@ -18,10 +18,10 @@
         {{'hero.title' | translate}}
       </p>
     </div>
-  
-    <nav class="hero-actions flex gap-4 mt-4 md:text-2xl text-xl justify-center items-center font-title" aria-label="main actions">
-      <a href="assets/cv/Catania_Nicolas_english_cv.pdf" target="_blank" rel="noopener noreferrer" class="button bg-gray-800 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg">CV</a>
-      <a href="#contact" class="button bg-primaryBlue text-black font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-lg">{{'hero.contact' | translate}}</a>
-    </nav>
+
+  <nav class="hero-actions flex gap-4 mt-4 md:text-2xl text-xl justify-center items-center font-title" aria-label="main actions">
+    <a [href]="cvToRetrieve" target="_blank" rel="noopener noreferrer" class="button bg-gray-800 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg">CV</a>
+    <a href="#contact" class="button bg-primaryBlue text-black font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-lg">{{'hero.contact' | translate}}</a>
+  </nav>
   </section>
 </header>
