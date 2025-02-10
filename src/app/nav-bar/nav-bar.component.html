@@ -42,7 +42,7 @@
   ></div>
 
   <div 
-    class="md:hidden fixed top-0 right-0 h-full w-64 bg-slate-50 shadow-lg transform transition-transform duration-300"
+    class="md:hidden fixed top-0 right-0 h-full w-50 bg-slate-50 shadow-lg transform transition-transform duration-300"
     [class.translate-x-full]="!isMenuOpen"
   >
     <div class="p-6 flex flex-col h-full">
@@ -67,39 +67,39 @@
 
       <ul class="flex gap-x-4 mb-6">
         <button (click)="toggleLanguage('en')" >
-          <img src="assets/icons/uk.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="UK">
+          <img src="assets/icons/uk.svg" class="w-8 h-8" alt="UK">
         </button>
     
         <button (click)="toggleLanguage('es')" >
-          <img src="assets/icons/spain.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="Spain">
+          <img src="assets/icons/spain.svg" class="w-8 h-8" alt="Spain">
         </button>
     
         <button >
-          <img src="assets/icons/moon.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="toggle-Theme">
+          <img src="assets/icons/moon.svg" class="w-8 h-8" alt="toggle-Theme">
         </button>
       </ul>
 
       <ul class="flex flex-col space-y-6 text-lg">
-        <li>
+        <li (click)="toggleMenu()">
           <a 
             href="#projects" 
             class="hover:text-primaryBlue transition duration-300"
-            (click)="toggleMenu()"
+            
           >
             {{'navbar.projects' | translate}}
           </a>
         </li>
-        <li>
-          <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300" (click)="toggleMenu()">{{'navbar.techStack' | translate}}</a>
+        <li (click)="toggleMenu()">
+          <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300">{{'navbar.techStack' | translate}}</a>
         </li>
-        <li>
-          <a href="#education" class="hover:text-primaryBlue transition duration-300" (click)="toggleMenu()">{{'navbar.education' | translate}}</a>
+        <li (click)="toggleMenu()">
+          <a href="#education" class="hover:text-primaryBlue transition duration-300" >{{'navbar.education' | translate}}</a>
         </li>
-        <li>
-          <a href="#about-me" class="hover:text-primaryBlue transition duration-300" (click)="toggleMenu()">{{'navbar.about' | translate}}</a>
+        <li (click)="toggleMenu()">
+          <a href="#about-me" class="hover:text-primaryBlue transition duration-300" >{{'navbar.about' | translate}}</a>
         </li>
-        <li>
-          <a href="#contact" class="hover:text-primaryBlue transition duration-300 font-bold" (click)="toggleMenu()">{{'navbar.contact' | translate}}</a>
+        <li (click)="toggleMenu()">
+          <a href="#contact" class="hover:text-primaryBlue transition duration-300 font-bold" >{{'navbar.contact' | translate}}</a>
         </li>
       </ul>
     </div>
