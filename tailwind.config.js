@@ -11,7 +11,7 @@ module.exports = {
       fontFamily:{
         title: 'Montserrat',
         body: 'IBM+Plex+Sans'
-      }
+      },
     },
   },
   plugins: [],
