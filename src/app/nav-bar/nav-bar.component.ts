@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { MenuService } from '../menu.service';
 import { Subscription } from 'rxjs';
+import { DarkModeService } from '../dark-mode.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,6 +21,7 @@ export class NavBarComponent {
 
   isMenuOpen: boolean = false;
 
+  darkModeService: DarkModeService = inject(DarkModeService);
 
   constructor() {
     this.menuSubscription = this.menuService.menuState$.subscribe(state => {
@@ -37,6 +39,10 @@ export class NavBarComponent {
     if(this.mlangService.languageSignal() !== lang){
       this.mlangService.updateLanguage(lang);
     }
+  }
+
+  toggleDarkMode(){
+    this.darkModeService.toggleDarkMode();
   }
 
 

@@ -1,57 +1,61 @@
-<nav class="sticky top-0 z-50 md:p-6 md:flex md:justify-between justify-end items-center  bg-slate-50">
- 
+<nav class="sticky top-0 z-50 md:p-6 md:flex md:justify-between justify-end items-center bg-slate-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 shadow-md">
+
   <!-- Menú Desktop (mobile hidden) --> 
-  <ul class="hidden md:flex space-x-6 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 sm:text-xl text-sm text-black font-body">
+  <ul class="hidden md:flex space-x-6 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 sm:text-xl text-sm text-black font-body dark:text-white">
     <li>
-      <a href="#projects" class="hover:text-primaryBlue transition duration-300">{{'navbar.projects' | translate}}</a>
+      <a href="#projects" class="hover:text-primaryBlue">{{'navbar.projects' | translate}}</a>
     </li>
     <li>
-      <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300">{{'navbar.techStack' | translate}}</a>
+      <a href="#tech-stack" class="hover:text-primaryBlue ">{{'navbar.techStack' | translate}}</a>
     </li>
     <li>
-      <a href="#education" class="hover:text-primaryBlue transition duration-300">{{'navbar.education' | translate}}</a>
+      <a href="#education" class="hover:text-primaryBlue">{{'navbar.education' | translate}}</a>
     </li>
     <li>
-      <a href="#about-me" class="hover:text-primaryBlue transition duration-300">{{'navbar.about' | translate}}</a>
+      <a href="#about-me" class="hover:text-primaryBlue">{{'navbar.about' | translate}}</a>
     </li>
     <li>
-      <a href="#contact" class="hover:text-primaryBlue transition duration-300 font-bold">{{'navbar.contact' | translate}}</a>
+      <a href="#contact" class="hover:text-primaryBlue font-bold">{{'navbar.contact' | translate}}</a>
     </li>
   </ul>
 
   <!-- button container (right) -->
   <div class="hidden md:flex space-x-4 ml-auto">
-    <button (click)="toggleLanguage('en')" class="bg-white p-2 rounded-full hover:bg-primaryBlue transition duration-300">
+    <button (click)="toggleLanguage('en')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300">
       <img src="assets/icons/uk.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="UK">
     </button>
 
-    <button (click)="toggleLanguage('es')" class="bg-white p-2 rounded-full hover:bg-primaryBlue transition duration-300">
+    <button (click)="toggleLanguage('es')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300">
       <img src="assets/icons/spain.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="Spain">
     </button>
 
-    <button class="bg-white p-2 rounded-full hover:bg-primaryBlue transition duration-300">
-      <img src="assets/icons/moon.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="toggle-Theme">
+    <button (click)="darkModeService.toggleDarkMode()">
+      @if(darkModeService.darkModeSignal()) {
+        <img src="assets/icons/moon.svg" class="w-8 h-8" alt="Dark mode">
+      } @else {
+        <img src="assets/icons/sun.svg" class="w-8 h-8" alt="Light mode">
+      }
     </button>
   </div>
 
   <!-- Menú Mobile (Overlay) -->
   <div 
-    class="md:hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+    class="md:hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity z-100"
     [class.hidden]="!isMenuOpen"
     (click)="toggleMenu()"
   ></div>
 
   <div 
-    class="md:hidden fixed top-0 right-0 h-full w-50 bg-slate-50 shadow-lg transform transition-transform duration-300"
+    class="md:hidden fixed top-0 right-0 h-full w-50 bg-slate-50 dark:bg-gray-900 shadow-lg transform transition-transform duration-300"
     [class.translate-x-full]="!isMenuOpen"
   >
     <div class="p-6 flex flex-col h-full">
       <button 
-        class="self-end mb-8 p-2 hover:bg-gray-200 rounded-full"
+        class="self-end mb-8 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
         (click)="toggleMenu()"
       >
         <svg 
-          class="w-6 h-6" 
+          class="w-6 h-6 text-black dark:text-white" 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
@@ -74,32 +78,41 @@
           <img src="assets/icons/spain.svg" class="w-8 h-8" alt="Spain">
         </button>
     
-        <button >
-          <img src="assets/icons/moon.svg" class="w-8 h-8" alt="toggle-Theme">
+        <button (click)="darkModeService.toggleDarkMode()">
+          @if(darkModeService.darkModeSignal()) {
+            <img src="assets/icons/moon.svg" class="w-8 h-8" alt="Dark mode">
+          } @else {
+            <img src="assets/icons/sun.svg" class="w-8 h-8" alt="Light mode">
+          }
         </button>
+
       </ul>
 
-      <ul class="flex flex-col space-y-6 text-lg">
+      <ul class="flex flex-col space-y-6 text-lg text-black dark:text-white">
         <li (click)="toggleMenu()">
-          <a 
-            href="#projects" 
-            class="hover:text-primaryBlue transition duration-300"
-            
-          >
+          <a href="#projects" class="hover:text-primaryBlue transition duration-300">
             {{'navbar.projects' | translate}}
           </a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300">{{'navbar.techStack' | translate}}</a>
+          <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300">
+            {{'navbar.techStack' | translate}}
+          </a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#education" class="hover:text-primaryBlue transition duration-300" >{{'navbar.education' | translate}}</a>
+          <a href="#education" class="hover:text-primaryBlue transition duration-300">
+            {{'navbar.education' | translate}}
+          </a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#about-me" class="hover:text-primaryBlue transition duration-300" >{{'navbar.about' | translate}}</a>
+          <a href="#about-me" class="hover:text-primaryBlue transition duration-300">
+            {{'navbar.about' | translate}}
+          </a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#contact" class="hover:text-primaryBlue transition duration-300 font-bold" >{{'navbar.contact' | translate}}</a>
+          <a href="#contact" class="hover:text-primaryBlue transition duration-300 font-bold">
+            {{'navbar.contact' | translate}}
+          </a>
         </li>
       </ul>
     </div>

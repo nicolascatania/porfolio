@@ -1,18 +1,35 @@
-<section id="education" class="education-section p-8 sm:max-w-7xl max-w-6xl mt-10 mx-auto scroll-m-32" [attr.aria-labelledBy]="'ed.aria-labelledBy' | translate">
-    <h2 id="education-title" class="font-title text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800">{{'ed.title' | translate}}</h2>
-    @for(education of educations; track education.id) {
-      <article class="education-card grid md:flex my-7 p-4 gap-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-        <div class="education-content flex flex-col justify-between p-10 gap-4 md:p-8">
-          <header>
-            <p class="text-[20x] md:text-3xl font-extrabold font-title text-gray-800 mb-2">{{ education.title | translate}}</p>
-            <div class="sm:flex-row  flex-col items-center justify-between lg:w-auto">
-              <p class="text-[15px]  lg:text-2xl font-title font-semibold text-gray-700">{{ education.institution | translate}}</p>
-              <p class="lg:text-lg text-xs text-gray-600 font-title mt-1">({{ education.yearIn | translate}} - {{ education.yearOut | translate }})</p>
-            </div>
-          </header>
-          <p class="education-description text-gray-600 lg:text-xl text-sm font-body" [innerHTML]="education.description | translate | highlightKeywords:highlightedKeywords"></p>
-        </div>
-      </article>
-    }
-  </section>
+<section id="education" class="education-section p-8 sm:max-w-7xl max-w-6xl mt-10 mx-auto scroll-m-32" 
+         [attr.aria-labelledBy]="'ed.aria-labelledBy' | translate">
   
+  <h2 id="education-title" class="font-title text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800 dark:text-gray-100">
+    {{'ed.title' | translate}}
+  </h2>
+
+  @for(education of educations; track education.id) {
+    <article class="education-card grid md:flex my-7 p-4 gap-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden 
+                    dark:bg-gray-700 dark:shadow-md dark:hover:shadow-lg dark:hover:bg-gray-600">
+      
+      <div class="education-content flex flex-col justify-between p-10 gap-4 md:p-8">
+        <header>
+          <p class="text-[20x] md:text-3xl font-extrabold font-title text-gray-800 dark:text-gray-100 mb-2">
+            {{ education.title | translate}}
+          </p>
+
+          <div class="sm:flex-row flex-col items-center justify-between lg:w-auto">
+            <p class="text-[15px] lg:text-2xl font-title font-semibold text-gray-700 dark:text-gray-200">
+              {{ education.institution | translate}}
+            </p>
+            <p class="lg:text-lg text-xs text-gray-600 dark:text-gray-400 font-title mt-1">
+              ({{ education.yearIn | translate}} - {{ education.yearOut | translate }})
+            </p>
+          </div>
+        </header>
+
+        <p class="education-description text-gray-600 lg:text-xl text-sm font-body dark:text-gray-300" 
+           [innerHTML]="education.description | translate | highlightKeywords:highlightedKeywords">
+        </p>
+      </div>
+
+    </article>
+  }
+</section>

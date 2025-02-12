@@ -12,4 +12,13 @@ body { margin: 0}
 app-root {
     display: block;  
     overflow: visible !important; 
+}
+
+
+html * {
+    transition: background-color 0.3s ease, color 0.2s ease;
+  }
+  
+  .dark-transition {
+    transition: background-color 0.3s ease, color 0.2s ease;
   }

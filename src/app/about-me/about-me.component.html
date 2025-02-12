@@ -1,10 +1,16 @@
-<section id="about-me"class="p-6 sm:max-w-7xl max-w-6xl mt-4 mx-auto" [attr.aria-labelledBy]="'about.aria-labelledBy' | translate ">
-    <header class="text-center mb-6">
-      <h2 id="about-me-title" class="text-3xl sm:text-5xl font-bold font-title text-gray-800">{{'about.title' | translate}}</h2>
-    </header>
-    <div class="text-center sm:text-left p-4">
-      <p class="text-lg sm:text-xl text-gray-700 font-body leading-relaxed text-left">{{'about.paragraph' | translate}}</p>
-    </div>
-  </section>
+<section id="about-me" class="p-6 sm:max-w-7xl max-w-6xl mt-4 mx-auto dark:bg-gray-800" 
+         [attr.aria-labelledBy]="'about.aria-labelledBy' | translate">
   
-  
+  <header class="text-center mb-6">
+    <h2 id="about-me-title" class="text-3xl sm:text-5xl font-bold font-title text-gray-800 dark:text-gray-100">
+      {{'about.title' | translate}}
+    </h2>
+  </header>
+
+  <div class="text-center sm:text-left p-4">
+    <p class="text-lg sm:text-xl text-gray-700 dark:text-gray-300 font-body leading-relaxed text-left">
+      {{'about.paragraph' | translate}}
+    </p>
+  </div>
+
+</section>

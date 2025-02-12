@@ -1,7 +1,9 @@
-<app-nav-bar></app-nav-bar>
-<app-hero></app-hero>
-<app-projects></app-projects>
-<app-tech-stack></app-tech-stack>
-<app-education></app-education>
-<app-about-me></app-about-me>
-<app-footer></app-footer>
+<div class="bg-white dark:bg-gray-800  min-h-screen transition-colors duration-300" [class.dark]="darkModeService.darkModeSignal()">
+    <app-nav-bar></app-nav-bar>
+    <app-hero></app-hero>
+    <app-projects></app-projects>
+    <app-tech-stack></app-tech-stack>
+    <app-education></app-education>
+    <app-about-me></app-about-me>
+    <app-footer></app-footer>
+</div>
