@@ -4,7 +4,20 @@
         "techStack": "Tech Stack",
         "education": "Education",
         "about": "About Me",
-        "contact": "Contact"
+        "contact": "Contact",
+        "experience": "Experience"
+    },
+    "experience":{
+        "title": "Work Experience",
+        "aria-label": "work-experience",
+        "aria-labelledBy": "work-experience",
+        "netOne":{
+            "title": "Full Stack Web Developer",
+            "institution": "NetOne",
+            "yearIn": "March, 2025",
+            "yearOut": "On course",
+            "description": "Developed processes for the enterprise's web application Netegia, I'm involved on the front and back end, working with CRUD, API managment, page designing, etc. Angular, Spring & MySQL."   
+        }     
     },
     "hero":{
         "title": "Backend Developer | Software Engineering Student",

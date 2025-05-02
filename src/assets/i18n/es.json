@@ -4,7 +4,20 @@
         "techStack": "Tecnologías",
         "education": "Educación",
         "about": "Sobre Mí",
-        "contact": "Contacto"
+        "contact": "Contacto",
+        "experience": "Experiencia"
+    },
+    "experience":{
+        "title": "Experiencia laboral",
+        "aria-label": "experiencia-laboral",
+        "aria-labelledBy": "experiencia-laboral",
+        "netOne":{
+            "title": "Desarrollador Web Full Stack",
+            "institution": "NetOne",
+            "yearIn": "Marzo, 2025",
+            "yearOut": "En curso",
+            "description": "Desarrollo en ambos sectores (cliente y servidor) de una aplicación web de la empresa, Netegia, incluye manejo de APIs, creación de vistas, ABMs, etc. Angular, Spring y MySQL."   
+        }     
     },
     "hero":{
         "title": "Desarrollador Backend |  Estudiante de Ingeniería Informática",

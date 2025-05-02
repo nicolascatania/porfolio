@@ -9,11 +9,12 @@ import { AboutMeComponent } from "./about-me/about-me.component";
 import { FooterComponent } from "./footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { DarkModeService } from './dark-mode.service';
+import { ExperienceComponent } from './experience/experience.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavBarComponent, HeroComponent, ProjectsComponent, TechStackComponent, EducationComponent, AboutMeComponent, FooterComponent, CommonModule],
+  imports: [NavBarComponent, HeroComponent, ExperienceComponent, ProjectsComponent, TechStackComponent, EducationComponent, AboutMeComponent, FooterComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
