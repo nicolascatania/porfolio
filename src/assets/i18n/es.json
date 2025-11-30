@@ -1,94 +1,92 @@
 {
-    "navbar": {
-        "projects": "Proyectos",
-        "techStack": "Tecnologías",
-        "education": "Educación",
-        "about": "Sobre Mí",
-        "contact": "Contacto",
-        "experience": "Experiencia"
-    },
-    "experience":{
-        "title": "Experiencia laboral",
-        "aria-label": "experiencia-laboral",
-        "aria-labelledBy": "experiencia-laboral",
-        "netOne":{
-            "title": "Desarrollador Web Full Stack",
-            "institution": "NetOne",
-            "yearIn": "Marzo, 2025",
-            "yearOut": "En curso",
-            "description": "Desarrollo en ambos sectores (cliente y servidor) de una aplicación web de la empresa, Netegia, incluye manejo de APIs, creación de vistas, ABMs, etc. Angular, Spring y MySQL."   
-        }     
-    },
-    "hero":{
-        "title": "Desarrollador Backend |  Estudiante de Ingeniería Informática",
-        "contact": "Contacto",
-        "imgAlt": "Nicolas Catania - Foto de perfil",
-        "figCaption": "Foto de perfil de Nicolás Catania",
-        "aria-label": "presentación-principal",
-        "aria-labelledBy": "nombre-ocupación"                  
-    },
-    "about":{
-        "aria-label": "sección-sobre-mí",
-        "title": "Sobre Mí",
-        "paragraph": "Soy Nicolás Martín Catania, tengo 22 años. Estoy trabajando como desarrollador full stack web en la empresa NetOne (como becario tecnológico en el Polo de la UNLaM). Por otro lado, disfruto tocar la guitarra, ir al gimnasio, aprender nuevos idiomas, seguir aprendiendo y mejorando continuamente."
-    },
-    "contactInfo": {
-        "title": "Contactame",
-        "copy": "@2025 Nicolas Martin Catania. Todos los derechos reservados.",
-        "aria-label": "contactame",
-        "copyAlt": "copiar email"
-    },
-    "projectsInfo": {
-        "title": "Proyectos",
-        "aria-label": "MySongSet",
-        "release": "Lanzamiento",
-        "overlayImageAlt": "Imagen del proyecto",
-        "vc": "Ver código",
-        "project1": {
-            "name": "MySongSet",
-            "desc": "Aplicación web para organizar canciones que toco en la guitarra en listas de reproducción, utilizando integración con la API de Spotify y un diseño de interfaz minimalista. Me ayudó a no olvidar las canciones que sé, porque siempre termino tocando las mismas 10 una y otra vez.",
-            "releaseYear": "2025"
-        },
-        "project2": {
-            "name": "API de productos básica",
-            "desc": "API que incluye CRUD de diferentes entidades como productos y usuarios, roles de usuario, seguridad en Spring y autenticación JWT. Incluye un frontend básico.",
-            "releaseYear": "2024"
-        },
-        "project3": {
-            "name": "Simulación de batallas en Java",
-            "desc": "Proyecto final desarrollado en grupo para una asignatura de programación avanzada. Aplicación de consola construida en Java utilizando muchos patrones de diseño, con una pequeña conexión a Prolog. Simula una batalla por turnos entre magos y mortifagos.",
-            "releaseYear": "2024"
-        }
-    },
-    "ts":{
-        "title": "Tecnologías",
-        "aria-label": "Grilla de tecnologías"
-    },
-    "ed":{
-        "title": "Educación",
-        "aria-labelledBy": "titulo-formación-académica",
-        "uni":{
-            "title": "Estudiante de Ingeniería en Informática",
-            "institution": "Universidad de La Matanza",
-            "yearIn": "2021",
-            "yearOut": "En curso",
-            "description": "Con el 50% de la carrera completada y un promedio de 8 sobre 10, esta carrera me brinda una sólida formación en ciencias de la computación, estructuras de datos y algoritmos con C, programación orientada a objetos con Java, así como análisis y diseño de sistemas y conocimientos básicos de redes y criptografía."   
-        },
-        "ap":{
-            "title": "Desarrollador Fullstack",
-            "institution": "\"Argentina Programa\", provisto por el Ministerio de Economía de la Nación",
-            "yearIn": "2022",
-            "yearOut": "2023",
-            "description": "Completé la primera etapa donde aprendimos POO con Ruby y JS. Por otro lado, la segunda parte abarcaba Angular, Java y Spring Boot para crear APIs RESTful y aplicaciones web, por problemas personales no pude concluir el proyecto final aunque aprendí muchos conocimientos valiosos."
-        },
-        "secu":{
-            "title": "Título secundario",
-            "institution": "Instituto Amancio Alcorta",
-            "yearIn": "2014",
-            "yearOut": "2020", 
-            "description": "Escuela secundaria orientada a las ciencias sociales."
-        }
+  "navbar": {
+    "projects": "Proyectos",
+    "techStack": "Tecnologías",
+    "education": "Educación",
+    "about": "Sobre Mí",
+    "contact": "Contacto",
+    "experience": "Experiencia"
+  },
+  "experience": {
+    "title": "Experiencia laboral",
+    "aria-label": "experiencia-laboral",
+    "aria-labelledBy": "experiencia-laboral",
+    "netOne": {
+      "title": "Desarrollador Web Full Stack",
+      "institution": "NetOne",
+      "yearIn": "Marzo, 2025",
+      "yearOut": "En curso",
+      "description": "Becario tecnológico en el Polo de la Universidad Nacional de La Matanza, colaborando en la migración integral de un sistema de gestión empresarial ERP desarrollado en Java hacia una nueva plataforma basada en Angular y Spring.\nMe encargo de trasladar funcionalidades completas tanto del backend como del frontend, optimizando y rediseñando procesos clave cuando es necesario, y mejorando la experiencia visual de las vistas.\nMi enfoque está en dejar código limpio, mantenible y bien documentado, con una fuerte orientación a buenas prácticas.\nRecientemente estuve aprendiendo a testear todo con JUnit + Mockito para el backend y Cypress para el frontend."
     }
-
-      
+  },
+  "hero": {
+    "title": "Desarrollador Backend |  Estudiante de Ingeniería Informática",
+    "contact": "Contacto",
+    "imgAlt": "Nicolas Catania - Foto de perfil",
+    "figCaption": "Foto de perfil de Nicolás Catania",
+    "aria-label": "presentación-principal",
+    "aria-labelledBy": "nombre-ocupación"
+  },
+  "about": {
+    "aria-label": "sección-sobre-mí",
+    "title": "Sobre Mí",
+    "paragraph": "Soy Nicolás Martín Catania, tengo 22 años. Estoy trabajando como desarrollador full stack web en la empresa NetOne (como becario tecnológico en el Polo de la UNLaM). Por otro lado, disfruto tocar la guitarra, ir al gimnasio, aprender nuevos idiomas, seguir aprendiendo y mejorando continuamente."
+  },
+  "contactInfo": {
+    "title": "Contactame",
+    "copy": "@2025 Nicolas Martin Catania. Todos los derechos reservados.",
+    "aria-label": "contactame",
+    "copyAlt": "copiar email"
+  },
+  "projectsInfo": {
+    "title": "Proyectos",
+    "aria-label": "MySongSet",
+    "release": "Lanzamiento",
+    "overlayImageAlt": "Imagen del proyecto",
+    "vc": "Ver código",
+    "project1": {
+      "name": "MySongSet",
+      "desc": "Aplicación web para organizar canciones que toco en la guitarra en listas de reproducción, utilizando integración con la API de Spotify y un diseño de interfaz minimalista. Me ayudó a no olvidar las canciones que sé, porque siempre termino tocando las mismas 10 una y otra vez.",
+      "releaseYear": "2025"
+    },
+    "project2": {
+      "name": "API de productos básica",
+      "desc": "API que incluye CRUD de diferentes entidades como productos y usuarios, roles de usuario, seguridad en Spring y autenticación JWT. Incluye un frontend básico.",
+      "releaseYear": "2024"
+    },
+    "project3": {
+      "name": "Simulación de batallas en Java",
+      "desc": "Proyecto final desarrollado en grupo para una asignatura de programación avanzada. Aplicación de consola construida en Java utilizando muchos patrones de diseño, con una pequeña conexión a Prolog. Simula una batalla por turnos entre magos y mortifagos.",
+      "releaseYear": "2024"
+    }
+  },
+  "ts": {
+    "title": "Tecnologías",
+    "aria-label": "Grilla de tecnologías"
+  },
+  "ed": {
+    "title": "Educación",
+    "aria-labelledBy": "titulo-formación-académica",
+    "uni": {
+      "title": "Estudiante de Ingeniería en Informática",
+      "institution": "Universidad de La Matanza",
+      "yearIn": "2021",
+      "yearOut": "En curso",
+      "description": "Con el 50% de la carrera completada y un promedio de 8 sobre 10, esta carrera me brinda una sólida formación en ciencias de la computación, estructuras de datos y algoritmos con C, programación orientada a objetos con Java, así como análisis y diseño de sistemas y conocimientos básicos de redes y criptografía."
+    },
+    "ap": {
+      "title": "Desarrollador Fullstack",
+      "institution": "\"Argentina Programa\", provisto por el Ministerio de Economía de la Nación",
+      "yearIn": "2022",
+      "yearOut": "2023",
+      "description": "Completé la primera etapa donde aprendimos POO con Ruby y JS. Por otro lado, la segunda parte abarcaba Angular, Java y Spring Boot para crear APIs RESTful y aplicaciones web, por problemas personales no pude concluir el proyecto final aunque aprendí muchos conocimientos valiosos."
+    },
+    "secu": {
+      "title": "Título secundario",
+      "institution": "Instituto Amancio Alcorta",
+      "yearIn": "2014",
+      "yearOut": "2020",
+      "description": "Escuela secundaria orientada a las ciencias sociales."
+    }
+  }
 }

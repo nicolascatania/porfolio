@@ -1,94 +1,92 @@
 {
-    "navbar": {
-        "projects": "Projects",
-        "techStack": "Tech Stack",
-        "education": "Education",
-        "about": "About Me",
-        "contact": "Contact",
-        "experience": "Experience"
-    },
-    "experience":{
-        "title": "Work Experience",
-        "aria-label": "work-experience",
-        "aria-labelledBy": "work-experience",
-        "netOne":{
-            "title": "Full Stack Web Developer",
-            "institution": "NetOne",
-            "yearIn": "March, 2025",
-            "yearOut": "On course",
-            "description": "Developed processes for the enterprise's web application Netegia, I'm involved on the front and back end, working with CRUD, API managment, page designing, etc. Angular, Spring & MySQL."   
-        }     
-    },
-    "hero":{
-        "title": "Backend Developer | Software Engineering Student",
-        "contact": "Contact",
-        "imgAlt": "Nicolas Catania - Profile photo",
-        "figCaption": "Nicolas Catania profile photo",
-        "aria-label": "main-presentation",
-        "aria-labelledBy": "name-ocupation"        
-    },
-    "about":{
-        "aria-label": "about-me-section",
-        "title": "About Me",
-        "paragraph": "I'm Nicolás Martín Catania, a 22 years old developer from Argentina, and Software Engineer student, currently working as a full stack developer at NetOne. Beyond my enthusiasm for tech, I enjoy playing the guitar, going to the gym, learning new languages and continuously learning and improving."
-    },
-    "contactInfo": {
-        "title": "Contact Me",
-        "copy": "@2025 Nicolas Martin Catania. All rights reserved.",
-        "aria-label": "contact-me",
-        "copyAlt": "Copy Email"
-    },
-    "projectsInfo": {
-        "title": "Projects",
-        "aria-label": "Main projects list",
-        "release": "Release",
-        "overlayImageAlt": "Project image",
-        "vc": "View code",
-        "project1": {
-            "name": "MySongSet",
-            "desc": "Web application for organizing songs that I play on the guitar in playlists, using Spotify API integration and a minimalistic UI design, it helped me to not forget about the songs that I know, because I always end up playing the same 10 over and over.",
-            "releaseYear": "2025"
-        },
-        "project2": {
-            "name": "Basic products API",
-            "desc": "API featuring CRUD of different entities such as products and users, user roles, Spring Security, and JWT auth. Includes a basic frontend.",
-            "releaseYear": "2024"
-        },
-        "project3": {
-            "name": "Battle simulation in Java",
-            "desc": "Final project developed in a group for an advanced programming subject. Console application built in Java using many design patterns, with a small connection to Prolog.",
-            "releaseYear": "2024"
-        }
-    },
-    "ts":{
-        "title": "Tech Stack",
-        "aria-label": "Technology Grid"
-    },
-    "ed":{
-        "title": "Education",
-        "aria-labelledBy": "education-title",
-        "uni":{
-            "title": "Software Engineer student",
-            "institution": "Universidad de La Matanza",
-            "yearIn": "2021",
-            "yearOut": "In progress",
-            "description": "With 50% of the career completed and GPA of 8 out of 10, this career gives me a strong background in computer science, data structures, and algorithms with C, OOP with Java, as well as systems analysis, systems design and basic networking and cryptography knowledge."
-          
-        },
-        "ap":{
-            "title": "Fullstack software developer",
-            "institution": "\"Argentina Programa\", provided by the National Ministry of Economy",
-            "yearIn": "2022",
-            "yearOut": "2023",
-            "description": "First stage completed where we learned OOP with Ruby and JS. On the other hand, I was not able to complete the second stage due to personal issues, which covered Angular, Java, and Spring Boot programming to create RESTful APIs and web applications, although I learned a lot of valuable knowledge."
-        },
-        "secu":{
-            "title": "Highschool degree",
-            "institution": "Amancio Alcorta Institute",
-            "yearIn": "2014",
-            "yearOut": "2020",
-            "description": "Social sciences oriented highschool."
-        }
+  "navbar": {
+    "projects": "Projects",
+    "techStack": "Tech Stack",
+    "education": "Education",
+    "about": "About Me",
+    "contact": "Contact",
+    "experience": "Experience"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "aria-label": "work-experience",
+    "aria-labelledBy": "work-experience",
+    "netOne": {
+      "title": "Full Stack Web Developer",
+      "institution": "NetOne",
+      "yearIn": "March, 2025",
+      "yearOut": "On course",
+      "description": "Migrated ERP system modules from legacy Java architecture to a modern stack using Spring Boot, Angular, and MySQL.\nDeveloped and maintained both backend and frontend functionalities, applying Clean Code principles and producing thorough documentation.\nOptimized SQL queries and core algorithms, achieving measurable improvements in performance and scalability.\nRedesigned key processes and interfaces to enhance user experience and system efficiency.\nManaged tasks autonomously, covering the full development lifecycle from analysis to deployment.\nRecently, I’ve been diving into testing for both the backend and frontend, using JUnit with Mockito and Cypress. I find it really rewarding to ensure the system’s quality through proper testing."
     }
-      
+  },
+  "hero": {
+    "title": "Backend Developer | Software Engineering Student",
+    "contact": "Contact",
+    "imgAlt": "Nicolas Catania - Profile photo",
+    "figCaption": "Nicolas Catania profile photo",
+    "aria-label": "main-presentation",
+    "aria-labelledBy": "name-ocupation"
+  },
+  "about": {
+    "aria-label": "about-me-section",
+    "title": "About Me",
+    "paragraph": "I'm Nicolás Martín Catania, a 22 years old developer from Argentina, and Software Engineer student, currently working as a full stack developer at NetOne. Beyond my enthusiasm for tech, I enjoy playing the guitar, going to the gym, learning new languages and continuously learning and improving."
+  },
+  "contactInfo": {
+    "title": "Contact Me",
+    "copy": "@2025 Nicolas Martin Catania. All rights reserved.",
+    "aria-label": "contact-me",
+    "copyAlt": "Copy Email"
+  },
+  "projectsInfo": {
+    "title": "Projects",
+    "aria-label": "Main projects list",
+    "release": "Release",
+    "overlayImageAlt": "Project image",
+    "vc": "View code",
+    "project1": {
+      "name": "MySongSet",
+      "desc": "Web application for organizing songs that I play on the guitar in playlists, using Spotify API integration and a minimalistic UI design, it helped me to not forget about the songs that I know, because I always end up playing the same 10 over and over.",
+      "releaseYear": "2025"
+    },
+    "project2": {
+      "name": "Basic products API",
+      "desc": "API featuring CRUD of different entities such as products and users, user roles, Spring Security, and JWT auth. Includes a basic frontend.",
+      "releaseYear": "2024"
+    },
+    "project3": {
+      "name": "Battle simulation in Java",
+      "desc": "Final project developed in a group for an advanced programming subject. Console application built in Java using many design patterns, with a small connection to Prolog.",
+      "releaseYear": "2024"
+    }
+  },
+  "ts": {
+    "title": "Tech Stack",
+    "aria-label": "Technology Grid"
+  },
+  "ed": {
+    "title": "Education",
+    "aria-labelledBy": "education-title",
+    "uni": {
+      "title": "Software Engineer student",
+      "institution": "Universidad de La Matanza",
+      "yearIn": "2021",
+      "yearOut": "In progress",
+      "description": "With 50% of the career completed and GPA of 8 out of 10, this career gives me a strong background in computer science, data structures, and algorithms with C, OOP with Java, as well as systems analysis, systems design and basic networking and cryptography knowledge."
+    },
+    "ap": {
+      "title": "Fullstack software developer",
+      "institution": "\"Argentina Programa\", provided by the National Ministry of Economy",
+      "yearIn": "2022",
+      "yearOut": "2023",
+      "description": "First stage completed where we learned OOP with Ruby and JS. On the other hand, I was not able to complete the second stage due to personal issues, which covered Angular, Java, and Spring Boot programming to create RESTful APIs and web applications, although I learned a lot of valuable knowledge."
+    },
+    "secu": {
+      "title": "Highschool degree",
+      "institution": "Amancio Alcorta Institute",
+      "yearIn": "2014",
+      "yearOut": "2020",
+      "description": "Social sciences oriented highschool."
+    }
+  }
 }
