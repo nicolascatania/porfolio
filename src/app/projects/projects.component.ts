@@ -11,7 +11,6 @@ import { Project } from '../../models/Project';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
-
 export class ProjectsComponent {
   isModalVisible: Boolean = false;
   selectedImage: string | null = '';
@@ -56,6 +55,87 @@ export class ProjectsComponent {
       releaseYear: 'projectsInfo.project3.releaseYear',
       githubLink: "https://github.com/Guzman5825/TP2-MagiaYHechizeria",
       imageSrc: "assets/images/wizardsvsmortifacs.jpg"
+    },
+    {
+      id: 4,
+      name: 'projectsInfo.project4.name',
+      description: 'projectsInfo.project4.desc',
+      technologies: [
+        { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
+        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' },
+        { id: 3, name: 'Angular', src: 'assets/icons/angular.svg' },
+        { id: 4, name: 'MySQL', src: 'assets/icons/mysql.svg' }
+      ],
+      releaseYear: 'projectsInfo.project4.releaseYear',
+      githubLink: "https://github.com/nicolascatania/BugdetKingg",
+      imageSrc: "assets/images/bug2.jpg"
+    },
+    {
+      id: 5,
+      name: 'projectsInfo.project5.name',
+      description: 'projectsInfo.project5.desc',
+      technologies: [
+        { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
+        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+        ,{ id: 3, name: 'MySQL', src: 'assets/icons/mysql.svg' }
+        ,{ id: 4, name: 'RabbitMQ', src: 'assets/icons/rabbitmq.svg' }
+        ,{ id: 5, name: 'Docker', src: 'assets/icons/docker.svg' }
+        ,{ id: 6, name: 'k6', src: 'assets/icons/k6.svg' }
+        ,{ id: 7, name: 'Prometheus', src: 'assets/icons/prometheus.svg' }
+        ,{ id: 8, name: 'Grafana', src: 'assets/icons/grafana.svg' }
+      ],
+      releaseYear: 'projectsInfo.project5.releaseYear',
+      githubLink: "https://github.com/nicolascatania/url-shortener",
+      imageSrc: "assets/images/ms.png"
+    },
+    {
+      id: 6,
+      name: 'projectsInfo.project6.name',
+      description: 'projectsInfo.project6.desc',
+      technologies: [
+        { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
+        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+      ],
+      releaseYear: 'projectsInfo.project6.releaseYear',
+      githubLink: "https://github.com/nicolascatania/simple-resilience-observability-springboot-4",
+      imageSrc: "assets/images/resilienceproject.png"
+    },
+    {
+      id: 7,
+      name: 'projectsInfo.project7.name',
+      description: 'projectsInfo.project7.desc',
+      technologies: [
+        { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
+        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+      ],
+      releaseYear: 'projectsInfo.project7.releaseYear',
+      githubLink: "https://github.com/nicolascatania/the-runner",
+      imageSrc: "assets/images/vt.png"
+    },
+    {
+      id: 8,
+      name: 'projectsInfo.project8.name',
+      description: 'projectsInfo.project8.desc',
+      technologies: [
+        { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
+        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+      ],
+      releaseYear: 'projectsInfo.project8.releaseYear',
+      githubLink: "https://github.com/nicolascatania/simple-gym-modulith",
+      imageSrc: "assets/images/modulith.png"
+    },
+    {
+      id: 9,
+      name: 'projectsInfo.project9.name',
+      description: 'projectsInfo.project9.desc',
+      technologies: [
+        { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
+        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+        ,{ id: 3, name: 'PostgreSQL', src: 'assets/icons/postgres.svg' }
+      ],
+      releaseYear: 'projectsInfo.project9.releaseYear',
+      githubLink: "https://github.com/nicolascatania/the-testcontainers",
+      imageSrc: "assets/images/testcontainers.jpg"
     }
   ];
 

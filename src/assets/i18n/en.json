@@ -58,6 +58,36 @@
       "name": "Battle simulation in Java",
       "desc": "Final project developed in a group for an advanced programming subject. Console application built in Java using many design patterns, with a small connection to Prolog.",
       "releaseYear": "2024"
+    },
+    "project4": {
+      "name": "BudgetKing",
+      "desc": "Personal finance management app built for practice. Features testing on repository and service layers, and learning about CI/CD pipelines.",
+      "releaseYear": "2026"
+    },
+    "project5": {
+      "name": "URL Shortener",
+      "desc": "Microservices-based URL shortener with hexagonal architecture. Uses RabbitMQ to handle messages and event transmission between microservices, and performs asynchronous email sending when users register. Includes logging and Testcontainers for integration testing. Uses k6 for stress testing. In development.",
+      "releaseYear": "2026"
+    },
+    "project6": {
+      "name": "Resilience & Observability Demo",
+      "desc": "Spring Boot example demonstrating resilience patterns with Resilience4j and observability using HTTP client.",
+      "releaseYear": "2026"
+    },
+    "project7": {
+      "name": "The Runner",
+      "desc": "Virtual threads practice with Spring Boot 4.0.2, using configuration classes to inject executor service.",
+      "releaseYear": "2026"
+    },
+    "project8": {
+      "name": "Simple Gym Modulith",
+      "desc": "Learning project bridging monolith and microservices using Spring Modulith, enforcing domain boundaries and event-driven architecture.",
+      "releaseYear": "2026"
+    },
+    "project9": {
+      "name": "The Testcontainers",
+      "desc": "Learning about testcontainers integration in Spring Boot 4.0.2.",
+      "releaseYear": "2026"
     }
   },
   "ts": {

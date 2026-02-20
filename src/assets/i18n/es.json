@@ -58,6 +58,36 @@
       "name": "Simulación de batallas en Java",
       "desc": "Proyecto final desarrollado en grupo para una asignatura de programación avanzada. Aplicación de consola construida en Java utilizando muchos patrones de diseño, con una pequeña conexión a Prolog. Simula una batalla por turnos entre magos y mortifagos.",
       "releaseYear": "2024"
+    },
+    "project4": {
+      "name": "BudgetKing",
+      "desc": "App de gestión de finanzas personales creada para práctica. Incluye testing en capas de repositorio y servicio, y aprendizaje sobre pipelines CI/CD.",
+      "releaseYear": "2026"
+    },
+    "project5": {
+      "name": "Acortador de URLs",
+      "desc": "Acortador de URLs basado en microservicios con arquitectura hexagonal. Usa RabbitMQ para manejar mensajes y la transmisión de eventos entre microservicios, y envía correos de forma asíncrona al registrar usuarios. Incluye logging y Testcontainers para pruebas de integración. Utiliza k6 para pruebas de stress. En desarrollo.",
+      "releaseYear": "2026"
+    },
+    "project6": {
+      "name": "Demo de Resiliencia y Observabilidad",
+      "desc": "Ejemplo de Spring Boot que demuestra patrones de resiliencia con Resilience4j y observabilidad usando cliente HTTP.",
+      "releaseYear": "2026"
+    },
+    "project7": {
+      "name": "The Runner",
+      "desc": "Práctica de hilos virtuales con Spring Boot 4.0.2, usando clases de configuración para inyectar executor service.",
+      "releaseYear": "2026"
+    },
+    "project8": {
+      "name": "Simple Gym Modulith",
+      "desc": "Proyecto de aprendizaje que conecta monolito y microservicios usando Spring Modulith, reforzando límites de dominio y arquitectura orientada a eventos.",
+      "releaseYear": "2026"
+    },
+    "project9": {
+      "name": "The Testcontainers",
+      "desc": "Aprendiendo sobre integración de testcontainers en Spring Boot 4.0.2.",
+      "releaseYear": "2026"
     }
   },
   "ts": {
