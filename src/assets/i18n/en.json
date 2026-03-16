@@ -16,7 +16,7 @@
       "institution": "NetOne",
       "yearIn": "March, 2025",
       "yearOut": "On course",
-      "description": "Migrated ERP system modules from legacy Java architecture to a modern stack using Spring Boot, Angular, and MySQL.\nDeveloped and maintained both backend and frontend functionalities, applying Clean Code principles and producing thorough documentation.\nOptimized SQL queries and core algorithms, achieving measurable improvements in performance and scalability.\nRedesigned key processes and interfaces to enhance user experience and system efficiency.\nManaged tasks autonomously, covering the full development lifecycle from analysis to deployment.\nRecently, I’ve been diving into testing for both the backend and frontend, using JUnit with Mockito and Cypress. I find it really rewarding to ensure the system’s quality through proper testing."
+      "description": "Migrated ERP system modules from legacy Java architecture to a modern stack using Spring Framework, Angular, and MySQL.\nDeveloped and maintained both backend and frontend functionalities, applying Clean Code principles and producing thorough documentation.\nOptimized SQL queries and core algorithms, achieving measurable improvements in performance and scalability.\nRedesigned key processes and interfaces to enhance user experience and system efficiency.\nManaged tasks autonomously, covering the full development lifecycle from analysis to deployment.\nRecently, I’ve been diving into testing for both the backend and frontend, using JUnit with Mockito and Cypress. I find it really rewarding to ensure the system’s quality through proper testing."
     }
   },
   "hero": {
