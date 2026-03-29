@@ -3,22 +3,22 @@
   <!-- Menú Desktop (mobile hidden) --> 
   <ul class="hidden md:flex space-x-6 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 sm:text-xl text-sm text-black font-body dark:text-white">
     <li>
-      <a href="#experience" class="hover:text-primaryBlue">{{'navbar.experience' | translate}}</a>
+      <a href="#experience" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('experience')" [class.font-bold]="isActive('experience')">{{'navbar.experience' | translate}}</a>
     </li>
     <li>
-      <a href="#projects" class="hover:text-primaryBlue">{{'navbar.projects' | translate}}</a>
+      <a href="#projects" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('projects')" [class.font-bold]="isActive('projects')">{{'navbar.projects' | translate}}</a>
     </li>
     <li>
-      <a href="#tech-stack" class="hover:text-primaryBlue ">{{'navbar.techStack' | translate}}</a>
+      <a href="#tech-stack" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('tech-stack')" [class.font-bold]="isActive('tech-stack')">{{'navbar.techStack' | translate}}</a>
     </li>
     <li>
-      <a href="#education" class="hover:text-primaryBlue">{{'navbar.education' | translate}}</a>
+      <a href="#education" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('education')" [class.font-bold]="isActive('education')">{{'navbar.education' | translate}}</a>
     </li>
     <li>
-      <a href="#about-me" class="hover:text-primaryBlue">{{'navbar.about' | translate}}</a>
+      <a href="#about-me" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('about-me')" [class.font-bold]="isActive('about-me')">{{'navbar.about' | translate}}</a>
     </li>
     <li>
-      <a href="#contact" class="hover:text-primaryBlue font-bold">{{'navbar.contact' | translate}}</a>
+      <a href="#contact" (click)="setActive('contact')" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('contact')" [class.font-bold]="isActive('contact')">{{'navbar.contact' | translate}}</a>
     </li>
   </ul>
 
@@ -93,27 +93,27 @@
 
       <ul class="flex flex-col space-y-6 text-lg text-black dark:text-white">
         <li (click)="toggleMenu()">
-          <a href="#projects" class="hover:text-primaryBlue transition duration-300">
+          <a href="#projects" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('projects')" [class.font-bold]="isActive('projects')">
             {{'navbar.projects' | translate}}
           </a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300">
+          <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('tech-stack')" [class.font-bold]="isActive('tech-stack')">
             {{'navbar.techStack' | translate}}
           </a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#education" class="hover:text-primaryBlue transition duration-300">
+          <a href="#education" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('education')" [class.font-bold]="isActive('education')">
             {{'navbar.education' | translate}}
           </a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#about-me" class="hover:text-primaryBlue transition duration-300">
+          <a href="#about-me" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('about-me')" [class.font-bold]="isActive('about-me')">
             {{'navbar.about' | translate}}
           </a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#contact" class="hover:text-primaryBlue transition duration-300 font-bold">
+          <a href="#contact" (click)="setActive('contact')" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('contact')" [class.font-bold]="isActive('contact')">
             {{'navbar.contact' | translate}}
           </a>
         </li>
