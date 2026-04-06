@@ -10,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-  email: string = 'nicolas20032401@gmail.com';
+  email: string = 'devcatania@gmail.com';
 
   constructor(private clipboard: Clipboard) { }
 
