@@ -34,10 +34,35 @@
   },
   "contactInfo": {
     "title": "Contactame",
+    "subtitle": "Envía un mensaje y te respondo lo antes posible.",
+    "emailLabel": "Email",
     "copy": "@2025 Nicolas Martin Catania. Todos los derechos reservados.",
     "aria-label": "contactame",
-    "copyAlt": "copiar email",
-    "copySuccess": "¡Correo copiado al portapapeles exitosamente!"
+    "copyAlt": "Copiar email",
+    "copyButton": "Copiar email",
+    "copySuccess": "¡Correo copiado al portapapeles exitosamente!",
+    "securityNote": "Este formulario incluye validaciones adicionales y protección anti-spam para envíos más seguros.",
+    "cooldownInfo": "Por favor espera al menos 10 minutos antes de enviar otro mensaje.",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando...",
+      "cooldown": "Espera {{time}} antes de enviar otro mensaje.",
+      "ready": "Listo para enviar"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "minLength": "Por favor ingresa al menos {{min}} caracteres.",
+      "maxLength": "Por favor ingresa como máximo {{max}} caracteres.",
+      "email": "Por favor ingresa una dirección de email válida.",
+      "invalidFormat": "Utiliza solo letras y espacios."
+    },
+    "cooldownMessage": "Por favor espera {{time}} antes de enviar otro mensaje.",
+    "spamDetected": "Se detectó spam. Si sos humano, recarga la página y volvé a intentarlo.",
+    "tooFastWarning": "Por favor espera un momento antes de enviar el formulario."
   },
   "projectsInfo": {
     "title": "Proyectos",

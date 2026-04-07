@@ -1,29 +1,37 @@
-<nav class="sticky top-0 z-50 md:p-6 md:flex md:justify-between justify-end items-center bg-slate-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 shadow-md">
+<nav class="sticky top-0 z-50 w-full bg-white/75 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-700 shadow-xl transition-colors duration-300">
+  <div class="mx-auto flex items-center gap-6 px-4 py-3 md:px-8 md:py-4">
+    <div class="hidden md:flex items-center gap-3 mr-8">
+      <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primaryBlue text-white text-lg font-bold shadow-sm">NC</span>
+      <div class="hidden sm:flex flex-col leading-none">
+        <span class="text-sm font-semibold text-slate-900 dark:text-white">Nicolas C.</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400">Portfolio</span>
+      </div>
+    </div>
 
-  <!-- Menú Desktop (mobile hidden) --> 
-  <ul class="hidden md:flex space-x-6 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 sm:text-xl text-sm text-black font-body dark:text-white">
-    <li>
-      <a href="#experience" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('experience')" [class.font-bold]="isActive('experience')">{{'navbar.experience' | translate}}</a>
-    </li>
-    <li>
-      <a href="#projects" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('projects')" [class.font-bold]="isActive('projects')">{{'navbar.projects' | translate}}</a>
-    </li>
-    <li>
-      <a href="#tech-stack" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('tech-stack')" [class.font-bold]="isActive('tech-stack')">{{'navbar.techStack' | translate}}</a>
-    </li>
-    <li>
-      <a href="#education" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('education')" [class.font-bold]="isActive('education')">{{'navbar.education' | translate}}</a>
-    </li>
-    <li>
-      <a href="#about-me" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('about-me')" [class.font-bold]="isActive('about-me')">{{'navbar.about' | translate}}</a>
-    </li>
-    <li>
-      <a href="#contact" (click)="setActive('contact')" class="hover:text-primaryBlue transition-colors" [class.text-primaryBlue]="isActive('contact')" [class.font-bold]="isActive('contact')">{{'navbar.contact' | translate}}</a>
-    </li>
-  </ul>
+    <!-- Menú Desktop (mobile hidden) --> 
+    <ul class="hidden md:flex items-center gap-8 flex-1 nav-links text-sm sm:text-base font-body text-slate-900 dark:text-white">
+      <li>
+        <a href="#experience" class="nav-link" [class.active]="isActive('experience')" [attr.aria-current]="isActive('experience') ? 'page' : null">{{'navbar.experience' | translate}}</a>
+      </li>
+      <li>
+        <a href="#projects" class="nav-link" [class.active]="isActive('projects')" [attr.aria-current]="isActive('projects') ? 'page' : null">{{'navbar.projects' | translate}}</a>
+      </li>
+      <li>
+        <a href="#tech-stack" class="nav-link" [class.active]="isActive('tech-stack')" [attr.aria-current]="isActive('tech-stack') ? 'page' : null">{{'navbar.techStack' | translate}}</a>
+      </li>
+      <li>
+        <a href="#education" class="nav-link" [class.active]="isActive('education')" [attr.aria-current]="isActive('education') ? 'page' : null">{{'navbar.education' | translate}}</a>
+      </li>
+      <li>
+        <a href="#about-me" class="nav-link" [class.active]="isActive('about-me')" [attr.aria-current]="isActive('about-me') ? 'page' : null">{{'navbar.about' | translate}}</a>
+      </li>
+      <li>
+        <a href="#contact" class="nav-link" (click)="setActive('contact')" [class.active]="isActive('contact')" [attr.aria-current]="isActive('contact') ? 'page' : null">{{'navbar.contact' | translate}}</a>
+      </li>
+    </ul>
 
-  <!-- button container (right) -->
-  <div class="hidden md:flex space-x-4 ml-auto">
+    <!-- button container (right) -->
+    <div class="hidden md:flex items-center gap-4 ml-auto">
     <button (click)="toggleLanguage('en')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300" aria-label="Switch to English">
       <img src="assets/icons/uk.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="English language" loading="lazy">
     </button>
@@ -63,18 +71,18 @@
 
   <!-- Menú Mobile (Overlay) -->
   <div 
-    class="md:hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity z-100"
+    class="md:hidden fixed inset-0 bg-slate-950 transition-opacity duration-300 z-50"
     [class.hidden]="!isMenuOpen"
     (click)="toggleMenu()"
   ></div>
 
   <div 
-    class="md:hidden fixed top-0 right-0 h-full w-50 bg-slate-50 dark:bg-gray-900 shadow-lg transform transition-transform duration-300"
+    class="md:hidden fixed top-0 right-0 h-full w-72 bg-white dark:bg-slate-950 shadow-2xl transform transition-transform duration-300 ease-in-out"
     [class.translate-x-full]="!isMenuOpen"
   >
     <div class="p-6 flex flex-col h-full">
       <button 
-        class="self-end mb-8 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
+        class="self-end mb-8 p-2 transition duration-300"
         (click)="toggleMenu()"
       >
         <svg 
@@ -93,11 +101,11 @@
       </button>
 
       <ul class="flex gap-x-4 mb-6">
-        <button (click)="toggleLanguage('en')" aria-label="Switch to English" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300">
+        <button (click)="toggleLanguage('en')" aria-label="Switch to English" class="transition duration-300">
           <img src="assets/icons/uk.svg" class="w-8 h-8" alt="English language" loading="lazy">
         </button>
     
-        <button (click)="toggleLanguage('es')" aria-label="Switch to Spanish" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300">
+        <button (click)="toggleLanguage('es')" aria-label="Switch to Spanish" class="transition duration-300">
           <img src="assets/icons/spain.svg" class="w-8 h-8" alt="Spanish language" loading="lazy">
         </button>
     
@@ -133,31 +141,21 @@
 
       <ul class="flex flex-col space-y-6 text-lg text-black dark:text-white">
         <li (click)="toggleMenu()">
-          <a href="#projects" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('projects')" [class.font-bold]="isActive('projects')">
-            {{'navbar.projects' | translate}}
-          </a>
+          <a href="#projects" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('projects')" [attr.aria-current]="isActive('projects') ? 'page' : null">{{'navbar.projects' | translate}}</a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#tech-stack" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('tech-stack')" [class.font-bold]="isActive('tech-stack')">
-            {{'navbar.techStack' | translate}}
-          </a>
+          <a href="#tech-stack" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('tech-stack')" [attr.aria-current]="isActive('tech-stack') ? 'page' : null">{{'navbar.techStack' | translate}}</a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#education" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('education')" [class.font-bold]="isActive('education')">
-            {{'navbar.education' | translate}}
-          </a>
+          <a href="#education" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('education')" [attr.aria-current]="isActive('education') ? 'page' : null">{{'navbar.education' | translate}}</a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#about-me" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('about-me')" [class.font-bold]="isActive('about-me')">
-            {{'navbar.about' | translate}}
-          </a>
+          <a href="#about-me" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('about-me')" [attr.aria-current]="isActive('about-me') ? 'page' : null">{{'navbar.about' | translate}}</a>
         </li>
         <li (click)="toggleMenu()">
-          <a href="#contact" (click)="setActive('contact')" class="hover:text-primaryBlue transition duration-300" [class.text-primaryBlue]="isActive('contact')" [class.font-bold]="isActive('contact')">
-            {{'navbar.contact' | translate}}
-          </a>
+          <a href="#contact" (click)="setActive('contact')" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('contact')" [attr.aria-current]="isActive('contact') ? 'page' : null">{{'navbar.contact' | translate}}</a>
         </li>
       </ul>
     </div>
   </div>
-</nav>
+

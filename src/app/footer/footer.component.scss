@@ -1,0 +1,46 @@
+.form-input {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 23, 42, 0.75);
+  color: #f8fafc;
+  padding: 0.9rem 1rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: rgba(56, 189, 248, 0.9);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.btn-primary {
+  border-radius: 9999px;
+  background: #06b6d4;
+  color: #0f172a;
+  font-weight: 700;
+  padding: 0.95rem 1.6rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #22d3ee;
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contact-intro {
+  min-height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .contact-intro,
+  .contact-form {
+    padding: 1.5rem;
+  }
+}

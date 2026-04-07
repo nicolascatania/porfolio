@@ -34,10 +34,35 @@
   },
   "contactInfo": {
     "title": "Contact Me",
+    "subtitle": "Send a message and I’ll get back to you as soon as possible.",
+    "emailLabel": "Email",
     "copy": "@2025 Nicolas Martin Catania. All rights reserved.",
     "aria-label": "contact-me",
     "copyAlt": "Copy Email",
-    "copySuccess": "Email copied to clipboard successfully!"
+    "copyButton": "Copy email",
+    "copySuccess": "Email copied to clipboard successfully!",
+    "securityNote": "This form includes extra validation and anti-spam protections for secure submissions.",
+    "cooldownInfo": "Please wait at least 10 minutes before sending another message.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "cooldown": "Please wait {{time}} before sending another message.",
+      "ready": "Ready to send"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "minLength": "Please enter at least {{min}} characters.",
+      "maxLength": "Please enter no more than {{max}} characters.",
+      "email": "Please enter a valid email address.",
+      "invalidFormat": "Please use only letters and spaces."
+    },
+    "cooldownMessage": "Please wait {{time}} before sending another message.",
+    "spamDetected": "Spam detected. If you are human, please refresh the page and try again.",
+    "tooFastWarning": "Please take a moment before submitting the form."
   },
   "projectsInfo": {
     "title": "Projects",

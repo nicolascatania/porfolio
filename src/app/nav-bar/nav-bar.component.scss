@@ -11,10 +11,38 @@
   background-color: #e2e8f0;
 }
 
-.switch-thumb {
-  transform: translateX(0);
+.nav-link {
+  position: relative;
+  color: inherit;
+  padding: 0.25rem 0;
+  transition: color 0.25s ease;
 }
 
-.switch-thumb.translate-x-10 {
-  transform: translateX(2.5rem);
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -0.35rem;
+  width: 0;
+  height: 0.2rem;
+  border-radius: 9999px;
+  background-color: #06b6d4;
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+  width: 50%;
+}
+
+.nav-link.active {
+  color: #06b6d4;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+.switch-thumb {
+  transform: translateX(0);
 }
