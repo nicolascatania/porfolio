@@ -42,7 +42,7 @@ testem.log
 Thumbs.db
 
 # Environment files with credentials
-src/environments/environment.ts
-src/environments/environment.prod.ts
+# NOTE: environment.ts and environment.prod.ts ARE committed with placeholder values
+# In Vercel, the set-env.js script will override them with actual credentials from env vars
 .env
 .env.local
