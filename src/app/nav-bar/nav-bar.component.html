@@ -87,12 +87,12 @@
 
   <div 
     id="mobile-menu"
-    class="md:hidden fixed top-0 right-0 h-full w-80 max-w-full bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-300 ease-in-out mobile-menu z-50 overflow-y-auto"
+    class="md:hidden fixed top-0 right-0 h-full w-full max-w-[320px] bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-300 ease-in-out mobile-menu z-50 overflow-y-auto"
     [class.translate-x-full]="!isMenuOpen"
   >
     <div class="p-6 flex flex-col h-full">
       <button 
-        class="self-end mb-8 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300"
+        class="self-end mb-6 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300"
         (click)="toggleMenu()"
         aria-label="Close mobile menu"
       >
@@ -110,11 +110,6 @@
           />
         </svg>
       </button>
-
-      <div class="mb-6">
-        <span class="text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Menu</span>
-        <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mt-3">Nicolas C.</h2>
-      </div>
 
       <ul class="flex flex-col space-y-4 text-lg text-slate-900 dark:text-white">
         <li (click)="toggleMenu()">
