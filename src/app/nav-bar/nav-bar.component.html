@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-50 w-full bg-white/75 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-700 shadow-xl transition-colors duration-300">
+<nav class="sticky top-0 z-50 w-full bg-white dark:bg-slate-950 md:bg-white/75 md:dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-700 shadow-xl transition-colors duration-300">
   <div class="mx-auto flex items-center gap-6 px-4 py-3 md:px-8 md:py-4">
     <div class="hidden md:flex items-center gap-3 mr-8">
       <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primaryBlue text-white text-lg font-bold shadow-sm">NC</span>
@@ -32,52 +32,61 @@
 
     <!-- button container (right) -->
     <div class="hidden md:flex items-center gap-4 ml-auto">
-    <button (click)="toggleLanguage('en')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300" aria-label="Switch to English">
-      <img src="assets/icons/uk.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="English language" loading="lazy">
-    </button>
+      <button (click)="toggleLanguage('en')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300" aria-label="Switch to English">
+        <img src="assets/icons/uk.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="English language" loading="lazy">
+      </button>
 
-    <button (click)="toggleLanguage('es')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300" aria-label="Switch to Spanish">
-      <img src="assets/icons/spain.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="Spanish language" loading="lazy">
-    </button>
+      <button (click)="toggleLanguage('es')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300" aria-label="Switch to Spanish">
+        <img src="assets/icons/spain.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="Spanish language" loading="lazy">
+      </button>
 
-    <button
-      type="button"
-      class="dark-mode-switch relative inline-flex h-12 w-20 items-center rounded-full border p-1 overflow-hidden transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primaryBlue"
-      (click)="toggleDarkMode()"
-      role="switch"
-      [attr.aria-checked]="darkModeService.darkModeSignal()"
-      aria-label="Toggle dark mode"
-      [class.border-slate-300]="!darkModeService.darkModeSignal()"
-      [class.border-slate-600]="darkModeService.darkModeSignal()"
-      [class.bg-slate-200]="!darkModeService.darkModeSignal()"
-      [class.bg-slate-900]="darkModeService.darkModeSignal()"
-    >
-      <span class="switch-track absolute inset-0 rounded-full transition-colors duration-300"
-            [class.bg-slate-800]="darkModeService.darkModeSignal()"
-            [class.bg-slate-200]="!darkModeService.darkModeSignal()">
-      </span>
-      <span class="switch-thumb relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full shadow-md transition-all duration-300"
-            [class.bg-slate-900]="darkModeService.darkModeSignal()"
-            [class.bg-white]="!darkModeService.darkModeSignal()"
-            [style.transform]="darkModeService.darkModeSignal() ? 'translateX(calc(100% - 0.5rem))' : 'translateX(0)'">
-        @if(darkModeService.darkModeSignal()) {
-          <img src="assets/icons/moon.svg" alt="Dark mode active" class="w-5 h-5" loading="lazy" />
-        } @else {
-          <img src="assets/icons/sun.svg" alt="Light mode active" class="w-5 h-5" loading="lazy" />
-        }
-      </span>
-    </button>
+      <button
+        type="button"
+        class="dark-mode-switch relative inline-flex h-12 w-20 items-center rounded-full border p-1 overflow-hidden transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primaryBlue"
+        (click)="toggleDarkMode()"
+        role="switch"
+        [attr.aria-checked]="darkModeService.darkModeSignal()"
+        aria-label="Toggle dark mode"
+        [class.border-slate-300]="!darkModeService.darkModeSignal()"
+        [class.border-slate-600]="darkModeService.darkModeSignal()"
+        [class.bg-slate-200]="!darkModeService.darkModeSignal()"
+        [class.bg-slate-900]="darkModeService.darkModeSignal()"
+      >
+        <span class="switch-track absolute inset-0 rounded-full transition-colors duration-300"
+              [class.bg-slate-800]="darkModeService.darkModeSignal()"
+              [class.bg-slate-200]="!darkModeService.darkModeSignal()">
+        </span>
+        <span class="switch-thumb relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full shadow-md transition-all duration-300"
+              [class.bg-slate-900]="darkModeService.darkModeSignal()"
+              [class.bg-white]="!darkModeService.darkModeSignal()"
+              [style.transform]="darkModeService.darkModeSignal() ? 'translateX(calc(100% - 0.5rem))' : 'translateX(0)'">
+          @if(darkModeService.darkModeSignal()) {
+            <img src="assets/icons/moon.svg" alt="Dark mode active" class="w-5 h-5" loading="lazy" />
+          } @else {
+            <img src="assets/icons/sun.svg" alt="Light mode active" class="w-5 h-5" loading="lazy" />
+          }
+        </span>
+      </button>
+    </div>
+
+    <div class="md:hidden ml-auto">
+      <button type="button" class="inline-flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-700 p-2 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300" (click)="toggleMenu()" aria-label="Open mobile menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Menú Mobile (Overlay) -->
   <div 
-    class="md:hidden fixed inset-0 bg-slate-950 transition-opacity duration-300 z-50"
+    class="md:hidden fixed inset-0 bg-slate-950 z-40"
     [class.hidden]="!isMenuOpen"
     (click)="toggleMenu()"
   ></div>
 
   <div 
-    class="md:hidden fixed top-0 right-0 h-full w-72 bg-white dark:bg-slate-950 shadow-2xl transform transition-transform duration-300 ease-in-out"
+    class="md:hidden fixed top-0 right-0 h-full w-72 bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-300 ease-in-out mobile-menu z-50"
     [class.translate-x-full]="!isMenuOpen"
   >
     <div class="p-6 flex flex-col h-full">
@@ -100,44 +109,6 @@
         </svg>
       </button>
 
-      <ul class="flex gap-x-4 mb-6">
-        <button (click)="toggleLanguage('en')" aria-label="Switch to English" class="transition duration-300">
-          <img src="assets/icons/uk.svg" class="w-8 h-8" alt="English language" loading="lazy">
-        </button>
-    
-        <button (click)="toggleLanguage('es')" aria-label="Switch to Spanish" class="transition duration-300">
-          <img src="assets/icons/spain.svg" class="w-8 h-8" alt="Spanish language" loading="lazy">
-        </button>
-    
-        <button
-          type="button"
-          class="dark-mode-switch relative inline-flex h-12 w-20 items-center rounded-full border p-1 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primaryBlue"
-          (click)="toggleDarkMode()"
-          role="switch"
-          [attr.aria-checked]="darkModeService.darkModeSignal()"
-          aria-label="Toggle dark mode"
-          [class.border-slate-300]="!darkModeService.darkModeSignal()"
-          [class.border-slate-600]="darkModeService.darkModeSignal()"
-          [class.bg-slate-200]="!darkModeService.darkModeSignal()"
-          [class.bg-slate-900]="darkModeService.darkModeSignal()"
-        >
-          <span class="switch-track absolute inset-0 rounded-full transition-colors duration-300"
-                [class.bg-slate-800]="darkModeService.darkModeSignal()"
-                [class.bg-slate-200]="!darkModeService.darkModeSignal()">
-          </span>
-          <span class="switch-thumb relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full shadow-md transition-all duration-300"
-                [class.bg-slate-900]="darkModeService.darkModeSignal()"
-                [class.bg-white]="!darkModeService.darkModeSignal()"
-                [style.transform]="darkModeService.darkModeSignal() ? 'translateX(calc(100% - 0.5rem))' : 'translateX(0)'">
-            @if(darkModeService.darkModeSignal()) {
-              <img src="assets/icons/moon.svg" alt="Dark mode active" class="w-5 h-5" loading="lazy" />
-            } @else {
-              <img src="assets/icons/sun.svg" alt="Light mode active" class="w-5 h-5" loading="lazy" />
-            }
-          </span>
-        </button>
-
-      </ul>
 
       <ul class="flex flex-col space-y-6 text-lg text-black dark:text-white">
         <li (click)="toggleMenu()">
@@ -158,4 +129,5 @@
       </ul>
     </div>
   </div>
+</nav>
 

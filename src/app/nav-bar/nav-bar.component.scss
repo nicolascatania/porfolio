@@ -43,6 +43,18 @@
   width: 100%;
 }
 
+.mobile-menu .nav-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-menu .nav-link.active {
+  color: #0ea5e9;
+  background-color: rgba(56, 189, 248, 0.14);
+}
+
 .switch-thumb {
   transform: translateX(0);
 }

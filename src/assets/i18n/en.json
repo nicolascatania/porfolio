@@ -62,7 +62,9 @@
     },
     "cooldownMessage": "Please wait {{time}} before sending another message.",
     "spamDetected": "Spam detected. If you are human, please refresh the page and try again.",
-    "tooFastWarning": "Please take a moment before submitting the form."
+    "tooFastWarning": "Please take a moment before submitting the form.",
+    "sendSuccess": "Your message has been sent successfully!",
+    "sendError": "Failed to send message. Please try again later."
   },
   "projectsInfo": {
     "title": "Projects",

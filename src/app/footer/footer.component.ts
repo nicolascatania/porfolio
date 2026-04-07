@@ -4,10 +4,12 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import emailjs from '@emailjs/browser';
+import { environment } from '../../environments/environment';
 
 const COOLDOWN_KEY = 'portfolio-contact-cooldown';
-const COOLDOWN_MINUTES = 1;
-const MIN_SUBMIT_DELAY_MS = 1;
+const COOLDOWN_MINUTES = 10;
+const MIN_SUBMIT_DELAY_MS = 3000;
 
 @Component({
   selector: 'app-footer',
@@ -32,6 +34,8 @@ export class FooterComponent implements OnDestroy {
     private translate: TranslateService,
     private fb: FormBuilder
   ) {
+    emailjs.init(environment.emailjs.publicKey); // Initialize EmailJS with public key from environment
+
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZÀ-ÿ\s]+$/)]],
       email: ['', [Validators.required, Validators.email]],
@@ -107,29 +111,41 @@ export class FooterComponent implements OnDestroy {
     }
 
     const formValue = this.contactForm.value;
-    const subject = encodeURIComponent(formValue.subject);
-    const bodyLines = [
-      `Name: ${formValue.name}`,
-      `Email: ${formValue.email}`,
-      '',
-      formValue.message
-    ];
-    const body = encodeURIComponent(bodyLines.join('\n'));
-    const mailtoLink = `mailto:${this.email}?subject=${subject}&body=${body}`;
 
     this.isSubmitting = true;
-    window.location.href = mailtoLink;
 
-    this.startCooldown();
-    this.contactForm.reset();
-    this.formCreatedAt = Date.now();
-    this.isSubmitting = false;
+    // Prepare template parameters for EmailJS
+    const templateParams = {
+      from_name: formValue.name,
+      from_email: formValue.email,
+      subject: formValue.subject,
+      message: formValue.message,
+      to_email: this.email
+    };
 
-    this.snackBar.open(this.translate.instant('contactInfo.sendSuccess'), '', {
-      duration: 4000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    });
+    emailjs.send(environment.emailjs.serviceId, environment.emailjs.templateId, templateParams)
+      .then((response: any) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        this.startCooldown();
+        this.contactForm.reset();
+        this.formCreatedAt = Date.now();
+        this.snackBar.open(this.translate.instant('contactInfo.sendSuccess'), '', {
+          duration: 4000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+      })
+      .catch((error: any) => {
+        console.error('Failed to send email:', error);
+        this.snackBar.open(this.translate.instant('contactInfo.sendError'), '', {
+          duration: 4000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+      })
+      .finally(() => {
+        this.isSubmitting = false;
+      });
   }
 
   private loadCooldown(): void {
