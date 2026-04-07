@@ -1,3 +1,26 @@
+.project-card,
+.project-content,
+.project-description,
+.project-actions,
+.project-actions span,
+.github-btn {
+  min-width: 0;
+}
+
+.project-description {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.project-actions {
+  flex-wrap: wrap;
+}
+
+.project-image img {
+  width: 100%;
+  display: block;
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;

@@ -11,9 +11,9 @@
       <div class="space-y-6">
         <div class="rounded-3xl bg-slate-900/80 border border-white/10 p-6 shadow-inner">
           <p class="text-sm uppercase tracking-[0.2em] text-slate-400 mb-2">{{'contactInfo.emailLabel' | translate}}</p>
-          <div class="flex items-center gap-4 flex-wrap">
-            <span class="text-lg font-medium text-white">{{ email }}</span>
-            <button type="button" class="rounded-full bg-primaryBlue px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400" (click)="copyEmail()" [attr.aria-label]="'contactInfo.copyAlt' | translate">{{'contactInfo.copyButton' | translate}}</button>
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <span class="text-lg font-medium text-white break-words min-w-0">{{ email }}</span>
+            <button type="button" class="rounded-full bg-primaryBlue px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 shrink-0" (click)="copyEmail()" [attr.aria-label]="'contactInfo.copyAlt' | translate">{{'contactInfo.copyButton' | translate}}</button>
           </div>
         </div>
 

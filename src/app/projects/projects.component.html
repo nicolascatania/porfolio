@@ -34,13 +34,13 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
       </p>
     </div>
 
-    <div class="project-actions mt-6 flex justify-between items-center gap-3">
-      <span class="text-sm text-gray-500 dark:text-gray-400 flex-shrink-0 font-body">
+    <div class="project-actions mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <span class="text-sm text-gray-500 dark:text-gray-400 font-body break-words min-w-0">
         {{ project.releaseYear | translate }}
       </span>
       <a 
         href={{project.githubLink}} 
-        class="github-btn flex items-center gap-2 px-4 py-2 sm:px-8 sm:py-4 bg-primaryBlue text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors ml-auto"
+        class="github-btn flex items-center gap-2 px-4 py-2 sm:px-8 sm:py-4 bg-primaryBlue text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Open project GitHub repository"
