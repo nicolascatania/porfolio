@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { HighlightKeywordsPipe } from '../highlight-keywords.pipe';
 
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,7 +13,8 @@ import { Project } from '../../models/Project';
 })
 export class ProjectsComponent {
   isModalVisible: Boolean = false;
-  selectedImage: string | null = '';
+  selectedImages: string[] = [];
+  currentImageIndex: number = 0;
   highlightedKeywords: string[] = ['RESTful', 'Java', 'Spring', 'Angular', 'Algorithms', 'Data structures', 'C', 'API', 'Backend', 'MySQL', 'PostgreSQL', 'CRUD', 'Testing', 'UX', 'UI', 'Security', 'JWT', 'Design patterns', 'Prolog'];
   
   projects: Project[] = [
@@ -31,7 +32,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2025,
       importance: 8,
       githubLink: "https://github.com/nicolascatania/MySongSet",
-      imageSrc: "assets/images/mysongsetscreenshot.png"
+      imageSrcs: ["assets/images/mysongsetscreenshot.png"]
     },
     {
       id: 2,
@@ -47,7 +48,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2024,
       importance: 7,
       githubLink: "https://github.com/nicolascatania/SpringAPI",
-      imageSrc: "assets/images/webapp.jpg"
+      imageSrcs: ["assets/images/webapp.jpg"]
     },
     {
       id: 3,
@@ -60,7 +61,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2024,
       importance: 3,
       githubLink: "https://github.com/Guzman5825/TP2-MagiaYHechizeria",
-      imageSrc: "assets/images/wizardsvsmortifacs.jpg"
+      imageSrcs: ["assets/images/wizardsvsmortifacs.jpg"]
     },
     {
       id: 4,
@@ -76,7 +77,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2026,
       importance: 9,
       githubLink: "https://github.com/nicolascatania/BugdetKingg",
-      imageSrc: "assets/images/bug2.jpg"
+      imageSrcs: ["assets/images/bug2.jpg"]
     },
     {
       id: 5,
@@ -96,7 +97,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2026,
       importance: 10,
       githubLink: "https://github.com/nicolascatania/url-shortener",
-      imageSrc: "assets/images/ms.png"
+      imageSrcs: ["assets/images/ms.png"]
     },
     {
       id: 6,
@@ -110,7 +111,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2026,
       importance: 6,
       githubLink: "https://github.com/nicolascatania/simple-resilience-observability-springboot-4",
-      imageSrc: "assets/images/resilienceproject.png"
+      imageSrcs: ["assets/images/resilienceproject.png"]
     },
     {
       id: 7,
@@ -124,7 +125,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2026,
       importance: 5,
       githubLink: "https://github.com/nicolascatania/the-runner",
-      imageSrc: "assets/images/vt.png"
+      imageSrcs: ["assets/images/vt.png"]
     },
     {
       id: 8,
@@ -138,7 +139,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2026,
       importance: 6,
       githubLink: "https://github.com/nicolascatania/simple-gym-modulith",
-      imageSrc: "assets/images/modulith.png"
+      imageSrcs: ["assets/images/modulith.png"]
     },
     {
       id: 9,
@@ -153,18 +154,54 @@ export class ProjectsComponent {
       releaseYearNumber: 2026,
       importance: 4,
       githubLink: "https://github.com/nicolascatania/the-testcontainers",
-      imageSrc: "assets/images/testcontainers.jpg"
+      imageSrcs: ["assets/images/testcontainers.jpg"]
     }
   ].sort((a, b) => b.importance - a.importance || b.releaseYearNumber - a.releaseYearNumber);
 
   closeModal(){
     this.isModalVisible = false;
-    this.selectedImage = '';
+    this.selectedImages = [];
+    this.currentImageIndex = 0;
   }
 
-  openModal(projectImage: string){
+  openModal(projectImages: string[]){
     this.isModalVisible = true;
-    this.selectedImage = projectImage;
+    this.selectedImages = projectImages;
+    this.currentImageIndex = 0;
+  }
 
+  nextImage() {
+    if (this.selectedImages.length > 1) {
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.selectedImages.length;
+    }
+  }
+
+  prevImage() {
+    if (this.selectedImages.length > 1) {
+      this.currentImageIndex = this.currentImageIndex === 0 ? this.selectedImages.length - 1 : this.currentImageIndex - 1;
+    }
+  }
+
+  goToImage(index: number) {
+    if (index >= 0 && index < this.selectedImages.length) {
+      this.currentImageIndex = index;
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (!this.isModalVisible) return;
+
+    switch (event.key) {
+      case 'Escape':
+        this.closeModal();
+        break;
+      case 'ArrowLeft':
+        this.prevImage();
+        break;
+      case 'ArrowRight':
+        this.nextImage();
+        break;
+    }
   }
 }

@@ -9,6 +9,6 @@ export interface Project {
     releaseYearNumber: number;
     importance: number;
     githubLink: string;
-    imageSrc: string;
+    imageSrcs: string[];
   }
   

@@ -7,10 +7,10 @@
 dark:bg-gray-700 dark:shadow-md dark:hover:shadow-lg dark:hover:bg-gray-600">
   <figure class="project-image md:order-1">
     <img 
-      src={{project.imageSrc}} 
+      src={{project.imageSrcs[0]}} 
       alt="{{ project.name}}"
       class="w-full h-64 object-cover sm:h-full cursor-pointer"
-      (click)="openModal(project.imageSrc)"
+      (click)="openModal(project.imageSrcs)"
     >
   </figure>
 
@@ -57,7 +57,23 @@ dark:bg-gray-700 dark:shadow-md dark:hover:shadow-lg dark:hover:bg-gray-600">
 @if(isModalVisible){
   <div class="modal-overlay" (click)="closeModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
-      <img [src]="selectedImage" alt="Project Image" class="modal-image" />
+      <img [src]="selectedImages[currentImageIndex]" alt="Project Image" class="modal-image" />
+
+      @if(selectedImages.length > 1){
+        <button class="nav-button nav-prev" (click)="prevImage()" [disabled]="selectedImages.length <= 1">
+          &#10094;
+        </button>
+        <button class="nav-button nav-next" (click)="nextImage()" [disabled]="selectedImages.length <= 1">
+          &#10095;
+        </button>
+
+        <div class="indicators">
+          @for(image of selectedImages; track $index) {
+            <span class="indicator" [class.active]="$index === currentImageIndex" (click)="goToImage($index)"></span>
+          }
+        </div>
+      }
+
       <button class="close-button text-2xl p-2 bg-primaryBlue top-10 right-10 absolute cursor-pointer rounded-full" (click)="closeModal()">X</button>
     </div>
   </div>
