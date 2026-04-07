@@ -70,7 +70,7 @@
     </div>
 
     <div class="md:hidden ml-auto">
-      <button type="button" class="inline-flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-700 p-2 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300" (click)="toggleMenu()" aria-label="Open mobile menu">
+      <button type="button" class="inline-flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-700 p-2 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300" (click)="toggleMenu()" aria-label="Open mobile menu" [attr.aria-expanded]="isMenuOpen" aria-controls="mobile-menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -86,13 +86,15 @@
   ></div>
 
   <div 
-    class="md:hidden fixed top-0 right-0 h-full w-72 bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-300 ease-in-out mobile-menu z-50"
+    id="mobile-menu"
+    class="md:hidden fixed top-0 right-0 h-full w-80 max-w-full bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-300 ease-in-out mobile-menu z-50 overflow-y-auto"
     [class.translate-x-full]="!isMenuOpen"
   >
     <div class="p-6 flex flex-col h-full">
       <button 
-        class="self-end mb-8 p-2 transition duration-300"
+        class="self-end mb-8 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300"
         (click)="toggleMenu()"
+        aria-label="Close mobile menu"
       >
         <svg 
           class="w-6 h-6 text-black dark:text-white" 
@@ -109,8 +111,12 @@
         </svg>
       </button>
 
+      <div class="mb-6">
+        <span class="text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Menu</span>
+        <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mt-3">Nicolas C.</h2>
+      </div>
 
-      <ul class="flex flex-col space-y-6 text-lg text-black dark:text-white">
+      <ul class="flex flex-col space-y-4 text-lg text-slate-900 dark:text-white">
         <li (click)="toggleMenu()">
           <a href="#projects" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('projects')" [attr.aria-current]="isActive('projects') ? 'page' : null">{{'navbar.projects' | translate}}</a>
         </li>
@@ -127,6 +133,25 @@
           <a href="#contact" (click)="setActive('contact')" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('contact')" [attr.aria-current]="isActive('contact') ? 'page' : null">{{'navbar.contact' | translate}}</a>
         </li>
       </ul>
+
+      <div class="mt-auto pt-6 border-t border-slate-200/70 dark:border-slate-700/70">
+        <p class="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">{{ 'navbar.settings' | translate }}</p>
+        <div class="flex flex-wrap gap-3">
+          <button type="button" (click)="toggleLanguage('en')" [attr.aria-pressed]="mlangService.languageSignal() === 'en'" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-white transition hover:bg-slate-200 dark:hover:bg-slate-700">
+            <img src="assets/icons/uk.svg" alt="English" class="w-5 h-5">
+            EN
+          </button>
+          <button type="button" (click)="toggleLanguage('es')" [attr.aria-pressed]="mlangService.languageSignal() === 'es'" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-white transition hover:bg-slate-200 dark:hover:bg-slate-700">
+            <img src="assets/icons/spain.svg" alt="Español" class="w-5 h-5">
+            ES
+          </button>
+          <button type="button" (click)="toggleDarkMode()" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-white transition hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="Toggle dark mode">
+            <img src="assets/icons/moon.svg" alt="Dark mode" class="w-5 h-5" *ngIf="!darkModeService.darkModeSignal()">
+            <img src="assets/icons/sun.svg" alt="Light mode" class="w-5 h-5" *ngIf="darkModeService.darkModeSignal()">
+            <span>{{ darkModeService.darkModeSignal() ? 'Light' : 'Dark' }}</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

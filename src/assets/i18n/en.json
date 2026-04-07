@@ -5,7 +5,8 @@
     "education": "Education",
     "about": "About Me",
     "contact": "Contact",
-    "experience": "Experience"
+    "experience": "Experience",
+    "settings": "Settings"
   },
   "experience": {
     "title": "Work Experience",
