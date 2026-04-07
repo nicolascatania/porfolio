@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Experience } from '../../models/Experience';
 import { HighlightKeywordsPipe } from '../highlight-keywords.pipe';
 import { TranslateModule } from '@ngx-translate/core';
+import { ScrollAnimateDirective } from '../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
- imports: [HighlightKeywordsPipe, TranslateModule],
+ imports: [HighlightKeywordsPipe, TranslateModule, ScrollAnimateDirective],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss'
 })

@@ -3,11 +3,12 @@ import { HighlightKeywordsPipe } from '../highlight-keywords.pipe';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { Project } from '../../models/Project';
+import { ScrollAnimateDirective } from '../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [HighlightKeywordsPipe, TranslateModule],
+  imports: [HighlightKeywordsPipe, TranslateModule, ScrollAnimateDirective],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })

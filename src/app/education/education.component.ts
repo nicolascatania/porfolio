@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { HighlightKeywordsPipe } from '../highlight-keywords.pipe'; 
 import { TranslateModule } from '@ngx-translate/core';
 import { Education } from '../../models/Education';
+import { ScrollAnimateDirective } from '../directives/scroll-animate.directive';
 
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [HighlightKeywordsPipe, TranslateModule],
+  imports: [HighlightKeywordsPipe, TranslateModule, ScrollAnimateDirective],
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss'],
 })

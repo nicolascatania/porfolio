@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Technology } from '../../models/Techology';
 import { TranslateModule } from '@ngx-translate/core';
+import { ScrollAnimateDirective } from '../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-tech-stack',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslateModule, ScrollAnimateDirective],
   templateUrl: './tech-stack.component.html',
   styleUrl: './tech-stack.component.scss'
 })

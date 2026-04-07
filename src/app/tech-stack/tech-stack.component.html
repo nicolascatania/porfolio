@@ -1,12 +1,12 @@
 <section id="tech-stack" class="tech-grid mt-10 p-8 font-title scroll-m-32" [ariaLabel]="'ts.aria-label' | translate">
-  <h2 class="text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800 dark:text-gray-100">
+  <h2 class="text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800 dark:text-gray-100" appScrollAnimate="slide-down">
     {{'ts.title' | translate}}
   </h2>
   
   <div class="projects-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 sm:max-w-7xl max-w-6xl mx-auto">
-    @for(tech of technologies; track tech.id) {
+    @for(tech of technologies; track tech.id; let i = $index) {
       <div class="tech-card bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-4 flex flex-col items-center justify-center space-y-8 
-                  dark:bg-gray-700 dark:shadow-md dark:hover:shadow-lg dark:hover:bg-gray-600">
+                  dark:bg-gray-700 dark:shadow-md dark:hover:shadow-lg dark:hover:bg-gray-600" appScrollAnimate="zoom-in" [scrollAnimateDelay]="i * 80">
         <img src="{{ tech.src }}" alt="{{ tech.name }}" class="size-20">
         <h3 class="tech-name text-xl font-semibold text-center text-gray-800 dark:text-gray-100">
           {{ tech.name }}

@@ -1,10 +1,10 @@
 <section id="projects" class="projects mt-10 p-4  scroll-m-32 dark:bg-gray-800" [ariaLabel]="'projectsInfo.aria-label' | translate ">
   <section class="projects-container p-4 sm:max-w-7xl mx-auto">
-    <h1 class="projects-title text-center text-3xl sm:text-5xl font-title font-bold mb-8 text-slate-800 dark:text-white">{{'projectsInfo.title' | translate}}</h1>
+    <h1 class="projects-title text-center text-3xl sm:text-5xl font-title font-bold mb-8 text-slate-800 dark:text-white" appScrollAnimate="slide-down">{{'projectsInfo.title' | translate}}</h1>
     
-    @for(project of projects; track project.id) {
+    @for(project of projects; track project.id; let i = $index) {
       <article class="project-card grid md:grid-cols-2 my-7 gap-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden 
-dark:bg-gray-700 dark:shadow-md dark:hover:shadow-lg dark:hover:bg-gray-600">
+dark:bg-gray-700 dark:shadow-md dark:hover:shadow-lg dark:hover:bg-gray-600" appScrollAnimate="slide-up" [scrollAnimateDelay]="i * 100">
   <figure class="project-image md:order-1">
     <img 
       src={{project.imageSrcs[0]}} 

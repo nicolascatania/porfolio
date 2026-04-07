@@ -3,6 +3,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import 'app/styles/scroll-animations.scss';
 
 html {
     scroll-behavior: smooth;
