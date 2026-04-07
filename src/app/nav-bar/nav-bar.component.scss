@@ -1,0 +1,20 @@
+.dark-mode-switch {
+  cursor: pointer;
+}
+
+.dark-mode-switch:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.switch-track {
+  background-color: #e2e8f0;
+}
+
+.switch-thumb {
+  transform: translateX(0);
+}
+
+.switch-thumb.translate-x-10 {
+  transform: translateX(2.5rem);
+}

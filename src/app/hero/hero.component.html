@@ -1,23 +1,24 @@
-<header class="hero flex flex-col items-center text-center py-10 bg-cover bg-center relative overflow-hidden min-h-screen" role="banner" [ariaLabel]="'hero.aria-label' |translate " style="background-image: url('assets/images/herobgphoto.png');">
+<header class="hero flex flex-col items-center text-center py-10 bg-cover bg-center relative overflow-hidden min-h-screen" role="banner" [attr.aria-label]="'hero.aria-label' | translate" style="background-image: url('assets/images/herobgphoto.png');">
   
-  <figure class="md:hidden flex w-full justify-end mr-10  z-10">
+  <button class="md:hidden flex w-full justify-end mr-10 z-10" type="button" aria-label="Open mobile menu" (click)="openMenu()">
     <img 
-      (click)="openMenu()" 
       src="assets/icons/optionswhite.svg" 
-      class="size-10 rounded-full z-50 cursor-pointer"
-      alt="Menu icon"
+      class="size-10 rounded-full z-50"
+      alt="Open mobile menu icon"
+      loading="lazy"
     >
-  </figure>
+  </button>
   
 
   <div class="absolute inset-0 bg-black opacity-80 blur-lg z-0"></div>
   
-  <section class="hero-content flex flex-col items-center justify-center gap-6 relative z-10 my-auto" aria-labelledby="name-ocupation" [attr.aria-labelledBy]="'hero.aria-labelledBy' | translate">
+  <section class="hero-content flex flex-col items-center justify-center gap-6 relative z-10 my-auto" aria-labelledby="name-ocupation">
     <figure class="hero-image">
       <img src="assets/images/pfoto.jpg"
            alt="{{'hero.imgAlt' | translate}}" 
            width="250" 
            height="250"
+           loading="lazy"
            class="rounded-full object-cover w-64 h-64">
       <figcaption class="sr-only">{{'hero.figCaption' | translate}}</figcaption>
     </figure>

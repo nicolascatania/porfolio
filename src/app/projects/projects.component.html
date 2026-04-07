@@ -1,4 +1,4 @@
-<section id="projects" class="projects mt-10 p-4  scroll-m-32 dark:bg-gray-800" [ariaLabel]="'projectsInfo.aria-label' | translate ">
+<section id="projects" class="projects mt-10 p-4  scroll-m-32 dark:bg-gray-800" [attr.aria-label]="'projectsInfo.aria-label' | translate">
   <section class="projects-container p-4 sm:max-w-7xl mx-auto">
     <h1 class="projects-title text-center text-3xl sm:text-5xl font-title font-bold mb-8 text-slate-800 dark:text-white" appScrollAnimate="slide-down">{{'projectsInfo.title' | translate}}</h1>
     
@@ -8,7 +8,8 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
   <figure class="project-image md:order-1">
     <img 
       src={{project.imageSrcs[0]}} 
-      alt="{{ project.name}}"
+      alt="{{ project.name}} project screenshot"
+      loading="lazy"
       class="w-full h-64 object-cover sm:h-full cursor-pointer"
       (click)="openModal(project.imageSrcs)"
     >
@@ -23,7 +24,7 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
         <div class="tech-list flex flex-wrap gap-2 mb-4">
           <div class="flex items-center gap-3 mt-2">
             @for(tech of project.technologies; track tech.id) {
-              <img src="{{ tech.src }}" alt="{{ tech.name }}" class="w-6 h-6 sm:w-10 sm:h-10" title="{{ tech.name }}">
+              <img src="{{ tech.src }}" alt="{{ tech.name }} logo" loading="lazy" class="w-6 h-6 sm:w-10 sm:h-10" title="{{ tech.name }}">
             }
           </div>
         </div>
@@ -42,8 +43,9 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
         class="github-btn flex items-center gap-2 px-4 py-2 sm:px-8 sm:py-4 bg-primaryBlue text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors ml-auto"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Open project GitHub repository"
       >
-        <img src="assets/icons/github-icon.svg" alt="github-icon" class="w-7 h-7">
+        <img src="assets/icons/github-icon.svg" alt="GitHub link icon" loading="lazy" class="w-7 h-7">
         <span class="text-black dark:text-white font-body">{{'projectsInfo.vc' | translate}}</span>
       </a>
     </div>
@@ -57,13 +59,13 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
 @if(isModalVisible){
   <div class="modal-overlay" (click)="closeModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
-      <img [src]="selectedImages[currentImageIndex]" alt="Project Image" class="modal-image" />
+      <img [src]="selectedImages[currentImageIndex]" alt="Project gallery image" class="modal-image" loading="lazy" />
 
       @if(selectedImages.length > 1){
-        <button class="nav-button nav-prev" (click)="prevImage()" [disabled]="selectedImages.length <= 1">
+        <button class="nav-button nav-prev" (click)="prevImage()" [disabled]="selectedImages.length <= 1" aria-label="Previous image">
           &#10094;
         </button>
-        <button class="nav-button nav-next" (click)="nextImage()" [disabled]="selectedImages.length <= 1">
+        <button class="nav-button nav-next" (click)="nextImage()" [disabled]="selectedImages.length <= 1" aria-label="Next image">
           &#10095;
         </button>
 
@@ -74,7 +76,7 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
         </div>
       }
 
-      <button class="close-button text-2xl p-2 bg-primaryBlue top-10 right-10 absolute cursor-pointer rounded-full" (click)="closeModal()">X</button>
+      <button class="close-button text-2xl p-2 bg-primaryBlue top-10 right-10 absolute cursor-pointer rounded-full" (click)="closeModal()" aria-label="Close project image modal">X</button>
     </div>
   </div>
 }

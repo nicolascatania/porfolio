@@ -1,6 +1,6 @@
 <footer id="contact" class="w-full bg-gray-900 p-8">
   <section class="contact-me max-w-6xl mx-auto p-6 flex flex-col gap-8" 
-           [ariaLabel]="'contactInfo.aria-label' | translate">
+           [attr.aria-label]="'contactInfo.aria-label' | translate">
     
     <h2 class="text-white text-center text-5xl font-extrabold font-title border-b-2 border-gray-600 pb-4">
       {{'contactInfo.title' | translate}}
@@ -25,17 +25,19 @@
       </div>
 
       <div class="social-links flex gap-6">
-        <a href="https://github.com/nicolascatania" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/nicolascatania" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">
           <img 
             src="assets/icons/github-icon.svg" 
-            alt="GitHub" 
+            alt="GitHub icon" 
+            loading="lazy"
             class="w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-125 transition-transform"
           >
         </a>
-        <a href="https://www.linkedin.com/in/ncatania1" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/ncatania1" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
           <img 
             src="assets/icons/linkedIn.svg" 
-            alt="LinkedIn" 
+            alt="LinkedIn icon" 
+            loading="lazy"
             class="w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-125 transition-transform"
           >
         </a>

@@ -1,0 +1,28 @@
+.app-preloader {
+  min-height: 100vh;
+}
+
+.progress-bar {
+  min-width: 16px;
+}
+
+.dark-mode-switch {
+  cursor: pointer;
+}
+
+.dark-mode-switch:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.switch-track {
+  background-color: #e2e8f0;
+}
+
+.switch-thumb {
+  transform: translateX(0);
+}
+
+.switch-thumb.translate-x-8 {
+  transform: translateX(1.25rem);
+}
