@@ -28,6 +28,8 @@ export class ProjectsComponent {
         { id: 4, name: 'Angular', src: 'assets/icons/angular.svg' }
       ],
       releaseYear: 'projectsInfo.project1.releaseYear',
+      releaseYearNumber: 2025,
+      importance: 8,
       githubLink: "https://github.com/nicolascatania/MySongSet",
       imageSrc: "assets/images/mysongsetscreenshot.png"
     },
@@ -42,6 +44,8 @@ export class ProjectsComponent {
         { id: 4, name: 'Angular', src: 'assets/icons/angular.svg' }
       ],
       releaseYear: 'projectsInfo.project2.releaseYear',
+      releaseYearNumber: 2024,
+      importance: 7,
       githubLink: "https://github.com/nicolascatania/SpringAPI",
       imageSrc: "assets/images/webapp.jpg"
     },
@@ -53,6 +57,8 @@ export class ProjectsComponent {
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' }
       ],
       releaseYear: 'projectsInfo.project3.releaseYear',
+      releaseYearNumber: 2024,
+      importance: 3,
       githubLink: "https://github.com/Guzman5825/TP2-MagiaYHechizeria",
       imageSrc: "assets/images/wizardsvsmortifacs.jpg"
     },
@@ -67,6 +73,8 @@ export class ProjectsComponent {
         { id: 4, name: 'MySQL', src: 'assets/icons/mysql.svg' }
       ],
       releaseYear: 'projectsInfo.project4.releaseYear',
+      releaseYearNumber: 2026,
+      importance: 9,
       githubLink: "https://github.com/nicolascatania/BugdetKingg",
       imageSrc: "assets/images/bug2.jpg"
     },
@@ -85,6 +93,8 @@ export class ProjectsComponent {
         ,{ id: 8, name: 'Grafana', src: 'assets/icons/grafana.svg' }
       ],
       releaseYear: 'projectsInfo.project5.releaseYear',
+      releaseYearNumber: 2026,
+      importance: 10,
       githubLink: "https://github.com/nicolascatania/url-shortener",
       imageSrc: "assets/images/ms.png"
     },
@@ -97,6 +107,8 @@ export class ProjectsComponent {
         { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
       ],
       releaseYear: 'projectsInfo.project6.releaseYear',
+      releaseYearNumber: 2026,
+      importance: 6,
       githubLink: "https://github.com/nicolascatania/simple-resilience-observability-springboot-4",
       imageSrc: "assets/images/resilienceproject.png"
     },
@@ -109,6 +121,8 @@ export class ProjectsComponent {
         { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
       ],
       releaseYear: 'projectsInfo.project7.releaseYear',
+      releaseYearNumber: 2026,
+      importance: 5,
       githubLink: "https://github.com/nicolascatania/the-runner",
       imageSrc: "assets/images/vt.png"
     },
@@ -121,6 +135,8 @@ export class ProjectsComponent {
         { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
       ],
       releaseYear: 'projectsInfo.project8.releaseYear',
+      releaseYearNumber: 2026,
+      importance: 6,
       githubLink: "https://github.com/nicolascatania/simple-gym-modulith",
       imageSrc: "assets/images/modulith.png"
     },
@@ -134,10 +150,12 @@ export class ProjectsComponent {
         ,{ id: 3, name: 'PostgreSQL', src: 'assets/icons/postgres.svg' }
       ],
       releaseYear: 'projectsInfo.project9.releaseYear',
+      releaseYearNumber: 2026,
+      importance: 4,
       githubLink: "https://github.com/nicolascatania/the-testcontainers",
       imageSrc: "assets/images/testcontainers.jpg"
     }
-  ];
+  ].sort((a, b) => b.importance - a.importance || b.releaseYearNumber - a.releaseYearNumber);
 
   closeModal(){
     this.isModalVisible = false;

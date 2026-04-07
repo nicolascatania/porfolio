@@ -36,7 +36,8 @@
     "title": "Contactame",
     "copy": "@2025 Nicolas Martin Catania. Todos los derechos reservados.",
     "aria-label": "contactame",
-    "copyAlt": "copiar email"
+    "copyAlt": "copiar email",
+    "copySuccess": "¡Correo copiado al portapapeles exitosamente!"
   },
   "projectsInfo": {
     "title": "Proyectos",

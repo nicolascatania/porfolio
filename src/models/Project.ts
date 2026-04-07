@@ -6,7 +6,9 @@ export interface Project {
     description: string;
     technologies: Technology[];
     releaseYear: string;
-    githubLink: string,
-    imageSrc: string,
+    releaseYearNumber: number;
+    importance: number;
+    githubLink: string;
+    imageSrc: string;
   }
   
