@@ -40,7 +40,7 @@
         <div class="grid gap-4 sm:grid-cols-2">
           <div class="flex flex-col gap-2">
             <label for="name" class="text-sm font-semibold text-slate-200">{{'contactInfo.form.name' | translate}}</label>
-            <input id="name" type="text" formControlName="name" placeholder="John Doe" class="form-input" [attr.aria-invalid]="contactForm.get('name')?.invalid" />
+            <input id="name" type="text" formControlName="name" placeholder="Nicolas" class="form-input" [attr.aria-invalid]="contactForm.get('name')?.invalid" />
             <p *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid" class="text-sm text-rose-400">{{ getFieldError('name') }}</p>
           </div>
 
@@ -53,7 +53,7 @@
 
         <div class="mt-4 flex flex-col gap-2">
           <label for="subject" class="text-sm font-semibold text-slate-200">{{'contactInfo.form.subject' | translate}}</label>
-          <input id="subject" type="text" formControlName="subject" placeholder="Let's build something great" class="form-input" [attr.aria-invalid]="contactForm.get('subject')?.invalid" />
+          <input id="subject" type="text" formControlName="subject" placeholder="Subject" class="form-input" [attr.aria-invalid]="contactForm.get('subject')?.invalid" />
           <p *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid" class="text-sm text-rose-400">{{ getFieldError('subject') }}</p>
         </div>
 
