@@ -16,6 +16,8 @@ export class ProjectsComponent {
   isModalVisible: Boolean = false;
   selectedImages: string[] = [];
   currentImageIndex: number = 0;
+  private lastFocusedElement: HTMLElement | null = null;
+  private touchStartX = 0;
   highlightedKeywords: string[] = ['RESTful', 'Java', 'Spring', 'Angular', 'Algorithms', 'Data structures', 'C', 'API', 'Backend', 'MySQL', 'PostgreSQL', 'CRUD', 'Testing', 'UX', 'UI', 'Security', 'JWT', 'Design patterns', 'Prolog'];
   
   projects: Project[] = [
@@ -170,12 +172,30 @@ export class ProjectsComponent {
     this.isModalVisible = false;
     this.selectedImages = [];
     this.currentImageIndex = 0;
+    this.lastFocusedElement?.focus();
+    this.lastFocusedElement = null;
   }
 
   openModal(projectImages: string[]){
+    this.lastFocusedElement = document.activeElement as HTMLElement;
     this.isModalVisible = true;
     this.selectedImages = projectImages;
     this.currentImageIndex = 0;
+    setTimeout(() => document.querySelector<HTMLElement>('.modal-close-button')?.focus());
+  }
+
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].clientX;
+  }
+
+  onTouchEnd(event: TouchEvent) {
+    const deltaX = event.changedTouches[0].clientX - this.touchStartX;
+    const swipeThreshold = 40;
+    if (deltaX > swipeThreshold) {
+      this.prevImage();
+    } else if (deltaX < -swipeThreshold) {
+      this.nextImage();
+    }
   }
 
   nextImage() {
