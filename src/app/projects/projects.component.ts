@@ -26,7 +26,7 @@ export class ProjectsComponent {
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
         { id: 2, name: 'PostgreSQL', src: 'assets/icons/postgres.svg' },
-        { id: 3, name: 'Spring', src: 'assets/icons/spring.svg' },
+        { id: 3, name: 'Spring Boot', src: 'assets/icons/spring.svg' },
         { id: 4, name: 'Angular', src: 'assets/icons/angular.svg' }
       ],
       releaseYear: 'projectsInfo.project1.releaseYear',
@@ -42,7 +42,7 @@ export class ProjectsComponent {
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
         { id: 2, name: 'MySQL', src: 'assets/icons/mysql.svg' },
-        { id: 3, name: 'Spring', src: 'assets/icons/spring.svg' },
+        { id: 3, name: 'Spring Boot', src: 'assets/icons/spring.svg' },
         { id: 4, name: 'Angular', src: 'assets/icons/angular.svg' }
       ],
       releaseYear: 'projectsInfo.project2.releaseYear',
@@ -70,7 +70,7 @@ export class ProjectsComponent {
       description: 'projectsInfo.project4.desc',
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
-        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' },
+        { id: 2, name: 'Spring Boot', src: 'assets/icons/spring.svg' },
         { id: 3, name: 'Angular', src: 'assets/icons/angular.svg' },
         { id: 4, name: 'MySQL', src: 'assets/icons/mysql.svg' }
       ],
@@ -78,7 +78,14 @@ export class ProjectsComponent {
       releaseYearNumber: 2026,
       importance: 9,
       githubLink: "https://github.com/nicolascatania/BugdetKingg",
-      imageSrcs: ["assets/images/bug2.jpg"]
+      imageSrcs: [
+        "assets/images/bugdetKing/d_home.png",
+        "assets/images/bugdetKing/d_dashboard.png",
+        "assets/images/bugdetKing/d_login.png",
+        "assets/images/bugdetKing/l_home.png",
+        "assets/images/bugdetKing/l_login.png",
+        "assets/images/bugdetKing/l_dashboard_mobile.png"
+      ]
     },
     {
       id: 5,
@@ -86,7 +93,7 @@ export class ProjectsComponent {
       description: 'projectsInfo.project5.desc',
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
-        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+        { id: 2, name: 'Spring Boot', src: 'assets/icons/spring.svg' }
         ,{ id: 3, name: 'MySQL', src: 'assets/icons/mysql.svg' }
         ,{ id: 4, name: 'RabbitMQ', src: 'assets/icons/rabbitmq.svg' }
         ,{ id: 5, name: 'Docker', src: 'assets/icons/docker.svg' }
@@ -106,7 +113,7 @@ export class ProjectsComponent {
       description: 'projectsInfo.project6.desc',
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
-        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+        { id: 2, name: 'Spring Boot', src: 'assets/icons/spring.svg' }
       ],
       releaseYear: 'projectsInfo.project6.releaseYear',
       releaseYearNumber: 2026,
@@ -120,7 +127,7 @@ export class ProjectsComponent {
       description: 'projectsInfo.project7.desc',
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
-        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+        { id: 2, name: 'Spring Boot', src: 'assets/icons/spring.svg' }
       ],
       releaseYear: 'projectsInfo.project7.releaseYear',
       releaseYearNumber: 2026,
@@ -134,7 +141,7 @@ export class ProjectsComponent {
       description: 'projectsInfo.project8.desc',
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
-        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+        { id: 2, name: 'Spring Boot', src: 'assets/icons/spring.svg' }
       ],
       releaseYear: 'projectsInfo.project8.releaseYear',
       releaseYearNumber: 2026,
@@ -148,7 +155,7 @@ export class ProjectsComponent {
       description: 'projectsInfo.project9.desc',
       technologies: [
         { id: 1, name: 'Java', src: 'assets/icons/java.svg' },
-        { id: 2, name: 'Spring', src: 'assets/icons/spring.svg' }
+        { id: 2, name: 'Spring Boot', src: 'assets/icons/spring.svg' }
         ,{ id: 3, name: 'PostgreSQL', src: 'assets/icons/postgres.svg' }
       ],
       releaseYear: 'projectsInfo.project9.releaseYear',

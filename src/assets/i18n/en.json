@@ -17,7 +17,7 @@
       "institution": "NetOne",
       "yearIn": "March, 2025",
       "yearOut": "On course",
-      "description": "Migrated ERP system modules from legacy Java architecture to a modern stack using Spring Framework, Angular, and MySQL.\nDeveloped and maintained both backend and frontend functionalities, applying Clean Code principles and producing thorough documentation.\nOptimized SQL queries and core algorithms, achieving measurable improvements in performance and scalability.\nRedesigned key processes and interfaces to enhance user experience and system efficiency.\nManaged tasks autonomously, covering the full development lifecycle from analysis to deployment.\nRecently, I’ve been diving into testing for both the backend and frontend, using JUnit with Mockito and Cypress. I find it really rewarding to ensure the system’s quality through proper testing."
+      "description": "Developed ERP functionalities, migrating legacy modules from pure Java to a modern architecture using Spring Boot, Angular, and MySQL.\nWorked across both frontend and backend, applying Clean Code principles and maintaining high-quality documentation.\nOptimized SQL queries and core algorithms, achieving significant improvements in performance and scalability.\nBuilt a public REST API with JWT, documented using OpenAPI/Swagger.\nCut a bulk document-processing job from ~10 minutes to under 1 minute, by reworking its database access and then processing the documents in parallel batches with Java 21 virtual threads.\nConsumed external marketplace and payment APIs (MercadoLibre, Mercado Pago, Tiendanube).\nManaged tasks independently, leading the full development cycle from analysis to delivery.\nTested with JUnit 5 and Mockito."
     }
   },
   "hero": {
@@ -31,7 +31,7 @@
   "about": {
     "aria-label": "about-me-section",
     "title": "About Me",
-    "paragraph": "I'm Nicolás Martín Catania, a 23 years old developer from Argentina, and Software Engineer student, currently working as a full stack developer at NetOne. Beyond my enthusiasm for tech, I enjoy playing the guitar, going to the gym, learning new languages and continuously learning and improving."
+    "paragraph": "I'm Nicolás Martín Catania, a developer from Argentina and Software Engineering student, currently working as a full stack developer at NetOne. Beyond my enthusiasm for tech, I enjoy playing the guitar, going to the gym, learning new languages and continuously learning and improving."
   },
   "contactInfo": {
     "title": "Contact Me",
@@ -85,12 +85,12 @@
     },
     "project3": {
       "name": "Battle simulation in Java",
-      "desc": "Final project developed in a group for an advanced programming subject. Console application built in Java using many design patterns, with a small connection to Prolog.",
+      "desc": "Final project developed in a group for an advanced programming subject. Console application built in Java using many design patterns, with a small connection to Prolog. Simulates a turn-based battle between wizards and Death Eaters.",
       "releaseYear": "2024"
     },
     "project4": {
       "name": "BudgetKing",
-      "desc": "Personal finance management app built for practice. Features testing on repository and service layers, and learning about CI/CD pipelines.",
+      "desc": "Financial tracker web application designed for personal use and learning purposes, built with Java, Spring, Angular, and a containerized MySQL database. Tracks income and expenses, groups them by category and spending accounts, and filters data by date with summary dashboards. Implements basic CI/CD and layered unit & integration tests.",
       "releaseYear": "2026"
     },
     "project5": {
@@ -131,7 +131,7 @@
       "institution": "Universidad de La Matanza",
       "yearIn": "2021",
       "yearOut": "In progress",
-      "description": "With 50% of the career completed and GPA of 8 out of 10, this career gives me a strong background in computer science, data structures, and algorithms with C, OOP with Java, as well as systems analysis, systems design and basic networking and cryptography knowledge."
+      "description": "With 60% of the career completed and GPA of 8 out of 10, this career gives me a strong background in computer science, data structures, and algorithms with C, OOP with Java, as well as systems analysis, systems design and basic networking and cryptography knowledge."
     },
     "ap": {
       "title": "Fullstack software developer",
@@ -139,13 +139,6 @@
       "yearIn": "2022",
       "yearOut": "2023",
       "description": "First stage completed where we learned OOP with Ruby and JS. On the other hand, I was not able to complete the second stage due to personal issues, which covered Angular, Java, and Spring Boot programming to create RESTful APIs and web applications, although I learned a lot of valuable knowledge."
-    },
-    "secu": {
-      "title": "Highschool degree",
-      "institution": "Amancio Alcorta Institute",
-      "yearIn": "2014",
-      "yearOut": "2020",
-      "description": "Social sciences oriented highschool."
     }
   }
 }
