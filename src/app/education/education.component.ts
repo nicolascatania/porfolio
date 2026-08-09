@@ -33,13 +33,5 @@ export class EducationComponent {
       yearOut: 'ed.ap.yearOut',
       description: 'ed.ap.description'
     },
-    {
-      id: 3,
-      title: 'ed.secu.title',
-      institution: 'ed.secu.institution',
-      yearIn: 'ed.secu.yearIn',
-      yearOut: 'ed.secu.yearOut',
-      description: 'ed.secu.description'
-    },
   ];
 }

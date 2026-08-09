@@ -17,7 +17,7 @@
       "institution": "NetOne",
       "yearIn": "Marzo, 2025",
       "yearOut": "En curso",
-      "description": "Becario tecnológico en el Polo de la Universidad Nacional de La Matanza, colaborando en la migración integral de un sistema de gestión empresarial ERP desarrollado en Java hacia una nueva plataforma basada en Angular y Spring.\nMe encargo de trasladar funcionalidades completas tanto del backend como del frontend, optimizando y rediseñando procesos clave cuando es necesario, y mejorando la experiencia visual de las vistas.\nMi enfoque está en dejar código limpio, mantenible y bien documentado, con una fuerte orientación a buenas prácticas.\nRecientemente estuve aprendiendo a testear todo con JUnit + Mockito para el backend y Cypress para el frontend."
+      "description": "Desarrollo de funcionalidades de un ERP, migrando módulos en Java puro hacia una arquitectura moderna con Spring, Angular y MySQL.\nTrabajo tanto en frontend como backend, aplicando Clean Code y buenas prácticas de documentación.\nOptimización de consultas SQL y algoritmos internos, logrando mejoras de rendimiento y escalabilidad en procesos críticos.\nReducción de un proceso masivo de documentos de ~10 minutos a menos de 1 minuto, reformulando su acceso a datos y procesando después los documentos en lotes paralelos con virtual threads de Java 21.\nConsumo de APIs externas de marketplace y pagos (MercadoLibre, Mercado Pago, Tiendanube).\nContribución de manera autónoma, gestionando tareas completas de principio a fin, desde el análisis hasta la entrega.\nCreación de API REST pública con JWT, documentada con OpenAPI/Swagger.\nTesting con Cypress y Junit + Mockito."
     }
   },
   "hero": {
@@ -31,7 +31,7 @@
   "about": {
     "aria-label": "sección-sobre-mí",
     "title": "Sobre Mí",
-    "paragraph": "Soy Nicolás Martín Catania, tengo 22 años. Estoy trabajando como desarrollador full stack web en la empresa NetOne (como becario tecnológico en el Polo de la UNLaM). Por otro lado, disfruto tocar la guitarra, ir al gimnasio, aprender nuevos idiomas, seguir aprendiendo y mejorando continuamente."
+    "paragraph": "Soy Nicolás Martín Catania. Trabajo como desarrollador web full stack en NetOne y estudio Ingeniería en Informática en la Universidad de La Matanza. Por otro lado, disfruto tocar la guitarra, ir al gimnasio, aprender nuevos idiomas, seguir aprendiendo y mejorando continuamente."
   },
   "contactInfo": {
     "title": "Contactame",
@@ -90,7 +90,7 @@
     },
     "project4": {
       "name": "BudgetKing",
-      "desc": "App de gestión de finanzas personales creada para práctica. Incluye testing en capas de repositorio y servicio, y aprendizaje sobre pipelines CI/CD.",
+      "desc": "Aplicación web a modo \"Tracker de finanzas\" diseñada para uso personal y con propósitos de aprendizaje, desarrollada con Java, Spring, Angular y una base de datos MySQL dockerizada. Permite llevar la cuenta de gastos y ganancias, agruparlos por categoría y cuenta de gasto, todo filtrado por fecha, e incluye dashboards para una visualización rápida de datos. Implementa CI/CD de manera básica y tests unitarios y de integración.",
       "releaseYear": "2026"
     },
     "project5": {
@@ -131,7 +131,7 @@
       "institution": "Universidad de La Matanza",
       "yearIn": "2021",
       "yearOut": "En curso",
-      "description": "Con el 50% de la carrera completada y un promedio de 8 sobre 10, esta carrera me brinda una sólida formación en ciencias de la computación, estructuras de datos y algoritmos con C, programación orientada a objetos con Java, así como análisis y diseño de sistemas y conocimientos básicos de redes y criptografía."
+      "description": "Con el 60% de la carrera completada y un promedio de 8 sobre 10, esta carrera me brinda una sólida formación en ciencias de la computación, estructuras de datos y algoritmos con C, programación orientada a objetos con Java, así como análisis y diseño de sistemas y conocimientos básicos de redes y criptografía."
     },
     "ap": {
       "title": "Desarrollador Fullstack",
@@ -139,13 +139,6 @@
       "yearIn": "2022",
       "yearOut": "2023",
       "description": "Completé la primera etapa donde aprendimos POO con Ruby y JS. Por otro lado, la segunda parte abarcaba Angular, Java y Spring Boot para crear APIs RESTful y aplicaciones web, por problemas personales no pude concluir el proyecto final aunque aprendí muchos conocimientos valiosos."
-    },
-    "secu": {
-      "title": "Título secundario",
-      "institution": "Instituto Amancio Alcorta",
-      "yearIn": "2014",
-      "yearOut": "2020",
-      "description": "Escuela secundaria orientada a las ciencias sociales."
     }
   }
 }
