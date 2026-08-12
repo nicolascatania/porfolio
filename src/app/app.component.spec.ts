@@ -10,20 +10,16 @@ describe('AppComponent', () => {
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
   it(`should have the 'porfolio' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('porfolio');
+    expect(fixture.componentInstance.title).toEqual('porfolio');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, porfolio');
-  });
+  // The generated "should render title" spec asserted on 'Hello, porfolio',
+  // markup this app has never had, so it failed on every run. Rendering the
+  // full tree here would also need HttpClient + TranslateService providers,
+  // which belongs in a component-level spec rather than this smoke test.
 });

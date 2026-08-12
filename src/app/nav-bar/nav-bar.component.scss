@@ -1,60 +1,308 @@
-.dark-mode-switch {
-  cursor: pointer;
+/* Sticky has to live on the host, not on .site-nav.
+   A sticky element can only travel inside its parent's box. With the host as a
+   plain block, that box is exactly the height of the bar, so the nav unstuck
+   itself after ~72px of scroll. Sticking the host instead makes <body> the
+   containing block, which is the whole page. */
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
-.dark-mode-switch:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 3px;
+/* ── Bar ───────────────────────────────────────────────────────────────── */
+
+.site-nav {
+  /* Positioning context for .scroll-progress, which used to rely on the
+     sticky declaration that just moved up to :host. */
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid transparent;
+  background-color: rgb(var(--surface-base) / 0.72);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.switch-track {
-  background-color: #e2e8f0;
+/* Elevation only appears once the page has actually moved. */
+.site-nav.is-scrolled {
+  border-bottom-color: rgb(var(--hairline));
+  background-color: rgb(var(--surface-base) / 0.88);
+  box-shadow: 0 8px 30px -18px rgb(15 23 42 / 0.5);
 }
+
+/* Browsers without backdrop-filter get an opaque bar rather than unreadable
+   text over content. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-nav {
+    background-color: rgb(var(--surface-base));
+  }
+}
+
+.scroll-progress {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--scroll-progress, 0));
+  background: linear-gradient(90deg, #119da4, #6adfe7);
+}
+
+/* ── Brand ─────────────────────────────────────────────────────────────── */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #119da4, #0f656c);
+  color: #ecfcfd;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px -8px rgb(17 157 164 / 0.9);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand:hover .brand-mark {
+  transform: translateY(-2px) rotate(-4deg);
+}
+
+/* ── Desktop links ─────────────────────────────────────────────────────── */
 
 .nav-link {
   position: relative;
-  color: inherit;
-  padding: 0.25rem 0;
-  transition: color 0.25s ease;
+  display: inline-block;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.6rem;
+  color: rgb(var(--ink-muted));
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .nav-link::after {
   content: '';
   position: absolute;
-  left: 50%;
-  bottom: -0.35rem;
-  width: 0;
-  height: 0.2rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.25rem;
+  height: 2px;
   border-radius: 9999px;
-  background-color: #06b6d4;
-  transform: translateX(-50%);
-  transition: width 0.25s ease;
+  background-color: rgb(var(--accent));
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover {
+  color: rgb(var(--ink));
+  background-color: rgb(var(--accent) / 0.07);
 }
 
 .nav-link:hover::after {
-  width: 50%;
+  transform: scaleX(0.5);
 }
 
 .nav-link.active {
-  color: #06b6d4;
+  color: rgb(var(--accent));
 }
 
 .nav-link.active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
-.mobile-menu .nav-link {
+/* ── Controls ──────────────────────────────────────────────────────────── */
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(var(--hairline));
+  background-color: rgb(var(--surface-sunken));
+}
+
+.lang-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  /* Height keeps the combined control at a 44px touch target. */
+  min-height: 2.25rem;
+  padding: 0 0.6rem;
+  border-radius: 0.55rem;
+  color: rgb(var(--ink-muted));
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  transition: background-color 0.22s ease, color 0.22s ease;
+}
+
+.lang-option:hover {
+  color: rgb(var(--ink));
+}
+
+.lang-option.active {
+  background-color: rgb(var(--surface-raised));
+  color: rgb(var(--accent));
+  box-shadow: 0 2px 8px -4px rgb(15 23 42 / 0.35);
+}
+
+.theme-toggle,
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(var(--hairline));
+  background-color: rgb(var(--surface-sunken));
+  color: rgb(var(--ink-muted));
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle:hover,
+.icon-button:hover {
+  color: rgb(var(--accent));
+  border-color: rgb(var(--accent));
+}
+
+.theme-toggle svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(25deg);
+}
+
+/* ── Burger ────────────────────────────────────────────────────────────── */
+
+/* No `display` here on purpose: the template carries `inline-flex lg:hidden`.
+   Declaring display in component CSS would outrank Tailwind's `lg:hidden`
+   (same specificity, injected later) and leak the burger onto desktop. */
+.burger {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(var(--hairline));
+  background-color: rgb(var(--surface-sunken));
+  transition: border-color 0.2s ease;
+}
+
+.burger:hover {
+  border-color: rgb(var(--accent));
+}
+
+.burger-line {
   display: block;
-  padding: 0.75rem 1rem;
-  border-radius: 1rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 1.05rem;
+  height: 1.5px;
+  border-radius: 9999px;
+  background-color: rgb(var(--ink));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
-.mobile-menu .nav-link.active {
-  color: #0ea5e9;
-  background-color: rgba(56, 189, 248, 0.14);
+.burger-line.is-open:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger-line.is-open:nth-child(2) { opacity: 0; transform: scaleX(0.3); }
+.burger-line.is-open:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Mobile sheet ──────────────────────────────────────────────────────── */
+
+.menu-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background-color: rgb(2 6 16 / 0.55);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
 }
 
-.switch-thumb {
+.menu-scrim.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-sheet {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 70;
+  height: 100dvh;
+  width: min(20rem, 86vw);
+  background-color: rgb(var(--surface-raised));
+  border-left: 1px solid rgb(var(--hairline));
+  box-shadow: -20px 0 60px -30px rgb(2 6 16 / 0.8);
+  transform: translateX(100%);
+  transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Notch / home-indicator safe areas. */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  overflow-y: auto;
+}
+
+.menu-sheet.is-open {
   transform: translateX(0);
+}
+
+.sheet-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  /* Comfortable 48px rows. */
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.75rem;
+  color: rgb(var(--ink));
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(12px);
+  transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-sheet.is-open .sheet-link {
+  opacity: 1;
+  transform: none;
+}
+
+.sheet-link:active {
+  background-color: rgb(var(--accent) / 0.1);
+}
+
+.sheet-link.active {
+  background-color: rgb(var(--accent) / 0.12);
+  color: rgb(var(--accent));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-link {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0ms !important;
+  }
 }

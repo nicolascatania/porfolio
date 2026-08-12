@@ -1,25 +1,301 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import 'app/styles/scroll-animations.scss';
+@import 'app/styles/sections';
 
+/* ---------------------------------------------------------------------------
+   Design tokens
+   Light values live on :root, dark values swap in on .dark (set on <html> by
+   DarkModeService). Everything downstream reads these through Tailwind's
+   surface-* / ink-* / hairline / accent utilities.
+--------------------------------------------------------------------------- */
+:root {
+  /* The page ground is a soft cool grey, not near-white. Pure white is
+     reserved for raised cards, so they read as lit islands instead of the
+     whole page glaring back at you. */
+  --surface-base:   237 241 246;
+  --surface-raised: 255 255 255;
+  --surface-sunken: 227 233 241; /* alt bands need a step you can actually see */
+  --ink:            15 23 42;    /* slate-900 — 14.4:1 on base */
+  --ink-muted:      71 85 105;   /* slate-600 — 6.6:1 on base  */
+  --ink-faint:      100 116 139; /* slate-500 */
+  --hairline:       211 220 232; /* darkened so borders read on the grey base */
+  --accent:         15 101 108;  /* brand-700 — 5.9:1 on base */
+  --accent-solid:   17 157 164;  /* brand-500, for fills only */
+  --selection-bg:   162 238 242;
+  --selection-fg:   6 43 48;
+
+  /* Elevation. Light mode leans on shadow, dark mode on borders — a shadow
+     over a dark ground just turns into mud. */
+  --card-shadow:
+    0 1px 2px rgb(15 23 42 / 0.05),
+    0 4px 10px -4px rgb(15 23 42 / 0.1),
+    0 12px 28px -12px rgb(15 23 42 / 0.14);
+  --card-shadow-hover:
+    0 2px 4px rgb(15 23 42 / 0.07),
+    0 10px 20px -8px rgb(15 23 42 / 0.16),
+    0 26px 50px -20px rgb(15 23 42 / 0.24);
+
+  color-scheme: light;
+}
+
+.dark {
+  --surface-base:   11 18 32;    /* deep slate, never pure black */
+  --surface-raised: 17 26 43;
+  --surface-sunken: 8 14 25;
+  --ink:            241 245 249; /* slate-100 */
+  --ink-muted:      148 163 184; /* slate-400 — 6.8:1 on raised */
+  --ink-faint:      100 116 139;
+  --hairline:       30 41 59;    /* slate-800 */
+  --accent:         47 199 211;  /* brand-400 — 9.2:1 on base */
+  --accent-solid:   17 157 164;
+  --selection-bg:   19 81 88;
+  --selection-fg:   236 252 253;
+
+  --card-shadow:       0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -14px rgb(0 0 0 / 0.55);
+  --card-shadow-hover: 0 2px 6px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.7);
+
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  /* Anchored sections must clear the sticky navbar. */
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
 }
-html, body { height: 100%; }
-body { margin: 0}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(var(--surface-base));
+  color: rgb(var(--ink));
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Nothing should ever scroll sideways. */
+  overflow-x: hidden;
+}
+
 app-root {
-    display: block;  
-    overflow: visible !important; 
+  display: block;
 }
 
+::selection {
+  background-color: rgb(var(--selection-bg));
+  color: rgb(var(--selection-fg));
+}
 
-html * {
-    transition: background-color 0.3s ease, color 0.2s ease;
+/* Theme swap only repaints the elements that actually carry a themed surface.
+   The previous `html * { transition: ... }` put a transition on every node in
+   the document, which made hover states feel mushy and cost paint time. */
+body,
+header,
+footer,
+section,
+article,
+aside,
+nav,
+.theme-surface {
+  transition: background-color 0.28s ease, border-color 0.28s ease, color 0.2s ease;
+}
+
+/* One focus ring for the whole site, brand-coloured, never removed. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 2px;
+  border-radius: 0.35rem;
+}
+
+:where(a[href], button:not(:disabled), [role='button'], summary) {
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------------
+   Shared primitives
+--------------------------------------------------------------------------- */
+
+/* Keyboard users land here first. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  background-color: #119da4;
+  color: #062b30;
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Section eyebrow: mono, uppercase, wide-tracked. Reads "engineer". */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(var(--accent));
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.6rem;
+  height: 1px;
+  background-color: rgb(var(--accent));
+  opacity: 0.6;
+}
+
+/* Tech / meta chip. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(var(--hairline));
+  background-color: rgb(var(--surface-sunken));
+  color: rgb(var(--ink-muted));
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.chip img {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+/* Buttons. Ink on brand fill is brand-950 → 4.5:1, unlike the old white. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  /* 44px floor: WCAG touch target. */
+  min-height: 2.75rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: 0.75rem;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease,
+              color 0.2s ease;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-primary {
+  background-color: #119da4;
+  color: #062b30;
+  box-shadow: 0 8px 24px -12px rgb(17 157 164 / 0.9);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #2fc7d3;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -12px rgb(17 157 164 / 0.95);
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-ghost {
+  border: 1px solid rgb(var(--hairline));
+  background-color: rgb(var(--surface-raised));
+  color: rgb(var(--ink));
+  box-shadow: var(--card-shadow);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: rgb(var(--accent));
+  color: rgb(var(--accent));
+  transform: translateY(-2px);
+}
+
+/* Card shell used by projects / tech / timeline. */
+.surface-card {
+  background-color: rgb(var(--surface-raised));
+  border: 1px solid rgb(var(--hairline));
+  border-radius: 1rem;
+  /* Resting elevation. This used to be flat until hover, which is what made
+     the light theme read as one undifferentiated white sheet. */
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Keywords emphasised by HighlightKeywordsPipe. */
+.prose-body strong {
+  color: rgb(var(--accent));
+  font-weight: 600;
+}
+
+/* Scrollbar, themed so it doesn't flash white in dark mode. */
+* {
+  scrollbar-color: rgb(var(--hairline)) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--hairline));
+  border-radius: 9999px;
+  border: 2px solid rgb(var(--surface-base));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(var(--accent));
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion: honour the OS setting everywhere, in one place.
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  
-  .dark-transition {
-    transition: background-color 0.3s ease, color 0.2s ease;
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}

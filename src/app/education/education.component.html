@@ -1,34 +1,60 @@
-<section id="education" class="education-section p-8 sm:max-w-7xl max-w-6xl mt-10 mx-auto scroll-m-32">
-  
-  <h2 id="education-title" class="font-title text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800 dark:text-gray-100" appScrollAnimate="slide-down">
-    {{'ed.title' | translate}}
-  </h2>
+<section id="education" class="section-shell section-shell--alt" [attr.aria-label]="'ed.aria-label' | translate">
+  <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+    <app-section-heading
+      index="04"
+      eyebrowKey="ed.eyebrow"
+      titleKey="ed.title"
+      subtitleKey="ed.subtitle"
+    />
 
-  @for(education of educations; track education.id; let i = $index) {
-    <article class="education-card grid md:flex my-7 p-4 gap-6 bg-white rounded-xl shadow-lg transition-shadow duration-200 overflow-hidden 
-                    dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-right" [scrollAnimateDelay]="i * 100">
-      
-      <div class="education-content flex flex-col justify-between p-6 gap-4 md:p-8">
-        <header>
-          <p class="text-2xl md:text-3xl font-extrabold font-title text-gray-800 dark:text-gray-100 mb-2">
-            {{ education.title | translate}}
-          </p>
+    <ol class="timeline">
+      @for (education of educations; track education.id; let i = $index) {
+        <li class="timeline-item" appScrollAnimate="up" [scrollAnimateDelay]="i * 90">
+          <span class="timeline-node" [class.is-current]="education.current" aria-hidden="true"></span>
 
-          <div class="sm:flex-row flex-col items-center justify-between lg:w-auto">
-            <p class="text-base lg:text-2xl font-title font-semibold text-gray-700 dark:text-gray-200">
-              {{ education.institution | translate}}
-            </p>
-            <p class="lg:text-lg text-xs text-gray-600 dark:text-gray-400 font-title mt-1">
-              ({{ education.yearIn | translate}} - {{ education.yearOut | translate }})
-            </p>
-          </div>
-        </header>
+          <article class="surface-card timeline-card">
+            <header class="flex flex-col gap-3">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span class="font-mono text-xs text-ink-faint">
+                  {{ education.yearIn | translate }} — {{ education.yearOut | translate }}
+                </span>
+                @if (education.current) {
+                  <span class="badge-current">
+                    <span class="badge-dot" aria-hidden="true"></span>
+                    {{ 'ed.current' | translate }}
+                  </span>
+                }
+              </div>
 
-        <p class="education-description text-gray-600 lg:text-xl text-sm font-body dark:text-gray-300" 
-           [innerHTML]="education.description | translate | highlightKeywords:highlightedKeywords">
-        </p>
-      </div>
+              <h3 class="font-title text-xl font-bold leading-snug text-ink sm:text-2xl">
+                {{ education.title | translate }}
+              </h3>
 
-    </article>
-  }
+              <p class="flex items-start gap-2 font-title text-base font-semibold text-accent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true">
+                  <path d="M22 10L12 5 2 10l10 5 10-5z" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M6 12v5c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span class="min-w-0">{{ education.institution | translate }}</span>
+              </p>
+            </header>
+
+            <ul class="achievement-list prose-body">
+              @for (line of (education.description | translate | splitLines); track $index) {
+                <li [innerHTML]="line | highlightKeywords: highlightedKeywords"></li>
+              }
+            </ul>
+
+            @if (education.facts?.length) {
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (fact of education.facts; track fact) {
+                  <span class="chip">{{ fact | translate }}</span>
+                }
+              </div>
+            }
+          </article>
+        </li>
+      }
+    </ol>
+  </div>
 </section>

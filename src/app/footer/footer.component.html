@@ -1,88 +1,229 @@
-<footer id="contact" class="w-full bg-slate-950 text-white py-16 px-6 sm:px-10">
-  <section class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10" [attr.aria-label]="'contactInfo.aria-label' | translate">
+<footer id="contact" class="site-footer" [attr.aria-label]="'contactInfo.aria-label' | translate">
+  <div class="footer-glow" aria-hidden="true"></div>
 
-    <div class="contact-intro rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-2xl">
-      <div class="inline-flex items-center justify-center rounded-full bg-primaryBlue text-white w-16 h-16 mb-6 shadow-lg">
-        <span class="text-2xl font-semibold">✉️</span>
-      </div>
-      <h2 class="text-5xl font-extrabold font-title mb-4">{{'contactInfo.title' | translate}}</h2>
-      <p class="text-slate-200 text-lg leading-relaxed mb-8">{{'contactInfo.subtitle' | translate}}</p>
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 py-20 sm:px-8">
+    <!-- ── Heading ──────────────────────────────────────────────────────── -->
+    <header class="mb-12 max-w-2xl">
+      <p class="footer-eyebrow">
+        <span>06</span>
+        <span>{{ 'contactInfo.eyebrow' | translate }}</span>
+      </p>
+      <h2 class="mt-3 font-title text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        {{ 'contactInfo.title' | translate }}
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
+        {{ 'contactInfo.subtitle' | translate }}
+      </p>
+    </header>
 
-      <div class="space-y-6">
-        <div class="rounded-3xl bg-slate-900/80 border border-white/10 p-6 shadow-inner">
-          <p class="text-sm uppercase tracking-[0.2em] text-slate-400 mb-2">{{'contactInfo.emailLabel' | translate}}</p>
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <span class="text-lg font-medium text-white break-words min-w-0">{{ email }}</span>
-            <button type="button" class="rounded-full bg-primaryBlue px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 shrink-0" (click)="copyEmail()" [attr.aria-label]="'contactInfo.copyAlt' | translate">{{'contactInfo.copyButton' | translate}}</button>
+    <div class="grid gap-6 lg:grid-cols-2">
+      <!-- ── Direct contact ─────────────────────────────────────────────── -->
+      <div class="footer-card flex flex-col gap-6">
+        <div class="flex items-start gap-4">
+          <span class="footer-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5">
+              <rect x="3" y="5" width="18" height="14" rx="2.5" />
+              <path d="M3.5 7l8.5 6 8.5-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div class="min-w-0 flex-1">
+            <p class="font-mono text-xs uppercase tracking-eyebrow text-slate-400">
+              {{ 'contactInfo.emailLabel' | translate }}
+            </p>
+            <div class="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <a [href]="'mailto:' + email" class="break-all font-medium text-white underline-offset-4 hover:text-brand-300 hover:underline">
+                {{ email }}
+              </a>
+              <button
+                type="button"
+                class="copy-button shrink-0"
+                (click)="copyEmail()"
+                [attr.aria-label]="'contactInfo.copyAlt' | translate"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4" aria-hidden="true">
+                  <rect x="9" y="9" width="11" height="11" rx="2" />
+                  <path d="M15 9V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7a2 2 0 002 2h3" stroke-linecap="round" />
+                </svg>
+                {{ 'contactInfo.copyButton' | translate }}
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-4">
-          <a href="https://github.com/nicolascatania" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile" class="inline-flex items-center gap-3 rounded-3xl bg-slate-700/90 px-5 py-4 hover:bg-slate-600/95 transition font-semibold text-slate-100">
-            <img src="assets/icons/github-icon.svg" alt="GitHub icon" loading="lazy" class="w-6 h-6">
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/ncatania1" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile" class="inline-flex items-center gap-3 rounded-3xl bg-slate-700/90 px-5 py-4 hover:bg-slate-600/95 transition font-semibold text-slate-100">
-            <img src="assets/icons/linkedIn.svg" alt="LinkedIn icon" loading="lazy" class="w-6 h-6">
-            LinkedIn
-          </a>
-        </div>
+        <div class="h-px bg-white/10"></div>
 
-        <div class="rounded-3xl border border-white/10 bg-slate-900/70 p-6">
-          <p class="text-sm text-slate-400">{{'contactInfo.securityNote' | translate}}</p>
-          <p class="mt-3 text-sm text-slate-300">{{'contactInfo.cooldownInfo' | translate:{minutes: 10} }}</p>
-        </div>
-      </div>
-    </div>
+        <!-- Socials -->
+        <div>
+          <p class="font-mono text-xs uppercase tracking-eyebrow text-slate-400">
+            {{ 'contactInfo.elsewhere' | translate }}
+          </p>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <a
+              href="https://github.com/nicolascatania"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="GitHub"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 shrink-0" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.72c-2.78.62-3.37-1.37-3.37-1.37-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.818c0 .27.18.6.69.49A10.03 10.03 0 0022 12.25C22 6.58 17.52 2 12 2z" />
+              </svg>
+              GitHub
+            </a>
 
-    <div class="contact-form rounded-[2rem] border border-white/10 bg-slate-900/90 p-8 shadow-2xl">
-      <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()" novalidate>
-        <div class="grid gap-4 sm:grid-cols-2">
-          <div class="flex flex-col gap-2">
-            <label for="name" class="text-sm font-semibold text-slate-200">{{'contactInfo.form.name' | translate}}</label>
-            <input id="name" type="text" formControlName="name" placeholder="Nicolas" class="form-input" [attr.aria-invalid]="contactForm.get('name')?.invalid" />
-            <p *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid" class="text-sm text-rose-400">{{ getFieldError('name') }}</p>
+            <a
+              href="https://www.linkedin.com/in/ncatania1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 shrink-0" aria-hidden="true">
+                <path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.65h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.7c0-1.36-.03-3.11-1.95-3.11-1.96 0-2.26 1.48-2.26 3.01V21H9z" />
+              </svg>
+              LinkedIn
+            </a>
           </div>
-
-          <div class="flex flex-col gap-2">
-            <label for="email" class="text-sm font-semibold text-slate-200">{{'contactInfo.form.email' | translate}}</label>
-            <input id="email" type="email" formControlName="email" placeholder="you@example.com" class="form-input" [attr.aria-invalid]="contactForm.get('email')?.invalid" />
-            <p *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid" class="text-sm text-rose-400">{{ getFieldError('email') }}</p>
-          </div>
         </div>
 
-        <div class="mt-4 flex flex-col gap-2">
-          <label for="subject" class="text-sm font-semibold text-slate-200">{{'contactInfo.form.subject' | translate}}</label>
-          <input id="subject" type="text" formControlName="subject" placeholder="Subject" class="form-input" [attr.aria-invalid]="contactForm.get('subject')?.invalid" />
-          <p *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid" class="text-sm text-rose-400">{{ getFieldError('subject') }}</p>
-        </div>
-
-        <div class="mt-4 flex flex-col gap-2">
-          <label for="message" class="text-sm font-semibold text-slate-200">{{'contactInfo.form.message' | translate}}</label>
-          <textarea id="message" rows="6" formControlName="message" placeholder="Write your message here..." class="form-input resize-none" [attr.aria-invalid]="contactForm.get('message')?.invalid"></textarea>
-          <p *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid" class="text-sm text-rose-400">{{ getFieldError('message') }}</p>
-        </div>
-
-        <div class="sr-only">
-          <label for="nickname">Leave this empty</label>
-          <input id="nickname" type="text" formControlName="nickname" autocomplete="off" tabindex="-1" />
-        </div>
-
-        <div *ngIf="spamWarning" class="mt-4 rounded-3xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-200">
-          {{ spamWarning }}
-        </div>
-
-        <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <button type="submit" class="btn-primary w-full sm:w-auto" [disabled]="!canSubmit">
-            {{ isSubmitting ? ('contactInfo.form.sending' | translate) : ('contactInfo.form.submit' | translate) }}
-          </button>
-          <p class="text-sm text-slate-400">
-            <span *ngIf="isCooldownActive">{{'contactInfo.form.cooldown' | translate:{time: remainingCooldown} }}</span>
-            <span *ngIf="!isCooldownActive">{{'contactInfo.form.ready' | translate}}</span>
+        <div class="mt-auto rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+          <p class="flex items-start gap-2.5 text-sm text-slate-300">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="mt-0.5 h-4 w-4 shrink-0 text-brand-300" aria-hidden="true">
+              <path d="M12 3l7.5 3v5.5c0 4.4-3.1 8.3-7.5 9.5-4.4-1.2-7.5-5.1-7.5-9.5V6z" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M9.5 12l1.8 1.8 3.4-3.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>{{ 'contactInfo.securityNote' | translate }}</span>
           </p>
         </div>
-      </form>
+      </div>
+
+      <!-- ── Form ───────────────────────────────────────────────────────── -->
+      <div class="footer-card">
+        <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()" novalidate>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="field">
+              <label for="name">{{ 'contactInfo.form.name' | translate }}</label>
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                autocomplete="name"
+                placeholder="Nicolas"
+                [class.invalid]="isInvalid('name')"
+                [attr.aria-invalid]="isInvalid('name')"
+                [attr.aria-describedby]="isInvalid('name') ? 'name-error' : null"
+              />
+              @if (isInvalid('name')) {
+                <p id="name-error" class="field-error" role="alert">{{ getFieldError('name') }}</p>
+              }
+            </div>
+
+            <div class="field">
+              <label for="email">{{ 'contactInfo.form.email' | translate }}</label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                inputmode="email"
+                placeholder="you@example.com"
+                [class.invalid]="isInvalid('email')"
+                [attr.aria-invalid]="isInvalid('email')"
+                [attr.aria-describedby]="isInvalid('email') ? 'email-error' : null"
+              />
+              @if (isInvalid('email')) {
+                <p id="email-error" class="field-error" role="alert">{{ getFieldError('email') }}</p>
+              }
+            </div>
+          </div>
+
+          <div class="field mt-4">
+            <label for="subject">{{ 'contactInfo.form.subject' | translate }}</label>
+            <input
+              id="subject"
+              type="text"
+              formControlName="subject"
+              [placeholder]="'contactInfo.form.subjectPlaceholder' | translate"
+              [class.invalid]="isInvalid('subject')"
+              [attr.aria-invalid]="isInvalid('subject')"
+              [attr.aria-describedby]="isInvalid('subject') ? 'subject-error' : null"
+            />
+            @if (isInvalid('subject')) {
+              <p id="subject-error" class="field-error" role="alert">{{ getFieldError('subject') }}</p>
+            }
+          </div>
+
+          <div class="field mt-4">
+            <div class="flex items-baseline justify-between gap-3">
+              <label for="message">{{ 'contactInfo.form.message' | translate }}</label>
+              <span class="font-mono text-[0.7rem]" [class.text-rose-300]="messageLength > 900" [class.text-slate-500]="messageLength <= 900">
+                {{ messageLength }}/900
+              </span>
+            </div>
+            <textarea
+              id="message"
+              rows="6"
+              formControlName="message"
+              [placeholder]="'contactInfo.form.messagePlaceholder' | translate"
+              class="resize-none"
+              [class.invalid]="isInvalid('message')"
+              [attr.aria-invalid]="isInvalid('message')"
+              [attr.aria-describedby]="isInvalid('message') ? 'message-error' : null"
+            ></textarea>
+            @if (isInvalid('message')) {
+              <p id="message-error" class="field-error" role="alert">{{ getFieldError('message') }}</p>
+            }
+          </div>
+
+          <!-- Honeypot -->
+          <div class="sr-only" aria-hidden="true">
+            <label for="nickname">Leave this empty</label>
+            <input id="nickname" type="text" formControlName="nickname" autocomplete="off" tabindex="-1" />
+          </div>
+
+          @if (spamWarning) {
+            <p class="mt-4 rounded-2xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-200" role="alert">
+              {{ spamWarning }}
+            </p>
+          }
+
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <button type="submit" class="btn btn-primary w-full sm:w-auto" [disabled]="!canSubmit">
+              @if (isSubmitting) {
+                <span class="spinner" aria-hidden="true"></span>
+                {{ 'contactInfo.form.sending' | translate }}
+              } @else {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="h-4 w-4" aria-hidden="true">
+                  <path d="M4 12l16-8-6 16-2.5-6z" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {{ 'contactInfo.form.submit' | translate }}
+              }
+            </button>
+
+            <p class="font-mono text-xs text-slate-400" aria-live="polite">
+              @if (isCooldownActive) {
+                {{ 'contactInfo.form.cooldown' | translate: { time: remainingCooldown } }}
+              } @else {
+                {{ 'contactInfo.form.ready' | translate }}
+              }
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
 
-  </section>
+    <!-- ── Colophon ─────────────────────────────────────────────────────── -->
+    <div class="mt-14 flex flex-col items-center gap-4 border-t border-white/10 pt-8 sm:flex-row sm:justify-between">
+      <p class="font-mono text-xs text-slate-500">{{ 'contactInfo.copy' | translate }}</p>
+
+      <div class="flex items-center gap-4">
+        <p class="font-mono text-xs text-slate-500">{{ 'contactInfo.builtWith' | translate }}</p>
+        <a href="#hero" class="back-to-top" [attr.aria-label]="'contactInfo.backToTop' | translate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>

@@ -1,55 +1,101 @@
 {
+  "a11y": {
+    "skipToContent": "Skip to content"
+  },
   "navbar": {
     "projects": "Projects",
     "techStack": "Tech Stack",
     "education": "Education",
-    "about": "About Me",
+    "about": "About",
     "contact": "Contact",
     "experience": "Experience",
-    "settings": "Settings"
+    "settings": "Settings",
+    "menu": "Menu",
+    "role": "Backend Developer",
+    "aria": "Main navigation",
+    "home": "Back to top",
+    "languageAria": "Language",
+    "themeAria": "Toggle dark mode",
+    "menuAria": "Open menu",
+    "closeMenuAria": "Close menu"
+  },
+  "hero": {
+    "title": "Java Backend Developer | Software Engineering Student",
+    "eyebrow": "Buenos Aires, Argentina",
+    "building": "Working with",
+    "summary": "I build and modernise backend systems with Java and Spring Boot.",
+    "viewWork": "View my work",
+    "cv": "Download CV",
+    "contact": "Contact",
+    "currentlyAt": "Currently at",
+    "scroll": "Scroll",
+    "scrollAria": "Scroll to work experience",
+    "actionsAria": "Main actions",
+    "imgAlt": "Nicolas Catania - Profile photo",
+    "figCaption": "Nicolas Catania profile photo",
+    "aria-label": "main-presentation",
+    "aria-labelledBy": "name-ocupation",
+    "experienceYear": "{{years}}+ year of professional experience",
+    "experienceYears": "{{years}}+ years of professional experience",
+    "experienceMonths": "{{months}} months of professional experience"
   },
   "experience": {
     "title": "Work Experience",
+    "eyebrow": "Career",
+    "subtitle": "Where I've been shipping production code.",
+    "current": "Current",
     "aria-label": "work-experience",
     "aria-labelledBy": "work-experience",
     "netOne": {
       "title": "Full Stack Web Developer",
       "institution": "NetOne",
-      "yearIn": "March, 2025",
-      "yearOut": "On course",
-      "description": "Developed ERP functionalities, migrating legacy modules from pure Java to a modern architecture using Spring Boot, Angular, and MySQL.\nWorked across both frontend and backend, applying Clean Code principles and maintaining high-quality documentation.\nOptimized SQL queries and core algorithms, achieving significant improvements in performance and scalability.\nBuilt a public REST API with JWT, documented using OpenAPI/Swagger.\nCut a bulk document-processing job from ~10 minutes to under 1 minute, by reworking its database access and then processing the documents in parallel batches with Java 21 virtual threads.\nConsumed external marketplace and payment APIs (MercadoLibre, Mercado Pago, Tiendanube).\nManaged tasks independently, leading the full development cycle from analysis to delivery.\nTested with JUnit 5 and Mockito."
+      "yearIn": "March 2025",
+      "yearOut": "Present",
+      "description": "Developed ERP functionalities, migrating legacy modules from pure Java to a modern architecture using Spring Boot, Angular, and MySQL.\nCut a bulk document-processing job from ~10 minutes to under 1 minute, by reworking its database access and then processing the documents in parallel batches with Java 21 virtual threads.\nOptimized SQL queries and core algorithms, achieving significant improvements in performance and scalability.\nBuilt a public REST API with JWT, documented using OpenAPI/Swagger.\nConsumed external marketplace and payment APIs (MercadoLibre, Mercado Pago, Tiendanube).\nWorked across both frontend and backend, applying Clean Code principles and maintaining high-quality documentation.\nManaged tasks independently, leading the full development cycle from analysis to delivery.\nTested with JUnit 5 and Mockito."
     }
   },
-  "hero": {
-    "title": "Java Backend Developer | Software Engineering Student",
-    "contact": "Contact",
-    "imgAlt": "Nicolas Catania - Profile photo",
-    "figCaption": "Nicolas Catania profile photo",
-    "aria-label": "main-presentation",
-    "aria-labelledBy": "name-ocupation"
-  },
   "about": {
-    "aria-label": "about-me-section",
     "title": "About Me",
-    "paragraph": "I'm Nicolás Martín Catania, a developer from Argentina and Software Engineering student, currently working as a full stack developer at NetOne. Beyond my enthusiasm for tech, I enjoy playing the guitar, going to the gym, learning new languages and continuously learning and improving."
+    "eyebrow": "Who I am",
+    "aria-label": "about-me-section",
+    "paragraph": "I'm Nicolás Martín Catania, a developer from Argentina and Software Engineering student, currently working as a full stack developer at NetOne. Beyond my enthusiasm for tech, I enjoy playing the guitar, going to the gym, learning new languages and continuously learning and improving.",
+    "quickFacts": "Quick facts",
+    "facts": {
+      "locationLabel": "Based in",
+      "location": "Buenos Aires, Argentina",
+      "timezoneLabel": "Timezone",
+      "timezone": "UTC−3 (no DST)",
+      "languagesLabel": "Languages",
+      "languages": "Spanish (native) · English (C1)",
+      "focusLabel": "Focus",
+      "focus": "Java · Spring Boot · REST APIs",
+      "currentlyLabel": "Currently",
+      "currently": "Full Stack Developer at NetOne"
+    }
   },
   "contactInfo": {
-    "title": "Contact Me",
-    "subtitle": "Send a message and I’ll get back to you as soon as possible.",
+    "title": "Let's build something",
+    "eyebrow": "Get in touch",
+    "subtitle": "Send a message and I'll get back to you as soon as possible.",
     "emailLabel": "Email",
-    "copy": "@2025 Nicolas Martin Catania. All rights reserved.",
+    "elsewhere": "Elsewhere",
+    "builtWith": "Built with Angular + Tailwind",
+    "backToTop": "Back to top",
+    "copy": "© 2026 Nicolas Martin Catania. All rights reserved.",
     "aria-label": "contact-me",
-    "copyAlt": "Copy Email",
-    "copyButton": "Copy email",
+    "copyAlt": "Copy email address",
+    "copyButton": "Copy",
     "copySuccess": "Email copied to clipboard successfully!",
-    "securityNote": "This form includes extra validation and anti-spam protections for secure submissions.",
+    "securityNote": "Validated input with honeypot and submission throttling. Delivery runs through EmailJS.",
     "cooldownInfo": "Please wait at least 10 minutes before sending another message.",
     "form": {
       "name": "Name",
       "email": "Email",
       "subject": "Subject",
+      "subjectPlaceholder": "What's this about?",
       "message": "Message",
-      "submit": "Send Message",
+      "messagePlaceholder": "Write your message here...",
+      "submit": "Send message",
       "sending": "Sending...",
       "cooldown": "Please wait {{time}} before sending another message.",
       "ready": "Ready to send"
@@ -65,13 +111,20 @@
     "spamDetected": "Spam detected. If you are human, please refresh the page and try again.",
     "tooFastWarning": "Please take a moment before submitting the form.",
     "sendSuccess": "Your message has been sent successfully!",
-    "sendError": "Failed to send message. Please try again later."
+    "sendError": "Failed to send message. Please try again later.",
+    "copyError": "Could not copy automatically — please select the address and copy it."
   },
   "projectsInfo": {
     "title": "Projects",
+    "eyebrow": "Selected work",
+    "subtitle": "Things I built to learn something, to solve a problem, or both. Filter by stack.",
     "aria-label": "Main projects list",
+    "filterAll": "All",
+    "filterAria": "Filter projects by technology",
+    "resultCount": "{{count}} projects shown",
+    "featured": "Featured",
     "release": "Release",
-    "overlayImageAlt": "Project image",
+    "overlayImageAlt": "project screenshot",
     "vc": "View code",
     "viewGallery": "View gallery",
     "viewImage": "View image",
@@ -83,7 +136,7 @@
     "nextImage": "Next image",
     "project1": {
       "name": "MySongSet",
-      "desc": "Web application for organizing songs that I play on the guitar in playlists, using Spotify API integration and a minimalistic UI design, it helped me to not forget about the songs that I know, because I always end up playing the same 10 over and over.",
+      "desc": "Web application for organizing songs that I play on the guitar in playlists, using Spotify API integration and a minimalistic UI design. It helped me to not forget about the songs that I know, because I always end up playing the same 10 over and over.",
       "releaseYear": "2025"
     },
     "project2": {
@@ -123,30 +176,46 @@
     },
     "project9": {
       "name": "The Testcontainers",
-      "desc": "Learning about testcontainers integration in Spring Boot 4.0.2.",
+      "desc": "Learning about Testcontainers integration in Spring Boot 4.0.2.",
       "releaseYear": "2026"
-    }
+    },
+    "labTitle": "Lab",
+    "labSubtitle": "Small focused builds, each one exploring a single idea end to end."
   },
   "ts": {
     "title": "Tech Stack",
-    "aria-label": "Technology Grid"
+    "eyebrow": "Toolbox",
+    "subtitle": "The stack I reach for, grouped by what it actually does.",
+    "aria-label": "Technology Grid",
+    "groups": {
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "data": "Databases",
+      "infra": "Infra & Tools"
+    }
   },
   "ed": {
     "title": "Education",
+    "eyebrow": "Background",
+    "subtitle": "Formal education and the fundamentals behind the code.",
+    "current": "In progress",
+    "aria-label": "education",
     "aria-labelledBy": "education-title",
     "uni": {
-      "title": "Software Engineer student",
-      "institution": "Universidad de La Matanza",
+      "title": "Software Engineering student",
+      "institution": "Universidad Nacional de La Matanza",
       "yearIn": "2021",
       "yearOut": "In progress",
-      "description": "With 60% of the career completed and GPA of 8 out of 10, this career gives me a strong background in computer science, data structures, and algorithms with C, OOP with Java, as well as systems analysis, systems design and basic networking and cryptography knowledge."
+      "description": "Strong background in computer science: data structures and algorithms with C, and object-oriented programming with Java.\nSystems analysis and systems design, plus fundamentals of networking and cryptography.",
+      "fact1": "GPA 8/10",
+      "fact2": "60% completed"
     },
     "ap": {
       "title": "Fullstack software developer",
       "institution": "\"Argentina Programa\", provided by the National Ministry of Economy",
       "yearIn": "2022",
       "yearOut": "2023",
-      "description": "First stage completed where we learned OOP with Ruby and JS. On the other hand, I was not able to complete the second stage due to personal issues, which covered Angular, Java, and Spring Boot programming to create RESTful APIs and web applications, although I learned a lot of valuable knowledge."
+      "description": "Completed the first stage, covering object-oriented programming with Ruby and JavaScript.\nThe second stage covered Angular, Java and Spring Boot for RESTful APIs and web applications. I could not finish it due to personal issues, but took away a lot of valuable knowledge."
     }
   }
 }
