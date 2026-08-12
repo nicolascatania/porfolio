@@ -1,9 +1,8 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 
@@ -17,6 +16,10 @@ export const appConfig: ApplicationConfig = {
       useFactory: httpLoaderFactory,
       deps: [HttpClient],
     },
-  })]), provideAnimationsAsync()]
-  
+    // Without this, the first paint renders raw keys ("hero.title") until the
+    // MultiLangService effect calls use().
+    defaultLanguage: 'en',
+  })])]
+  // provideAnimationsAsync() is gone with Angular Material: nothing here
+  // declares an `animations` block, so the animations engine was dead weight.
 };

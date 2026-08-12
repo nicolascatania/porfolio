@@ -1,0 +1,63 @@
+.group-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgb(var(--accent));
+}
+
+.group-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgb(var(--hairline)), transparent);
+}
+
+.tech-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  min-width: 0;
+}
+
+.tech-tile img {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-tile span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.tech-tile:hover {
+  transform: translateY(-3px);
+  border-color: rgb(var(--accent) / 0.5);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.tech-tile:hover img {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+@media (min-width: 640px) {
+  .tech-tile {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 1.25rem 0.75rem;
+    text-align: center;
+  }
+
+  .tech-tile img {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}

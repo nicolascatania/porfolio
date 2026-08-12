@@ -1,0 +1,18 @@
+.fact-row {
+  padding-block: 0.85rem;
+  border-top: 1px solid rgb(var(--hairline));
+  min-width: 0;
+}
+
+.fact-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.fact-row:last-child {
+  padding-bottom: 0;
+}
+
+.fact-row dd {
+  overflow-wrap: anywhere;
+}

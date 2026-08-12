@@ -1,57 +1,36 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavBarComponent } from "./nav-bar/nav-bar.component";
-import { HeroComponent } from "./hero/hero.component";
-import { ProjectsComponent } from "./projects/projects.component";
-import { TechStackComponent } from "./tech-stack/tech-stack.component";
-import { EducationComponent } from "./education/education.component";
-import { AboutMeComponent } from "./about-me/about-me.component";
-import { FooterComponent } from "./footer/footer.component";
-import { CommonModule } from '@angular/common';
-import { DarkModeService } from './dark-mode.service';
+import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HeroComponent } from './hero/hero.component';
 import { ExperienceComponent } from './experience/experience.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { TechStackComponent } from './tech-stack/tech-stack.component';
+import { EducationComponent } from './education/education.component';
+import { AboutMeComponent } from './about-me/about-me.component';
+import { FooterComponent } from './footer/footer.component';
+import { ToastComponent } from './ui/toast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavBarComponent, HeroComponent, ExperienceComponent, ProjectsComponent, TechStackComponent, EducationComponent, AboutMeComponent, FooterComponent, CommonModule],
+  imports: [
+    TranslateModule,
+    NavBarComponent,
+    HeroComponent,
+    ExperienceComponent,
+    ProjectsComponent,
+    TechStackComponent,
+    EducationComponent,
+    AboutMeComponent,
+    FooterComponent,
+    ToastComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  // The artificial preloader that used to live here has been removed: it ran a
+  // fake progress bar on a timer for ~1.8s before revealing content that was
+  // already parsed, so it only ever added latency.
   title = 'porfolio';
-  isLoading = true;
-  progress = 0;
-  private progressTimer?: number;
-
-  darkModeService: DarkModeService = inject(DarkModeService);
-
-  ngOnInit(): void {
-    this.startPreloader();
-  }
-
-  private startPreloader(): void {
-    window.addEventListener('load', () => this.completePreloader());
-
-    this.progressTimer = window.setInterval(() => {
-      if (this.progress < 90) {
-        this.progress += 10;
-      }
-    }, 120);
-
-    setTimeout(() => this.completePreloader(), 1800);
-  }
-
-  private completePreloader(): void {
-    if (!this.isLoading) {
-      return;
-    }
-
-    if (this.progressTimer !== undefined) {
-      window.clearInterval(this.progressTimer);
-    }
-
-    this.progress = 100;
-    setTimeout(() => (this.isLoading = false), 250);
-  }
 }

@@ -1,17 +1,31 @@
-<section id="tech-stack" class="tech-grid mt-10 p-8 font-title scroll-m-32" [attr.aria-label]="'ts.aria-label' | translate">
-  <h2 class="text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800 dark:text-gray-100" appScrollAnimate="slide-down">
-    {{'ts.title' | translate}}
-  </h2>
-  
-  <div class="projects-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 sm:max-w-7xl max-w-6xl mx-auto">
-    @for(tech of technologies; track tech.id; let i = $index) {
-      <div class="tech-card bg-white rounded-lg shadow-md transition-shadow duration-200 p-4 flex flex-col items-center justify-center space-y-8 
-                  dark:bg-gray-700 dark:shadow-md" appScrollAnimate="zoom-in" [scrollAnimateDelay]="i * 80">
-        <img src="{{ tech.src }}" alt="{{ tech.name }} logo" loading="lazy" class="size-20">
-        <h3 class="tech-name text-xl font-semibold text-center text-gray-800 dark:text-gray-100">
-          {{ tech.name }}
-        </h3>
-      </div>
-    }
+<section id="tech-stack" class="section-shell" [attr.aria-label]="'ts.aria-label' | translate">
+  <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <app-section-heading
+      index="03"
+      eyebrowKey="ts.eyebrow"
+      titleKey="ts.title"
+      subtitleKey="ts.subtitle"
+    />
+
+    <div class="flex flex-col gap-10">
+      @for (group of groups; track group.labelKey; let g = $index) {
+        <div appScrollAnimate="up" [scrollAnimateDelay]="g * 90">
+          <div class="group-label">
+            <span>{{ group.labelKey | translate }}</span>
+            <span class="group-rule" aria-hidden="true"></span>
+            <span class="font-mono text-xs text-ink-faint">{{ group.items.length }}</span>
+          </div>
+
+          <ul class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            @for (tech of group.items; track tech.id) {
+              <li class="tech-tile surface-card">
+                <img [src]="tech.src" alt="" aria-hidden="true" loading="lazy" width="40" height="40" />
+                <span class="font-title text-sm font-semibold text-ink">{{ tech.name }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
   </div>
 </section>

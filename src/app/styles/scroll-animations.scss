@@ -1,106 +1,80 @@
-@keyframes fadeIn {
+/* ---------------------------------------------------------------------------
+   Scroll reveal system
+
+   Driven by ScrollAnimateDirective. Transition-based rather than keyframe-based
+   on purpose: the directive stages elements with `transition-delay`, which only
+   affects transitions — with @keyframes the delay was silently ignored and the
+   stagger never ran.
+
+   Only `opacity` and `transform` are animated (compositor-only, no layout).
+--------------------------------------------------------------------------- */
+
+$reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+$reveal-duration: 620ms;
+
+.reveal {
+  opacity: 0;
+  transition:
+    opacity $reveal-duration $reveal-ease,
+    transform $reveal-duration $reveal-ease;
+}
+
+.reveal--up     { transform: translate3d(0, 22px, 0); }
+.reveal--down   { transform: translate3d(0, -22px, 0); }
+.reveal--left   { transform: translate3d(-28px, 0, 0); }
+.reveal--right  { transform: translate3d(28px, 0, 0); }
+.reveal--zoom   { transform: scale(0.94); }
+.reveal--fade   { transform: none; }
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Promote only while the reveal is actually in flight; the directive strips
+   this class on transitionend so we don't keep layers alive forever. */
+.reveal.is-animating {
+  will-change: opacity, transform;
+}
+
+/* Safety net: if the directive never runs (JS error, no IntersectionObserver)
+   or the user prefers reduced motion, content must still be readable. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Hero entrance — plays on load, not on scroll.
+--------------------------------------------------------------------------- */
+@keyframes hero-enter {
   from {
     opacity: 0;
+    transform: translate3d(0, 18px, 0);
   }
   to {
     opacity: 1;
+    transform: none;
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+.hero-enter {
+  opacity: 0;
+  animation: hero-enter 700ms $reveal-ease forwards;
+}
+
+@for $i from 1 through 8 {
+  .hero-enter-#{$i} {
+    animation-delay: #{60 + ($i - 1) * 85}ms;
   }
-  to {
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter {
     opacity: 1;
-    transform: translateY(0);
+    animation: none;
   }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate {
-  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-.slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-}
-
-.slide-down {
-  animation: slideDown 0.8s ease-out forwards;
-}
-
-.slide-left {
-  animation: slideLeft 0.8s ease-out forwards;
-}
-
-.slide-right {
-  animation: slideRight 0.8s ease-out forwards;
-}
-
-.scale-in {
-  animation: scaleIn 0.8s ease-out forwards;
-}
-
-.zoom-in {
-  animation: zoomIn 0.8s ease-out forwards;
 }

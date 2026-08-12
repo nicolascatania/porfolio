@@ -1,34 +1,61 @@
-<section id="experience" class="experience-section p-8 sm:max-w-7xl max-w-6xl mt-10 mx-auto scroll-m-32">
-  
-  <h2 id="experience-title" class="font-title text-center text-3xl sm:text-5xl font-bold mb-8 text-slate-800 dark:text-gray-100" appScrollAnimate="slide-down">
-    {{'experience.title' | translate}}
-  </h2>
+<section id="experience" class="section-shell" [attr.aria-label]="'experience.aria-label' | translate">
+  <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+    <app-section-heading
+      index="01"
+      eyebrowKey="experience.eyebrow"
+      titleKey="experience.title"
+      subtitleKey="experience.subtitle"
+    />
 
-  @for(experience of experiences; track experience.id; let i = $index) {
-    <article class="experience-card grid md:flex my-7 p-4 gap-6 bg-white rounded-xl shadow-lg transition-shadow duration-200 overflow-hidden 
-                    dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-left" [scrollAnimateDelay]="i * 100">
-      
-      <div class="experience-content flex flex-col justify-between p-6 gap-4 md:p-8">
-        <header>
-          <p class="text-2xl md:text-3xl font-extrabold font-title text-gray-800 dark:text-gray-100 mb-2">
-            {{ experience.title | translate}}
-          </p>
+    <ol class="timeline">
+      @for (experience of experiences; track experience.id; let i = $index) {
+        <li class="timeline-item" appScrollAnimate="up" [scrollAnimateDelay]="i * 90">
+          <span class="timeline-node" [class.is-current]="experience.current" aria-hidden="true"></span>
 
-          <div class="sm:flex-row flex-col items-center justify-between lg:w-auto">
-            <p class="text-base lg:text-2xl font-title font-semibold text-gray-700 dark:text-gray-200">
-              {{ experience.institution | translate}}
-            </p>
-            <p class="lg:text-lg text-xs text-gray-600 dark:text-gray-400 font-title mt-1">
-              ({{ experience.yearIn | translate}} - {{ experience.yearOut | translate }})
-            </p>
-          </div>
-        </header>
+          <article class="surface-card timeline-card">
+            <header class="flex flex-col gap-3">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span class="font-mono text-xs text-ink-faint">
+                  {{ experience.yearIn | translate }} — {{ experience.yearOut | translate }}
+                </span>
+                @if (experience.current) {
+                  <span class="badge-current">
+                    <span class="badge-dot" aria-hidden="true"></span>
+                    {{ 'experience.current' | translate }}
+                  </span>
+                }
+              </div>
 
-        <p class="expercience-description text-gray-600 lg:text-xl text-sm font-body dark:text-gray-300" 
-           [innerHTML]="experience.description | translate | highlightKeywords:highlightedKeywords">
-        </p>
-      </div>
+              <h3 class="font-title text-xl font-bold leading-snug text-ink sm:text-2xl">
+                {{ experience.title | translate }}
+              </h3>
 
-    </article>
-  }
+              <p class="flex items-center gap-2 font-title text-base font-semibold text-accent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4 shrink-0" aria-hidden="true">
+                  <path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h.01M15 17h.01" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {{ experience.institution | translate }}
+              </p>
+            </header>
+
+            <!-- One <li> per source line. These used to collapse into a single
+                 paragraph because "\n" is whitespace in HTML. -->
+            <ul class="achievement-list prose-body">
+              @for (line of (experience.description | translate | splitLines); track $index) {
+                <li [innerHTML]="line | highlightKeywords: highlightedKeywords"></li>
+              }
+            </ul>
+
+            @if (experience.stack?.length) {
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (tech of experience.stack; track tech) {
+                  <span class="chip">{{ tech }}</span>
+                }
+              </div>
+            }
+          </article>
+        </li>
+      }
+    </ol>
+  </div>
 </section>

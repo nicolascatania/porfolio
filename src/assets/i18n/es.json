@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Ir al contenido"
+  },
   "navbar": {
     "projects": "Proyectos",
     "techStack": "Tecnologías",
@@ -6,72 +9,122 @@
     "about": "Sobre Mí",
     "contact": "Contacto",
     "experience": "Experiencia",
-    "settings": "Configuración"
+    "settings": "Configuración",
+    "menu": "Menú",
+    "role": "Desarrollador Backend",
+    "aria": "Navegación principal",
+    "home": "Volver al inicio",
+    "languageAria": "Idioma",
+    "themeAria": "Cambiar modo oscuro",
+    "menuAria": "Abrir menú",
+    "closeMenuAria": "Cerrar menú"
+  },
+  "hero": {
+    "title": "Desarrollador Java Backend | Estudiante de Ingeniería Informática",
+    "eyebrow": "Buenos Aires, Argentina",
+    "building": "Trabajando con",
+    "summary": "Construyo y modernizo sistemas backend con Java y Spring Boot.",
+    "viewWork": "Ver mi trabajo",
+    "cv": "Descargar CV",
+    "contact": "Contacto",
+    "currentlyAt": "Actualmente en",
+    "scroll": "Scroll",
+    "scrollAria": "Ir a experiencia laboral",
+    "actionsAria": "Acciones principales",
+    "imgAlt": "Nicolas Catania - Foto de perfil",
+    "figCaption": "Foto de perfil de Nicolás Catania",
+    "aria-label": "presentación-principal",
+    "aria-labelledBy": "nombre-ocupación",
+    "experienceYear": "{{years}}+ año de experiencia profesional",
+    "experienceYears": "{{years}}+ años de experiencia profesional",
+    "experienceMonths": "{{months}} meses de experiencia profesional"
   },
   "experience": {
     "title": "Experiencia laboral",
+    "eyebrow": "Trayectoria",
+    "subtitle": "Donde vengo escribiendo código en producción.",
+    "current": "Actual",
     "aria-label": "experiencia-laboral",
     "aria-labelledBy": "experiencia-laboral",
     "netOne": {
       "title": "Desarrollador Web Full Stack",
       "institution": "NetOne",
-      "yearIn": "Marzo, 2025",
-      "yearOut": "En curso",
-      "description": "Desarrollo de funcionalidades de un ERP, migrando módulos en Java puro hacia una arquitectura moderna con Spring, Angular y MySQL.\nTrabajo tanto en frontend como backend, aplicando Clean Code y buenas prácticas de documentación.\nOptimización de consultas SQL y algoritmos internos, logrando mejoras de rendimiento y escalabilidad en procesos críticos.\nReducción de un proceso masivo de documentos de ~10 minutos a menos de 1 minuto, reformulando su acceso a datos y procesando después los documentos en lotes paralelos con virtual threads de Java 21.\nConsumo de APIs externas de marketplace y pagos (MercadoLibre, Mercado Pago, Tiendanube).\nContribución de manera autónoma, gestionando tareas completas de principio a fin, desde el análisis hasta la entrega.\nCreación de API REST pública con JWT, documentada con OpenAPI/Swagger.\nTesting con Cypress y Junit + Mockito."
+      "yearIn": "Marzo 2025",
+      "yearOut": "Actualidad",
+      "description": "Desarrollo de funcionalidades de un ERP, migrando módulos en Java puro hacia una arquitectura moderna con Spring Boot, Angular y MySQL.\nReducción de un proceso masivo de documentos de ~10 minutos a menos de 1 minuto, reformulando su acceso a datos y procesando después los documentos en lotes paralelos con virtual threads de Java 21.\nOptimización de consultas SQL y algoritmos internos, logrando mejoras de rendimiento y escalabilidad en procesos críticos.\nCreación de API REST pública con JWT, documentada con OpenAPI/Swagger.\nConsumo de APIs externas de marketplace y pagos (MercadoLibre, Mercado Pago, Tiendanube).\nTrabajo tanto en frontend como backend, aplicando Clean Code y buenas prácticas de documentación.\nContribución de manera autónoma, gestionando tareas completas de principio a fin, desde el análisis hasta la entrega.\nTesting con Cypress, JUnit y Mockito."
     }
   },
-  "hero": {
-    "title": "Desarrollador Java Backend | Estudiante de Ingeniería Informática",
-    "contact": "Contacto",
-    "imgAlt": "Nicolas Catania - Foto de perfil",
-    "figCaption": "Foto de perfil de Nicolás Catania",
-    "aria-label": "presentación-principal",
-    "aria-labelledBy": "nombre-ocupación"
-  },
   "about": {
-    "aria-label": "sección-sobre-mí",
     "title": "Sobre Mí",
-    "paragraph": "Soy Nicolás Martín Catania. Trabajo como desarrollador web full stack en NetOne y estudio Ingeniería en Informática en la Universidad de La Matanza. Por otro lado, disfruto tocar la guitarra, ir al gimnasio, aprender nuevos idiomas, seguir aprendiendo y mejorando continuamente."
+    "eyebrow": "Quién soy",
+    "aria-label": "sección-sobre-mí",
+    "paragraph": "Soy Nicolás Martín Catania. Trabajo como desarrollador web full stack en NetOne y estudio Ingeniería en Informática en la Universidad Nacional de La Matanza. Por otro lado, disfruto tocar la guitarra, ir al gimnasio, aprender nuevos idiomas, seguir aprendiendo y mejorando continuamente.",
+    "quickFacts": "Datos rápidos",
+    "facts": {
+      "locationLabel": "Ubicación",
+      "location": "Buenos Aires, Argentina",
+      "timezoneLabel": "Zona horaria",
+      "timezone": "UTC−3 (sin horario de verano)",
+      "languagesLabel": "Idiomas",
+      "languages": "Español (nativo) · Inglés (C1)",
+      "focusLabel": "Enfoque",
+      "focus": "Java · Spring Boot · APIs REST",
+      "currentlyLabel": "Actualmente",
+      "currently": "Full Stack Developer en NetOne"
+    }
   },
   "contactInfo": {
-    "title": "Contactame",
-    "subtitle": "Envía un mensaje y te respondo lo antes posible.",
+    "title": "Construyamos algo",
+    "eyebrow": "Contacto",
+    "subtitle": "Enviame un mensaje y te respondo lo antes posible.",
     "emailLabel": "Email",
-    "copy": "@2025 Nicolas Martin Catania. Todos los derechos reservados.",
+    "elsewhere": "En otros lados",
+    "builtWith": "Hecho con Angular + Tailwind",
+    "backToTop": "Volver arriba",
+    "copy": "© 2026 Nicolas Martin Catania. Todos los derechos reservados.",
     "aria-label": "contactame",
-    "copyAlt": "Copiar email",
-    "copyButton": "Copiar email",
+    "copyAlt": "Copiar dirección de email",
+    "copyButton": "Copiar",
     "copySuccess": "¡Correo copiado al portapapeles exitosamente!",
-    "securityNote": "Este formulario incluye validaciones adicionales y protección anti-spam para envíos más seguros.",
-    "cooldownInfo": "Por favor espera al menos 10 minutos antes de enviar otro mensaje.",
+    "securityNote": "Datos validados con honeypot y límite de envíos. La entrega corre por EmailJS.",
+    "cooldownInfo": "Por favor esperá al menos 10 minutos antes de enviar otro mensaje.",
     "form": {
       "name": "Nombre",
       "email": "Email",
       "subject": "Asunto",
+      "subjectPlaceholder": "¿De qué se trata?",
       "message": "Mensaje",
+      "messagePlaceholder": "Escribí tu mensaje acá...",
       "submit": "Enviar mensaje",
       "sending": "Enviando...",
-      "cooldown": "Espera {{time}} antes de enviar otro mensaje.",
+      "cooldown": "Esperá {{time}} antes de enviar otro mensaje.",
       "ready": "Listo para enviar"
     },
     "validation": {
       "required": "Este campo es obligatorio.",
-      "minLength": "Por favor ingresa al menos {{min}} caracteres.",
-      "maxLength": "Por favor ingresa como máximo {{max}} caracteres.",
-      "email": "Por favor ingresa una dirección de email válida.",
-      "invalidFormat": "Utiliza solo letras y espacios."
+      "minLength": "Por favor ingresá al menos {{min}} caracteres.",
+      "maxLength": "Por favor ingresá como máximo {{max}} caracteres.",
+      "email": "Por favor ingresá una dirección de email válida.",
+      "invalidFormat": "Utilizá solo letras y espacios."
     },
-    "cooldownMessage": "Por favor espera {{time}} antes de enviar otro mensaje.",
-    "spamDetected": "Se detectó spam. Si sos humano, recarga la página y volvé a intentarlo.",
-    "tooFastWarning": "Por favor espera un momento antes de enviar el formulario.",
-    "sendSuccess": "¡Tu mensaje ha sido enviado exitosamente!",
-    "sendError": "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
+    "cooldownMessage": "Por favor esperá {{time}} antes de enviar otro mensaje.",
+    "spamDetected": "Se detectó spam. Si sos humano, recargá la página y volvé a intentarlo.",
+    "tooFastWarning": "Por favor esperá un momento antes de enviar el formulario.",
+    "sendSuccess": "¡Tu mensaje fue enviado exitosamente!",
+    "sendError": "Error al enviar el mensaje. Por favor, intentá de nuevo más tarde.",
+    "copyError": "No se pudo copiar automáticamente — seleccioná la dirección y copiala."
   },
   "projectsInfo": {
     "title": "Proyectos",
-    "aria-label": "MySongSet",
+    "eyebrow": "Trabajo seleccionado",
+    "subtitle": "Cosas que construí para aprender algo, para resolver un problema, o ambas. Filtrá por stack.",
+    "aria-label": "Lista principal de proyectos",
+    "filterAll": "Todos",
+    "filterAria": "Filtrar proyectos por tecnología",
+    "resultCount": "{{count}} proyectos visibles",
+    "featured": "Destacado",
     "release": "Lanzamiento",
-    "overlayImageAlt": "Imagen del proyecto",
+    "overlayImageAlt": "captura del proyecto",
     "vc": "Ver código",
     "viewGallery": "Ver galería",
     "viewImage": "Ver imagen",
@@ -93,12 +146,12 @@
     },
     "project3": {
       "name": "Simulación de batallas en Java",
-      "desc": "Proyecto final desarrollado en grupo para una asignatura de programación avanzada. Aplicación de consola construida en Java utilizando muchos patrones de diseño, con una pequeña conexión a Prolog. Simula una batalla por turnos entre magos y mortifagos.",
+      "desc": "Proyecto final desarrollado en grupo para una asignatura de programación avanzada. Aplicación de consola construida en Java utilizando muchos patrones de diseño, con una pequeña conexión a Prolog. Simula una batalla por turnos entre magos y mortífagos.",
       "releaseYear": "2024"
     },
     "project4": {
       "name": "BudgetKing",
-      "desc": "Aplicación web a modo \"Tracker de finanzas\" diseñada para uso personal y con propósitos de aprendizaje, desarrollada con Java, Spring, Angular y una base de datos MySQL dockerizada. Permite llevar la cuenta de gastos y ganancias, agruparlos por categoría y cuenta de gasto, todo filtrado por fecha, e incluye dashboards para una visualización rápida de datos. Implementa CI/CD de manera básica y tests unitarios y de integración.",
+      "desc": "Aplicación web a modo \"tracker de finanzas\" diseñada para uso personal y con propósitos de aprendizaje, desarrollada con Java, Spring, Angular y una base de datos MySQL dockerizada. Permite llevar la cuenta de gastos y ganancias, agruparlos por categoría y cuenta de gasto, todo filtrado por fecha, e incluye dashboards para una visualización rápida de datos. Implementa CI/CD de manera básica y tests unitarios y de integración.",
       "releaseYear": "2026"
     },
     "project5": {
@@ -123,30 +176,46 @@
     },
     "project9": {
       "name": "The Testcontainers",
-      "desc": "Aprendiendo sobre integración de testcontainers en Spring Boot 4.0.2.",
+      "desc": "Aprendiendo sobre integración de Testcontainers en Spring Boot 4.0.2.",
       "releaseYear": "2026"
-    }
+    },
+    "labTitle": "Laboratorio",
+    "labSubtitle": "Proyectos chicos y enfocados, cada uno explorando una sola idea de punta a punta."
   },
   "ts": {
     "title": "Tecnologías",
-    "aria-label": "Grilla de tecnologías"
+    "eyebrow": "Herramientas",
+    "subtitle": "El stack que uso, agrupado por lo que realmente hace.",
+    "aria-label": "Grilla de tecnologías",
+    "groups": {
+      "languages": "Lenguajes",
+      "frameworks": "Frameworks",
+      "data": "Bases de datos",
+      "infra": "Infra y herramientas"
+    }
   },
   "ed": {
     "title": "Educación",
+    "eyebrow": "Formación",
+    "subtitle": "Educación formal y los fundamentos detrás del código.",
+    "current": "En curso",
+    "aria-label": "educación",
     "aria-labelledBy": "titulo-formación-académica",
     "uni": {
       "title": "Estudiante de Ingeniería en Informática",
-      "institution": "Universidad de La Matanza",
+      "institution": "Universidad Nacional de La Matanza",
       "yearIn": "2021",
       "yearOut": "En curso",
-      "description": "Con el 60% de la carrera completada y un promedio de 8 sobre 10, esta carrera me brinda una sólida formación en ciencias de la computación, estructuras de datos y algoritmos con C, programación orientada a objetos con Java, así como análisis y diseño de sistemas y conocimientos básicos de redes y criptografía."
+      "description": "Sólida formación en ciencias de la computación: estructuras de datos y algoritmos con C, y programación orientada a objetos con Java.\nAnálisis y diseño de sistemas, más fundamentos de redes y criptografía.",
+      "fact1": "Promedio 8/10",
+      "fact2": "60% completado"
     },
     "ap": {
       "title": "Desarrollador Fullstack",
       "institution": "\"Argentina Programa\", provisto por el Ministerio de Economía de la Nación",
       "yearIn": "2022",
       "yearOut": "2023",
-      "description": "Completé la primera etapa donde aprendimos POO con Ruby y JS. Por otro lado, la segunda parte abarcaba Angular, Java y Spring Boot para crear APIs RESTful y aplicaciones web, por problemas personales no pude concluir el proyecto final aunque aprendí muchos conocimientos valiosos."
+      "description": "Completé la primera etapa, donde aprendimos programación orientada a objetos con Ruby y JavaScript.\nLa segunda etapa abarcaba Angular, Java y Spring Boot para crear APIs RESTful y aplicaciones web. Por problemas personales no pude concluir el proyecto final, aunque aprendí muchos conocimientos valiosos."
     }
   }
 }

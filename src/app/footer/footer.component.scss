@@ -1,46 +1,212 @@
-.form-input {
-  width: 100%;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(15, 23, 42, 0.75);
+/* The footer is deliberately dark in both themes: it anchors the page and
+   closes the scroll. Values are literal rather than token-based for that
+   reason — this surface does not follow the light/dark swap. */
+
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #050b16;
   color: #f8fafc;
-  padding: 0.9rem 1rem;
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.form-input:focus {
-  border-color: rgba(56, 189, 248, 0.9);
-  background: rgba(15, 23, 42, 0.95);
+.footer-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  z-index: 0;
+  width: min(60rem, 120vw);
+  height: min(40rem, 80vh);
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgb(17 157 164 / 0.22) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-.btn-primary {
+.footer-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6adfe7;
+}
+
+.footer-eyebrow::before {
+  content: '';
+  width: 1.6rem;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.6;
+}
+
+.footer-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  border: 1px solid rgb(255 255 255 / 0.09);
+  border-radius: 1.5rem;
+  background-color: rgb(255 255 255 / 0.035);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 640px) {
+  .footer-card {
+    padding: 2rem;
+  }
+}
+
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 0.85rem;
+  background-color: rgb(17 157 164 / 0.16);
+  border: 1px solid rgb(17 157 164 / 0.35);
+  color: #6adfe7;
+}
+
+/* ── Buttons / links ───────────────────────────────────────────────────── */
+
+.copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0 0.9rem;
   border-radius: 9999px;
-  background: #06b6d4;
-  color: #0f172a;
-  font-weight: 700;
-  padding: 0.95rem 1.6rem;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  background-color: rgb(255 255 255 / 0.05);
+  color: #e2e8f0;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.btn-primary:hover:not(:disabled) {
-  background: #22d3ee;
-  transform: translateY(-1px);
+.copy-button:hover {
+  background-color: rgb(17 157 164 / 0.18);
+  border-color: rgb(17 157 164 / 0.55);
+  color: #a2eef2;
 }
 
-.btn-primary:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background-color: rgb(255 255 255 / 0.04);
+  color: #e2e8f0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease,
+              border-color 0.2s ease, color 0.2s ease;
 }
 
-.contact-intro {
-  min-height: 100%;
+.social-link:hover {
+  transform: translateY(-2px);
+  border-color: rgb(17 157 164 / 0.55);
+  background-color: rgb(17 157 164 / 0.14);
+  color: #ffffff;
 }
 
-@media (max-width: 1024px) {
-  .contact-intro,
-  .contact-form {
-    padding: 1.5rem;
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  color: #cbd5e1;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease, border-color 0.2s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  color: #6adfe7;
+  border-color: rgb(17 157 164 / 0.55);
+}
+
+/* ── Form ──────────────────────────────────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background-color: rgb(2 6 16 / 0.6);
+  color: #f8fafc;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #64748b;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #2fc7d3;
+  background-color: rgb(2 6 16 / 0.85);
+  box-shadow: 0 0 0 3px rgb(17 157 164 / 0.22);
+}
+
+.field input.invalid,
+.field textarea.invalid {
+  border-color: rgb(251 113 133 / 0.7);
+}
+
+.field input.invalid:focus,
+.field textarea.invalid:focus {
+  box-shadow: 0 0 0 3px rgb(251 113 133 / 0.2);
+}
+
+/* Errors sit directly under their field, not collected at the top. */
+.field-error {
+  font-size: 0.8rem;
+  color: #fda4af;
+}
+
+.spinner {
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 9999px;
+  border: 2px solid rgb(6 43 48 / 0.35);
+  border-top-color: #062b30;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.6s;
   }
 }

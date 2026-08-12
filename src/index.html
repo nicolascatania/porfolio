@@ -2,12 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Nicolas Catania Porfolio</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Nicolas Catania — Java Backend Developer</title>
+  <meta name="description" content="Portfolio of Nicolas Catania, Java backend developer working with Spring Boot, REST APIs, PostgreSQL and distributed systems. Software Engineering student based in Argentina.">
+  <meta name="author" content="Nicolas Martin Catania">
+  <link rel="canonical" href="https://nicolascatania.vercel.app/">
+
+  <!-- Matches the surface-base token in each theme so the browser chrome
+       does not flash a mismatched colour on mobile. -->
+  <meta name="theme-color" content="#edf1f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nicolas Catania — Java Backend Developer">
+  <meta property="og:description" content="Java backend developer working with Spring Boot, REST APIs, PostgreSQL and distributed systems.">
+  <!-- Social cards must be JPEG/PNG. LinkedIn and X do not reliably render
+       WebP previews, so this stays a JPEG even though the page itself is
+       fully WebP. Regenerate with `npm run og`. -->
+  <meta property="og:image" content="https://nicolascatania.vercel.app/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Nicolas Catania — Java Backend Developer">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_AR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nicolas Catania — Java Backend Developer">
+  <meta name="twitter:description" content="Java backend developer working with Spring Boot, REST APIs, PostgreSQL and distributed systems.">
+  <meta name="twitter:image" content="https://nicolascatania.vercel.app/assets/images/og-image.jpg">
+
   <link rel="icon" type="image/x-icon" href="favicon.jpg">
+
+  <!-- Fonts were previously @imported from styles.scss, which serialises the
+       request behind the CSS bundle. Preconnect + link parallelises it. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300..600;1,400&family=Montserrat:wght@500;600;700;800&display=swap">
+
+  <!-- Preload the LCP image: the hero portrait. -->
+  <link rel="preload" as="image" href="assets/images/pfoto.webp" fetchpriority="high">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nicolas Martin Catania",
+      "jobTitle": "Java Backend Developer",
+      "email": "mailto:devcatania@gmail.com",
+      "nationality": "Argentina",
+      "url": "https://nicolascatania.vercel.app/",
+      "sameAs": [
+        "https://github.com/nicolascatania",
+        "https://www.linkedin.com/in/ncatania1"
+      ],
+      "knowsAbout": ["Java", "Spring Boot", "REST APIs", "PostgreSQL", "MySQL", "Microservices", "Angular"]
+    }
+  </script>
+
+  <script>
+    // Apply the stored theme before first paint. Without this, dark-mode users
+    // get a white flash while Angular boots and DarkModeService catches up.
+    (function () {
+      try {
+        var stored = localStorage.getItem('darkMode');
+        var dark = stored === null
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : JSON.parse(stored);
+        if (dark) { document.documentElement.classList.add('dark'); }
+      } catch (e) { /* private mode — fall through to light */ }
+    })();
+  </script>
 </head>
-<body class="mat-typography">
+<body>
   <app-root></app-root>
 </body>
 </html>

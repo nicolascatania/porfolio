@@ -1,20 +1,41 @@
 import { Component } from '@angular/core';
-import { HighlightKeywordsPipe } from '../highlight-keywords.pipe'; 
 import { TranslateModule } from '@ngx-translate/core';
 import { Education } from '../../models/Education';
+import { HighlightKeywordsPipe } from '../highlight-keywords.pipe';
+import { SplitLinesPipe } from '../split-lines.pipe';
 import { ScrollAnimateDirective } from '../directives/scroll-animate.directive';
-
+import { SectionHeadingComponent } from '../ui/section-heading.component';
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [HighlightKeywordsPipe, TranslateModule, ScrollAnimateDirective],
+  imports: [
+    TranslateModule,
+    HighlightKeywordsPipe,
+    SplitLinesPipe,
+    ScrollAnimateDirective,
+    SectionHeadingComponent,
+  ],
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss'],
 })
 export class EducationComponent {
-  highlightedKeywords: string[] = ['Estructuras de datos', 'Algoritmos','Analisis', 'Diseño', 'Sistemas','RESTful', 'Java', 'Spring', 'Angular', 'Algorithms', 'Data structures', 'C', 'API', 'Backend', 'Systems analysis', 'design'];
-
+  highlightedKeywords: string[] = [
+    'Estructuras de datos',
+    'Algoritmos',
+    'Data structures',
+    'Algorithms',
+    'RESTful',
+    'Java',
+    'Spring Boot',
+    'Spring',
+    'Angular',
+    'Ruby',
+    'JS',
+    'C',
+    'API',
+    'Backend',
+  ];
 
   educations: Education[] = [
     {
@@ -23,7 +44,9 @@ export class EducationComponent {
       institution: 'ed.uni.institution',
       yearIn: 'ed.uni.yearIn',
       yearOut: 'ed.uni.yearOut',
-      description: 'ed.uni.description'
+      description: 'ed.uni.description',
+      facts: ['ed.uni.fact1', 'ed.uni.fact2'],
+      current: true,
     },
     {
       id: 2,
@@ -31,7 +54,7 @@ export class EducationComponent {
       institution: 'ed.ap.institution',
       yearIn: 'ed.ap.yearIn',
       yearOut: 'ed.ap.yearOut',
-      description: 'ed.ap.description'
+      description: 'ed.ap.description',
     },
   ];
 }

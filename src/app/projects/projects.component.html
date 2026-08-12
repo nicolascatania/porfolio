@@ -1,90 +1,204 @@
-<section id="projects" class="projects mt-10 p-4  scroll-m-32 dark:bg-gray-800" [attr.aria-label]="'projectsInfo.aria-label' | translate">
-  <section class="projects-container p-4 sm:max-w-7xl mx-auto">
-    <h1 class="projects-title text-center text-3xl sm:text-5xl font-title font-bold mb-8 text-slate-800 dark:text-white" appScrollAnimate="slide-down">{{'projectsInfo.title' | translate}}</h1>
-    
-    @for(project of projects; track project.id; let i = $index) {
-      <article class="project-card grid md:grid-cols-2 my-7 gap-6 bg-white rounded-xl shadow-lg overflow-hidden 
-dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay]="i * 100">
-  <figure class="project-image md:order-1 relative overflow-hidden group">
-    <button
-      type="button"
-      class="block w-full h-full text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-primaryBlue/60"
-      (click)="openModal(project.imageSrcs)"
-      [attr.aria-label]="(project.imageSrcs.length > 1 ? 'projectsInfo.viewGallery' : 'projectsInfo.viewImage') | translate"
+<section id="projects" class="section-shell section-shell--alt" [attr.aria-label]="'projectsInfo.aria-label' | translate">
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-8">
+    <app-section-heading
+      index="02"
+      eyebrowKey="projectsInfo.eyebrow"
+      titleKey="projectsInfo.title"
+      subtitleKey="projectsInfo.subtitle"
+    />
+
+    <!-- ── Filter ───────────────────────────────────────────────────────── -->
+    <div
+      class="mb-8 flex flex-wrap gap-2"
+      role="group"
+      [attr.aria-label]="'projectsInfo.filterAria' | translate"
+      appScrollAnimate="fade"
     >
-      <img
-        src={{project.imageSrcs[0]}}
-        alt="{{ project.name | translate }} project screenshot"
-        loading="lazy"
-        class="w-full h-64 object-cover sm:h-full transition-transform duration-300 ease group-hover:scale-105"
+      <button
+        type="button"
+        class="filter-chip"
+        [class.active]="activeFilter() === null"
+        [attr.aria-pressed]="activeFilter() === null"
+        (click)="setFilter(null)"
       >
+        {{ 'projectsInfo.filterAll' | translate }}
+        <span class="filter-count">{{ projects.length }}</span>
+      </button>
 
-      <div class="gallery-scrim absolute inset-0 flex items-center justify-center gap-2 bg-black/0 group-hover:bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 ease">
-        <span class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-gray-900/90 text-gray-800 dark:text-gray-100 text-sm font-body font-semibold shadow-lg -translate-y-1 group-hover:translate-y-0 transition-transform duration-300 ease">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4 shrink-0" aria-hidden="true">
-            <rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect>
-            <circle cx="9" cy="9.5" r="1.6" fill="currentColor" stroke="none"></circle>
-            <path d="M4 16.5l5-5 3.5 3.5 2.5-2.5L20 17" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          {{ (project.imageSrcs.length > 1 ? 'projectsInfo.viewGallery' : 'projectsInfo.viewImage') | translate }}
-        </span>
-      </div>
-
-      @if(project.imageSrcs.length > 1){
-        <span class="gallery-badge absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/60 backdrop-blur-sm text-white text-xs font-body font-semibold shadow-md">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-3.5 h-3.5 shrink-0" aria-hidden="true">
-            <rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect>
-            <circle cx="9" cy="9.5" r="1.6" fill="currentColor" stroke="none"></circle>
-            <path d="M4 16.5l5-5 3.5 3.5 2.5-2.5L20 17" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          <span>{{ project.imageSrcs.length }}</span>
-        </span>
+      @for (filter of filters; track filter) {
+        <button
+          type="button"
+          class="filter-chip"
+          [class.active]="activeFilter() === filter"
+          [attr.aria-pressed]="activeFilter() === filter"
+          (click)="setFilter(filter)"
+        >
+          {{ filter }}
+        </button>
       }
-    </button>
-  </figure>
+    </div>
 
-  <div class="project-content flex flex-col justify-between p-6 md:p-8 sm:gap-8">
-    <div class="space-y-4">
-      <header>
-        <h2 class="project-name text-2xl sm:text-3xl font-bold font-title text-gray-800 dark:text-gray-100 mb-2">
-          {{ project.name | translate}}
-        </h2>
-        <div class="tech-list flex flex-wrap gap-2 mb-4">
-          <div class="flex items-center gap-3 mt-2">
-            @for(tech of project.technologies; track tech.id) {
-              <img src="{{ tech.src }}" alt="{{ tech.name }} logo" loading="lazy" class="w-6 h-6 sm:w-10 sm:h-10" title="{{ tech.name }}">
+    <p class="sr-only" role="status" aria-live="polite">
+      {{ 'projectsInfo.resultCount' | translate: { count: visibleCount() } }}
+    </p>
+
+    <!-- ── Grid ─────────────────────────────────────────────────────────── -->
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      @for (project of visibleProjects(); track project.id; let i = $index) {
+        <article
+          class="project-card surface-card"
+          appScrollAnimate="up"
+          [scrollAnimateDelay]="(i % 3) * 90"
+        >
+          <!-- Thumbnail opens the gallery -->
+          <button
+            type="button"
+            class="project-thumb"
+            (click)="openModal(project.imageSrcs)"
+            [attr.aria-label]="
+              ((project.imageSrcs.length > 1 ? 'projectsInfo.viewGallery' : 'projectsInfo.viewImage') | translate) +
+              ' — ' + (project.name | translate)
+            "
+          >
+            <img
+              [src]="project.imageSrcs[0]"
+              alt="{{ project.name | translate }} — {{ 'projectsInfo.overlayImageAlt' | translate }}"
+              loading="lazy"
+              decoding="async"
+              width="640"
+              height="360"
+            />
+
+            <span class="project-scrim" aria-hidden="true">
+              <span class="project-scrim-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4 shrink-0">
+                  <rect x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+                  <circle cx="9" cy="9.5" r="1.6" fill="currentColor" stroke="none" />
+                  <path d="M4 16.5l5-5 3.5 3.5 2.5-2.5L20 17" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {{ (project.imageSrcs.length > 1 ? 'projectsInfo.viewGallery' : 'projectsInfo.viewImage') | translate }}
+              </span>
+            </span>
+
+            @if (project.imageSrcs.length > 1) {
+              <span class="gallery-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-3.5 w-3.5 shrink-0" aria-hidden="true">
+                  <rect x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+                  <circle cx="9" cy="9.5" r="1.6" fill="currentColor" stroke="none" />
+                  <path d="M4 16.5l5-5 3.5 3.5 2.5-2.5L20 17" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {{ project.imageSrcs.length }}
+              </span>
             }
+
+            @if (isFeatured(project)) {
+              <span class="featured-badge">{{ 'projectsInfo.featured' | translate }}</span>
+            }
+          </button>
+
+          <!-- Body -->
+          <div class="flex flex-1 flex-col p-5 sm:p-6">
+            <div class="mb-2 flex items-center justify-between gap-3">
+              <h3 class="font-title text-lg font-bold leading-tight text-ink sm:text-xl">
+                {{ project.name | translate }}
+              </h3>
+              <span class="shrink-0 font-mono text-xs text-ink-faint">
+                {{ project.releaseYear | translate }}
+              </span>
+            </div>
+
+            <p
+              class="project-description prose-body text-sm leading-relaxed text-ink-muted"
+              [innerHTML]="project.description | translate | highlightKeywords: highlightedKeywords"
+            ></p>
+
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              @for (tech of project.technologies; track tech.id) {
+                <span class="chip">
+                  <img [src]="tech.src" alt="" aria-hidden="true" loading="lazy" />
+                  {{ tech.name }}
+                </span>
+              }
+            </div>
+
+            <a
+              [href]="project.githubLink"
+              class="repo-link mt-5"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="('projectsInfo.vc' | translate) + ' — ' + (project.name | translate)"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 shrink-0" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.72c-2.78.62-3.37-1.37-3.37-1.37-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.818c0 .27.18.6.69.49A10.03 10.03 0 0022 12.25C22 6.58 17.52 2 12 2z" />
+              </svg>
+              {{ 'projectsInfo.vc' | translate }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="repo-arrow h-3.5 w-3.5" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
           </div>
+        </article>
+      }
+    </div>
+
+    <!-- ── Lab ──────────────────────────────────────────────────────────── -->
+    @if (visibleLabProjects().length) {
+      <div class="mt-16" appScrollAnimate="up">
+        <div class="lab-header">
+          <h3 class="font-mono text-xs uppercase tracking-eyebrow text-accent">
+            {{ 'projectsInfo.labTitle' | translate }}
+          </h3>
+          <span class="lab-rule" aria-hidden="true"></span>
+          <span class="font-mono text-xs text-ink-faint">{{ visibleLabProjects().length }}</span>
         </div>
-      </header>
-      <p class="project-description text-gray-600 sm:text-xl font-body leading-relaxed dark:text-gray-300" 
-         [innerHTML]="project.description | translate | highlightKeywords:highlightedKeywords">
-      </p>
-    </div>
 
-    <div class="project-actions mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-      <span class="text-sm text-gray-500 dark:text-gray-400 font-body break-words min-w-0">
-        {{ project.releaseYear | translate }}
-      </span>
-      <a 
-        href={{project.githubLink}} 
-        class="github-btn flex items-center gap-2 px-4 py-2 sm:px-8 sm:py-4 bg-primaryBlue text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Open project GitHub repository"
-      >
-        <img src="assets/icons/github-icon.svg" alt="GitHub link icon" loading="lazy" class="w-7 h-7">
-        <span class="text-black dark:text-white font-body">{{'projectsInfo.vc' | translate}}</span>
-      </a>
-    </div>
-  </div>
-</article>
+        <p class="mt-3 max-w-2xl text-sm text-ink-muted">
+          {{ 'projectsInfo.labSubtitle' | translate }}
+        </p>
 
+        <ul class="mt-6 grid gap-3 md:grid-cols-2">
+          @for (project of visibleLabProjects(); track project.id; let i = $index) {
+            <li>
+              <a
+                [href]="project.githubLink"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="lab-item surface-card"
+                appScrollAnimate="up"
+                [scrollAnimateDelay]="(i % 2) * 70"
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <h4 class="font-title text-base font-bold text-ink">
+                    {{ project.name | translate }}
+                  </h4>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lab-arrow h-4 w-4 shrink-0 text-ink-faint" aria-hidden="true">
+                    <path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+
+                <p class="lab-desc mt-1.5 text-sm leading-relaxed text-ink-muted">
+                  {{ project.description | translate }}
+                </p>
+
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  @for (tech of project.technologies; track tech.id) {
+                    <span class="chip">
+                      <img [src]="tech.src" alt="" aria-hidden="true" loading="lazy" />
+                      {{ tech.name }}
+                    </span>
+                  }
+                </div>
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
     }
-  </section>
+  </div>
 </section>
 
-@if(isModalVisible){
+<!-- ── Gallery dialog ─────────────────────────────────────────────────────── -->
+@if (isModalVisible) {
   <div
     class="modal-overlay"
     (click)="closeModal()"
@@ -99,7 +213,7 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
       (touchend)="onTouchEnd($event)"
     >
       <header class="modal-header">
-        @if(selectedImages.length > 1){
+        @if (selectedImages.length > 1) {
           <span class="modal-counter">{{ currentImageIndex + 1 }} / {{ selectedImages.length }}</span>
         }
         <button
@@ -108,8 +222,8 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
           (click)="closeModal()"
           [attr.aria-label]="'projectsInfo.closeModal' | translate"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5" aria-hidden="true">
-            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"></path>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
           </svg>
         </button>
       </header>
@@ -119,18 +233,17 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
           [src]="selectedImages[currentImageIndex]"
           [alt]="'projectsInfo.galleryImageAlt' | translate"
           class="modal-image"
-          loading="lazy"
         />
 
-        @if(selectedImages.length > 1){
+        @if (selectedImages.length > 1) {
           <button
             type="button"
             class="nav-button nav-prev"
             (click)="prevImage()"
             [attr.aria-label]="'projectsInfo.prevImage' | translate"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true">
-              <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
           <button
@@ -139,16 +252,16 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
             (click)="nextImage()"
             [attr.aria-label]="'projectsInfo.nextImage' | translate"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
         }
       </div>
 
-      @if(selectedImages.length > 1){
+      @if (selectedImages.length > 1) {
         <div class="thumbnail-strip" role="tablist" [attr.aria-label]="'projectsInfo.galleryThumbnails' | translate">
-          @for(image of selectedImages; track $index) {
+          @for (image of selectedImages; track $index) {
             <button
               type="button"
               class="thumbnail"
@@ -165,4 +278,3 @@ dark:bg-gray-700 dark:shadow-md" appScrollAnimate="slide-up" [scrollAnimateDelay
     </div>
   </div>
 }
-

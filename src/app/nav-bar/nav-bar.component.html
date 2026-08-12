@@ -1,153 +1,185 @@
-<nav class="sticky top-0 z-50 w-full bg-white dark:bg-slate-950 md:bg-white/75 md:dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-700 shadow-xl transition-colors duration-300">
-  <div class="mx-auto flex items-center gap-6 px-4 py-3 md:px-8 md:py-4">
-    <div class="hidden md:flex items-center gap-3 mr-8">
-      <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primaryBlue text-white text-lg font-bold shadow-sm">NC</span>
-      <div class="hidden sm:flex flex-col leading-none">
-        <span class="text-sm font-semibold text-slate-900 dark:text-white">Nicolas C.</span>
-        <span class="text-xs text-slate-500 dark:text-slate-400">Portfolio</span>
-      </div>
-    </div>
+<nav
+  class="site-nav"
+  [class.is-scrolled]="isScrolled()"
+  [attr.aria-label]="'navbar.aria' | translate"
+>
+  <div class="mx-auto flex h-[4.5rem] w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+    <!-- Brand -->
+    <a href="#hero" class="brand" [attr.aria-label]="'navbar.home' | translate">
+      <span class="brand-mark">NC</span>
+      <span class="hidden flex-col leading-tight sm:flex">
+        <span class="font-title text-sm font-bold text-ink">Nicolas Catania</span>
+        <span class="font-mono text-[0.65rem] uppercase tracking-eyebrow text-ink-faint">
+          {{ 'navbar.role' | translate }}
+        </span>
+      </span>
+    </a>
 
-    <!-- Menú Desktop (mobile hidden) --> 
-    <ul class="hidden md:flex items-center gap-8 flex-1 nav-links text-sm sm:text-base font-body text-slate-900 dark:text-white">
-      <li>
-        <a href="#experience" class="nav-link" [class.active]="isActive('experience')" [attr.aria-current]="isActive('experience') ? 'page' : null">{{'navbar.experience' | translate}}</a>
-      </li>
-      <li>
-        <a href="#projects" class="nav-link" [class.active]="isActive('projects')" [attr.aria-current]="isActive('projects') ? 'page' : null">{{'navbar.projects' | translate}}</a>
-      </li>
-      <li>
-        <a href="#tech-stack" class="nav-link" [class.active]="isActive('tech-stack')" [attr.aria-current]="isActive('tech-stack') ? 'page' : null">{{'navbar.techStack' | translate}}</a>
-      </li>
-      <li>
-        <a href="#education" class="nav-link" [class.active]="isActive('education')" [attr.aria-current]="isActive('education') ? 'page' : null">{{'navbar.education' | translate}}</a>
-      </li>
-      <li>
-        <a href="#about-me" class="nav-link" [class.active]="isActive('about-me')" [attr.aria-current]="isActive('about-me') ? 'page' : null">{{'navbar.about' | translate}}</a>
-      </li>
-      <li>
-        <a href="#contact" class="nav-link" (click)="setActive('contact')" [class.active]="isActive('contact')" [attr.aria-current]="isActive('contact') ? 'page' : null">{{'navbar.contact' | translate}}</a>
-      </li>
+    <!-- Desktop links -->
+    <ul class="ml-auto hidden items-center gap-1 lg:flex">
+      @for (link of links; track link.id) {
+        <li>
+          <a
+            [href]="'#' + link.id"
+            class="nav-link"
+            [class.active]="isActive(link.id)"
+            [attr.aria-current]="isActive(link.id) ? 'true' : null"
+            (click)="setActive(link.id)"
+          >
+            {{ link.labelKey | translate }}
+          </a>
+        </li>
+      }
     </ul>
 
-    <!-- button container (right) -->
-    <div class="hidden md:flex items-center gap-4 ml-auto">
-      <button (click)="toggleLanguage('en')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300" aria-label="Switch to English">
-        <img src="assets/icons/uk.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="English language" loading="lazy">
-      </button>
-
-      <button (click)="toggleLanguage('es')" class="p-2 rounded-full hover:bg-primaryBlue transition duration-300" aria-label="Switch to Spanish">
-        <img src="assets/icons/spain.svg" class="sm:w-10 sm:h-10 w-5 h-5" alt="Spanish language" loading="lazy">
-      </button>
+    <!-- Desktop controls -->
+    <div class="ml-auto hidden items-center gap-2 lg:ml-4 lg:flex">
+      <div class="lang-switch" role="group" [attr.aria-label]="'navbar.languageAria' | translate">
+        @for (lang of languages; track lang.code) {
+          <button
+            type="button"
+            class="lang-option"
+            [class.active]="mlangService.languageSignal() === lang.code"
+            [attr.aria-pressed]="mlangService.languageSignal() === lang.code"
+            (click)="toggleLanguage(lang.code)"
+          >
+            <img [src]="lang.flag" alt="" aria-hidden="true" class="h-4 w-4 rounded-[2px] object-cover" />
+            {{ lang.code | uppercase }}
+          </button>
+        }
+      </div>
 
       <button
         type="button"
-        class="dark-mode-switch relative inline-flex h-12 w-20 items-center rounded-full border p-1 overflow-hidden transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primaryBlue"
+        class="theme-toggle"
         (click)="toggleDarkMode()"
         role="switch"
         [attr.aria-checked]="darkModeService.darkModeSignal()"
-        aria-label="Toggle dark mode"
-        [class.border-slate-300]="!darkModeService.darkModeSignal()"
-        [class.border-slate-600]="darkModeService.darkModeSignal()"
-        [class.bg-slate-200]="!darkModeService.darkModeSignal()"
-        [class.bg-slate-900]="darkModeService.darkModeSignal()"
+        [attr.aria-label]="'navbar.themeAria' | translate"
       >
-        <span class="switch-track absolute inset-0 rounded-full transition-colors duration-300"
-              [class.bg-slate-800]="darkModeService.darkModeSignal()"
-              [class.bg-slate-200]="!darkModeService.darkModeSignal()">
-        </span>
-        <span class="switch-thumb relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full shadow-md transition-all duration-300"
-              [class.bg-slate-900]="darkModeService.darkModeSignal()"
-              [class.bg-white]="!darkModeService.darkModeSignal()"
-              [style.transform]="darkModeService.darkModeSignal() ? 'translateX(calc(100% - 0.5rem))' : 'translateX(0)'">
-          @if(darkModeService.darkModeSignal()) {
-            <img src="assets/icons/moon.svg" alt="Dark mode active" class="w-5 h-5" loading="lazy" />
-          } @else {
-            <img src="assets/icons/sun.svg" alt="Light mode active" class="w-5 h-5" loading="lazy" />
-          }
-        </span>
+        @if (darkModeService.darkModeSignal()) {
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round" />
+          </svg>
+        } @else {
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        }
       </button>
     </div>
 
-    <div class="md:hidden ml-auto">
-      <button type="button" class="inline-flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-700 p-2 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300" (click)="toggleMenu()" aria-label="Open mobile menu" [attr.aria-expanded]="isMenuOpen" aria-controls="mobile-menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
+    <!-- Mobile trigger -->
+    <button
+      type="button"
+      class="burger inline-flex lg:hidden"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-controls="mobile-menu"
+      [attr.aria-label]="'navbar.menuAria' | translate"
+    >
+      <span class="burger-line" [class.is-open]="isMenuOpen"></span>
+      <span class="burger-line" [class.is-open]="isMenuOpen"></span>
+      <span class="burger-line" [class.is-open]="isMenuOpen"></span>
+    </button>
   </div>
 
-  <!-- Menú Mobile (Overlay) -->
-  <div 
-    class="md:hidden fixed inset-0 bg-slate-950 z-40"
-    [class.hidden]="!isMenuOpen"
-    (click)="toggleMenu()"
-  ></div>
+  <!-- Reading progress. Driven by a CSS custom property written outside
+       Angular, so scrolling never triggers change detection. -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+</nav>
 
-  <div 
-    id="mobile-menu"
-    class="md:hidden fixed top-0 right-0 h-full w-full max-w-[320px] bg-white dark:bg-slate-900 shadow-2xl transform transition-transform duration-300 ease-in-out mobile-menu z-50 overflow-y-auto"
-    [class.translate-x-full]="!isMenuOpen"
-  >
-    <div class="p-6 flex flex-col h-full">
-      <button 
-        class="self-end mb-6 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300"
-        (click)="toggleMenu()"
-        aria-label="Close mobile menu"
+<!-- ── Mobile sheet ─────────────────────────────────────────────────────── -->
+<div
+  class="menu-scrim lg:hidden"
+  [class.is-open]="isMenuOpen"
+  (click)="closeMenu()"
+  aria-hidden="true"
+></div>
+
+<aside
+  id="mobile-menu"
+  class="menu-sheet lg:hidden"
+  [class.is-open]="isMenuOpen"
+  [attr.aria-hidden]="!isMenuOpen"
+  [attr.inert]="isMenuOpen ? null : ''"
+>
+  <div class="flex h-full flex-col p-6">
+    <div class="flex items-center justify-between">
+      <span class="font-mono text-xs uppercase tracking-eyebrow text-ink-faint">
+        {{ 'navbar.menu' | translate }}
+      </span>
+      <button
+        type="button"
+        class="icon-button"
+        (click)="closeMenu()"
+        [attr.aria-label]="'navbar.closeMenuAria' | translate"
       >
-        <svg 
-          class="w-6 h-6 text-black dark:text-white" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path 
-            stroke-linecap="round" 
-            stroke-linejoin="round" 
-            stroke-width="2" 
-            d="M6 18L18 6M6 6l12 12"
-          />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
         </svg>
       </button>
+    </div>
 
-      <ul class="flex flex-col space-y-4 text-lg text-slate-900 dark:text-white">
-        <li (click)="toggleMenu()">
-          <a href="#projects" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('projects')" [attr.aria-current]="isActive('projects') ? 'page' : null">{{'navbar.projects' | translate}}</a>
+    <ul class="mt-8 flex flex-col gap-1">
+      @for (link of links; track link.id; let i = $index) {
+        <li>
+          <a
+            [href]="'#' + link.id"
+            class="sheet-link"
+            [class.active]="isActive(link.id)"
+            [style.transition-delay.ms]="isMenuOpen ? 60 + i * 45 : 0"
+            (click)="onSheetNavigate(link.id)"
+          >
+            <span class="font-mono text-xs text-accent">{{ '0' + (i + 1) }}</span>
+            {{ link.labelKey | translate }}
+          </a>
         </li>
-        <li (click)="toggleMenu()">
-          <a href="#tech-stack" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('tech-stack')" [attr.aria-current]="isActive('tech-stack') ? 'page' : null">{{'navbar.techStack' | translate}}</a>
-        </li>
-        <li (click)="toggleMenu()">
-          <a href="#education" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('education')" [attr.aria-current]="isActive('education') ? 'page' : null">{{'navbar.education' | translate}}</a>
-        </li>
-        <li (click)="toggleMenu()">
-          <a href="#about-me" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('about-me')" [attr.aria-current]="isActive('about-me') ? 'page' : null">{{'navbar.about' | translate}}</a>
-        </li>
-        <li (click)="toggleMenu()">
-          <a href="#contact" (click)="setActive('contact')" class="nav-link hover:text-primaryBlue transition duration-300" [class.active]="isActive('contact')" [attr.aria-current]="isActive('contact') ? 'page' : null">{{'navbar.contact' | translate}}</a>
-        </li>
-      </ul>
+      }
+    </ul>
 
-      <div class="mt-auto pt-6 border-t border-slate-200/70 dark:border-slate-700/70">
-        <p class="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">{{ 'navbar.settings' | translate }}</p>
-        <div class="flex flex-wrap gap-3">
-          <button type="button" (click)="toggleLanguage('en')" [attr.aria-pressed]="mlangService.languageSignal() === 'en'" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-white transition hover:bg-slate-200 dark:hover:bg-slate-700">
-            <img src="assets/icons/uk.svg" alt="English" class="w-5 h-5">
-            EN
-          </button>
-          <button type="button" (click)="toggleLanguage('es')" [attr.aria-pressed]="mlangService.languageSignal() === 'es'" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-white transition hover:bg-slate-200 dark:hover:bg-slate-700">
-            <img src="assets/icons/spain.svg" alt="Español" class="w-5 h-5">
-            ES
-          </button>
-          <button type="button" (click)="toggleDarkMode()" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-white transition hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="Toggle dark mode">
-            <img src="assets/icons/moon.svg" alt="Dark mode" class="w-5 h-5" *ngIf="!darkModeService.darkModeSignal()">
-            <img src="assets/icons/sun.svg" alt="Light mode" class="w-5 h-5" *ngIf="darkModeService.darkModeSignal()">
-            <span>{{ darkModeService.darkModeSignal() ? 'Light' : 'Dark' }}</span>
-          </button>
+    <div class="mt-auto border-t border-hairline pt-6">
+      <p class="mb-3 font-mono text-xs uppercase tracking-eyebrow text-ink-faint">
+        {{ 'navbar.settings' | translate }}
+      </p>
+
+      <div class="flex items-center gap-2">
+        <div class="lang-switch flex-1" role="group" [attr.aria-label]="'navbar.languageAria' | translate">
+          @for (lang of languages; track lang.code) {
+            <button
+              type="button"
+              class="lang-option flex-1"
+              [class.active]="mlangService.languageSignal() === lang.code"
+              [attr.aria-pressed]="mlangService.languageSignal() === lang.code"
+              (click)="toggleLanguage(lang.code)"
+            >
+              <img [src]="lang.flag" alt="" aria-hidden="true" class="h-4 w-4 rounded-[2px] object-cover" />
+              {{ lang.code | uppercase }}
+            </button>
+          }
         </div>
+
+        <button
+          type="button"
+          class="theme-toggle"
+          (click)="toggleDarkMode()"
+          role="switch"
+          [attr.aria-checked]="darkModeService.darkModeSignal()"
+          [attr.aria-label]="'navbar.themeAria' | translate"
+        >
+          @if (darkModeService.darkModeSignal()) {
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round" />
+            </svg>
+          } @else {
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5" aria-hidden="true">
+              <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          }
+        </button>
       </div>
     </div>
   </div>
-</nav>
-
+</aside>

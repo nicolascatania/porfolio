@@ -1,11 +1,10 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Clipboard } from '@angular/cdk/clipboard';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../environments/environment';
+import { ToastService } from '../ui/toast.service';
 
 const COOLDOWN_KEY = 'portfolio-contact-cooldown';
 const COOLDOWN_MINUTES = 10;
@@ -14,7 +13,7 @@ const MIN_SUBMIT_DELAY_MS = 3000;
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, TranslateModule, ReactiveFormsModule, MatSnackBarModule],
+  imports: [CommonModule, TranslateModule, ReactiveFormsModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
@@ -28,9 +27,9 @@ export class FooterComponent implements OnDestroy {
 
   private cooldownTimer?: number;
 
+  private readonly toast = inject(ToastService);
+
   constructor(
-    private clipboard: Clipboard,
-    private snackBar: MatSnackBar,
     private translate: TranslateService,
     private fb: FormBuilder
   ) {
@@ -73,25 +72,37 @@ export class FooterComponent implements OnDestroy {
     return this.contactForm.valid && !this.isCooldownActive && !this.isSubmitting;
   }
 
-  copyEmail(): void {
-    this.clipboard.copy(this.email);
-    const message = this.translate.instant('contactInfo.copySuccess');
-    this.snackBar.open(message, '', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    });
+  get messageLength(): number {
+    return (this.contactForm.get('message')?.value ?? '').length;
+  }
+
+  /** Only surface an error once the user has actually engaged with the field. */
+  isInvalid(fieldName: string): boolean {
+    const field = this.contactForm.get(fieldName);
+    return !!field && field.invalid && (field.touched || field.dirty);
+  }
+
+  async copyEmail(): Promise<void> {
+    try {
+      // Native Clipboard API instead of @angular/cdk/clipboard — same result,
+      // one fewer dependency. Requires a secure context, which any real
+      // deployment (and localhost) satisfies.
+      await navigator.clipboard.writeText(this.email);
+      this.toast.success(this.translate.instant('contactInfo.copySuccess'));
+    } catch {
+      // Insecure context or permission denied: surface the address so the
+      // visitor can still copy it by hand.
+      this.toast.error(this.translate.instant('contactInfo.copyError'));
+    }
   }
 
   submitContactForm(): void {
     this.spamWarning = '';
 
     if (this.isCooldownActive) {
-      this.snackBar.open(this.translate.instant('contactInfo.cooldownMessage', { time: this.remainingCooldown }), '', {
-        duration: 4000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      });
+      this.toast.error(
+        this.translate.instant('contactInfo.cooldownMessage', { time: this.remainingCooldown })
+      );
       return;
     }
 
@@ -124,24 +135,14 @@ export class FooterComponent implements OnDestroy {
     };
 
     emailjs.send(environment.emailjs.serviceId, environment.emailjs.templateId, templateParams)
-      .then((response: any) => {
-        console.log('Email sent successfully!', response.status, response.text);
+      .then(() => {
         this.startCooldown();
         this.contactForm.reset();
         this.formCreatedAt = Date.now();
-        this.snackBar.open(this.translate.instant('contactInfo.sendSuccess'), '', {
-          duration: 4000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-        });
+        this.toast.success(this.translate.instant('contactInfo.sendSuccess'));
       })
-      .catch((error: any) => {
-        console.error('Failed to send email:', error);
-        this.snackBar.open(this.translate.instant('contactInfo.sendError'), '', {
-          duration: 4000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom'
-        });
+      .catch(() => {
+        this.toast.error(this.translate.instant('contactInfo.sendError'));
       })
       .finally(() => {
         this.isSubmitting = false;
