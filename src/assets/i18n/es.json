@@ -5,6 +5,7 @@
   "navbar": {
     "projects": "Proyectos",
     "techStack": "Tecnologías",
+    "certificates": "Certificados",
     "education": "Educación",
     "about": "Sobre Mí",
     "contact": "Contacto",
@@ -192,6 +193,39 @@
       "frameworks": "Frameworks",
       "data": "Bases de datos",
       "infra": "Infra y herramientas"
+    }
+  },
+  "certs": {
+    "title": "Certificados",
+    "eyebrow": "Formación continua",
+    "subtitle": "Cursos que estoy haciendo en paralelo. Abrí cualquier certificado para ver el PDF completo.",
+    "aria-label": "certificados",
+    "view": "Ver certificado",
+    "openTab": "Abrir en una pestaña nueva",
+    "dialogAria": "Visor de certificados",
+    "close": "Cerrar el visor de certificados",
+    "viewerNote": "Esta pantalla es muy chica para leer un PDF incrustado. Abrilo en una pestaña nueva.",
+    "topics": {
+      "agents": "Agentes",
+      "skills": "Skills",
+      "mcp": "MCP",
+      "worktrees": "Worktrees",
+      "sdd": "SDD",
+      "tdd": "TDD",
+      "unitTesting": "Testing unitario",
+      "integrationTesting": "Testing de integración",
+      "junit": "JUnit 5",
+      "mockito": "Mockito",
+      "surefire": "Surefire",
+      "jacoco": "JaCoCo"
+    },
+    "claudeCode": {
+      "title": "Claude Code para desarrolladores",
+      "desc": "Uso profesional de Claude Code: manejo de la ventana de contexto y consumo inteligente de tokens, git worktrees, agentes y subagentes bajo un esquema manager/worker, skills propias, servidores MCP y desarrollo spec-driven (SDD)."
+    },
+    "testing": {
+      "title": "Testing de software con Spring Boot",
+      "desc": "TDD y testing capa por capa de una aplicación Spring Boot MVC — repositorio/DAO, servicio y controller — más qué hace que un test valga la pena mantener."
     }
   },
   "ed": {

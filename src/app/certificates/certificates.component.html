@@ -1,0 +1,155 @@
+<section
+  id="certificates"
+  class="section-shell section-shell--alt"
+  [attr.aria-label]="'certs.aria-label' | translate"
+>
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-8">
+    <app-section-heading
+      index="04"
+      eyebrowKey="certs.eyebrow"
+      titleKey="certs.title"
+      subtitleKey="certs.subtitle"
+    />
+
+    <ul class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      @for (card of cards; track card.certificate.id; let i = $index) {
+        <li class="flex">
+          <article
+            class="certificate-card surface-card"
+            appScrollAnimate="up"
+            [scrollAnimateDelay]="(i % 3) * 80"
+          >
+            <!-- The thumbnail is the real first page, drawn by the browser's
+                 own PDF viewer. The frame is inert (no pointer events, no tab
+                 stop); the button layered over it owns the interaction, which
+                 also keeps the iframe out of the button's content model. -->
+            <div class="certificate-preview">
+              @if (canEmbed()) {
+                <iframe
+                  class="certificate-preview-frame"
+                  [src]="card.preview"
+                  [title]="card.certificate.title | translate"
+                  aria-hidden="true"
+                  tabindex="-1"
+                  loading="lazy"
+                  scrolling="no"
+                ></iframe>
+              } @else {
+                <span class="certificate-sheet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-10 w-10">
+                    <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M14 3v5h5" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="12" cy="14" r="2.4" />
+                    <path d="M10.4 16.2L9.8 19l2.2-1.1 2.2 1.1-.6-2.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              }
+
+              <span class="certificate-format" aria-hidden="true">PDF</span>
+
+              <button
+                type="button"
+                class="certificate-overlay"
+                (click)="open(card.certificate)"
+                [attr.aria-label]="
+                  ('certs.view' | translate) + ' — ' + (card.certificate.title | translate)
+                "
+              >
+                <span class="certificate-overlay-label" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4 shrink-0">
+                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="12" cy="12" r="2.6" />
+                  </svg>
+                  {{ 'certs.view' | translate }}
+                </span>
+              </button>
+            </div>
+
+            <div class="flex flex-1 flex-col p-5 sm:p-6">
+              <h3 class="font-title text-lg font-bold leading-tight text-ink sm:text-xl">
+                {{ card.certificate.title | translate }}
+              </h3>
+
+              <p class="certificate-description mt-2 text-sm leading-relaxed text-ink-muted">
+                {{ card.certificate.description | translate }}
+              </p>
+
+              @if (card.certificate.topics?.length) {
+                <div class="mt-4 flex flex-wrap gap-1.5">
+                  @for (topic of card.certificate.topics; track topic) {
+                    <span class="chip">{{ topic | translate }}</span>
+                  }
+                </div>
+              }
+
+              <!-- mt-auto keeps the action on the card floor, so cards with
+                   shorter descriptions still line their buttons up. -->
+              <div class="mt-auto pt-5">
+                <button type="button" class="certificate-action" (click)="open(card.certificate)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-3.5 w-3.5 shrink-0" aria-hidden="true">
+                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="12" cy="12" r="2.6" />
+                  </svg>
+                  {{ 'certs.view' | translate }}
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ── Certificate dialog ─────────────────────────────────────────────────── -->
+@if (selected(); as certificate) {
+  <div
+    class="cert-overlay"
+    (click)="close()"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="'certs.dialogAria' | translate"
+  >
+    <div class="cert-dialog" (click)="$event.stopPropagation()">
+      <header class="cert-header">
+        <h3 class="cert-title">{{ certificate.title | translate }}</h3>
+        <button
+          type="button"
+          class="cert-close"
+          (click)="close()"
+          [attr.aria-label]="'certs.close' | translate"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </header>
+
+      <div class="cert-stage">
+        @if (canEmbed()) {
+          <iframe
+            class="cert-frame"
+            [src]="selectedUrl()"
+            [title]="certificate.title | translate"
+          ></iframe>
+        } @else {
+          <p class="cert-fallback">{{ 'certs.viewerNote' | translate }}</p>
+        }
+      </div>
+
+      <!-- The embedded viewer already offers download and print, so the only
+           thing worth adding is the full-window handoff — which is also the
+           whole fallback on phones, where nothing gets embedded. -->
+      <footer class="cert-actions">
+        <a
+          class="btn btn-primary"
+          [href]="certificate.file"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ 'certs.openTab' | translate }}
+        </a>
+      </footer>
+    </div>
+  </div>
+}

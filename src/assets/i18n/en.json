@@ -5,6 +5,7 @@
   "navbar": {
     "projects": "Projects",
     "techStack": "Tech Stack",
+    "certificates": "Certificates",
     "education": "Education",
     "about": "About",
     "contact": "Contact",
@@ -192,6 +193,39 @@
       "frameworks": "Frameworks",
       "data": "Databases",
       "infra": "Infra & Tools"
+    }
+  },
+  "certs": {
+    "title": "Certificates",
+    "eyebrow": "Continuous learning",
+    "subtitle": "Courses I'm taking on the side. Open any certificate to read the full PDF.",
+    "aria-label": "certificates",
+    "view": "View certificate",
+    "openTab": "Open in a new tab",
+    "dialogAria": "Certificate viewer",
+    "close": "Close certificate viewer",
+    "viewerNote": "This screen is too small to read an embedded PDF. Open it in a new tab instead.",
+    "topics": {
+      "agents": "Agents",
+      "skills": "Skills",
+      "mcp": "MCP",
+      "worktrees": "Worktrees",
+      "sdd": "SDD",
+      "tdd": "TDD",
+      "unitTesting": "Unit testing",
+      "integrationTesting": "Integration testing",
+      "junit": "JUnit 5",
+      "mockito": "Mockito",
+      "surefire": "Surefire",
+      "jacoco": "JaCoCo"
+    },
+    "claudeCode": {
+      "title": "Claude Code for Developers",
+      "desc": "Using Claude Code professionally: managing the context window and spending tokens deliberately, git worktrees, agents and subagents on a manager/worker split, custom skills, MCP servers and spec-driven development (SDD)."
+    },
+    "testing": {
+      "title": "Software Testing with Spring Boot",
+      "desc": "TDD and layer-by-layer testing of a Spring Boot MVC application — repository/DAO, service and controller — plus what makes a test worth keeping."
     }
   },
   "ed": {

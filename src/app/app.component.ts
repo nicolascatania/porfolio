@@ -5,6 +5,7 @@ import { HeroComponent } from './hero/hero.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TechStackComponent } from './tech-stack/tech-stack.component';
+import { CertificatesComponent } from './certificates/certificates.component';
 import { EducationComponent } from './education/education.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
@@ -20,6 +21,7 @@ import { ToastComponent } from './ui/toast.component';
     ExperienceComponent,
     ProjectsComponent,
     TechStackComponent,
+    CertificatesComponent,
     EducationComponent,
     AboutMeComponent,
     FooterComponent,
