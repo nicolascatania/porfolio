@@ -1,0 +1,268 @@
+/* ── Card ──────────────────────────────────────────────────────────────── */
+
+.certificate-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.certificate-card:hover {
+  border-color: rgb(var(--accent) / 0.45);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* The ratio is reserved here, so the preview never shifts layout while the
+   PDF streams in. Landscape-ish: certificates are wider than they are tall,
+   and `view=FitH` fits the page to this width. */
+.certificate-preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-bottom: 1px solid rgb(var(--hairline));
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgb(var(--accent) / 0.16), transparent 70%),
+    rgb(var(--surface-sunken));
+}
+
+.certificate-preview-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  /* Inert: every click belongs to the button layered on top. */
+  pointer-events: none;
+  background-color: #fff;
+}
+
+.certificate-sheet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 1rem;
+  border: 1px solid rgb(var(--hairline));
+  background-color: rgb(var(--surface-raised));
+  color: rgb(var(--accent));
+  box-shadow: var(--card-shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.certificate-card:hover .certificate-sheet {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.certificate-format {
+  position: absolute;
+  right: 0.65rem;
+  top: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(var(--hairline));
+  background-color: rgb(var(--surface-raised));
+  color: rgb(var(--ink-faint));
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.certificate-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(2 6 16 / 0);
+  transition: background-color 0.28s ease;
+}
+
+.certificate-card:hover .certificate-overlay,
+.certificate-overlay:focus-visible {
+  background-color: rgb(2 6 16 / 0.55);
+}
+
+.certificate-overlay-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 0.94);
+  color: #0f172a;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.certificate-card:hover .certificate-overlay-label,
+.certificate-overlay:focus-visible .certificate-overlay-label {
+  opacity: 1;
+  transform: none;
+}
+
+/* Clamped only as a ceiling for future entries — the current descriptions fit
+   whole at three columns. The action row is pinned with mt-auto, so cards stay
+   aligned even when the text runs to different lengths. */
+.certificate-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.certificate-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgb(var(--hairline));
+  color: rgb(var(--ink));
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.certificate-action:hover {
+  color: rgb(var(--accent));
+  border-color: rgb(var(--accent));
+  background-color: rgb(var(--accent) / 0.08);
+}
+
+/* ── Viewer dialog ─────────────────────────────────────────────────────── */
+
+@keyframes cert-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes cert-dialog-in {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cert-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgb(2 6 16 / 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: cert-overlay-in 0.2s ease;
+}
+
+.cert-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 62rem;
+  max-height: 92vh;
+  overflow: hidden;
+  border: 1px solid rgb(var(--hairline));
+  border-radius: 1.25rem;
+  background-color: rgb(var(--surface-raised));
+  box-shadow: 0 25px 60px -15px rgb(0 0 0 / 0.5);
+  animation: cert-dialog-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem 0.85rem 1.25rem;
+  border-bottom: 1px solid rgb(var(--hairline));
+}
+
+.cert-title {
+  min-width: 0;
+  overflow: hidden;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgb(var(--ink));
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cert-close {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: auto;
+  border-radius: 9999px;
+  background-color: rgb(var(--surface-sunken));
+  color: rgb(var(--ink));
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.cert-close:hover {
+  background-color: rgb(var(--accent) / 0.15);
+  color: rgb(var(--accent));
+  transform: scale(1.05);
+}
+
+.cert-stage {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  background-color: rgb(var(--surface-sunken));
+}
+
+.cert-frame {
+  width: 100%;
+  height: 72vh;
+  border: 0;
+}
+
+.cert-fallback {
+  padding: 2.5rem 1.5rem;
+  color: rgb(var(--ink-muted));
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.cert-actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  padding: 0.9rem 1.25rem;
+  border-top: 1px solid rgb(var(--hairline));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-overlay,
+  .cert-dialog {
+    animation: none;
+  }
+}

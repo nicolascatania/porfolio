@@ -37,6 +37,7 @@ export class NavBarComponent implements OnDestroy {
     { id: 'experience', labelKey: 'navbar.experience' },
     { id: 'projects', labelKey: 'navbar.projects' },
     { id: 'tech-stack', labelKey: 'navbar.techStack' },
+    { id: 'certificates', labelKey: 'navbar.certificates' },
     { id: 'education', labelKey: 'navbar.education' },
     { id: 'about-me', labelKey: 'navbar.about' },
     { id: 'contact', labelKey: 'navbar.contact' },
