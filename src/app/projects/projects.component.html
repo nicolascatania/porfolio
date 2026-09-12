@@ -121,21 +121,41 @@
               }
             </div>
 
-            <a
-              [href]="project.githubLink"
-              class="repo-link mt-5"
-              target="_blank"
-              rel="noopener noreferrer"
-              [attr.aria-label]="('projectsInfo.vc' | translate) + ' — ' + (project.name | translate)"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 shrink-0" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.72c-2.78.62-3.37-1.37-3.37-1.37-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.818c0 .27.18.6.69.49A10.03 10.03 0 0022 12.25C22 6.58 17.52 2 12 2z" />
-              </svg>
-              {{ 'projectsInfo.vc' | translate }}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="repo-arrow h-3.5 w-3.5" aria-hidden="true">
-                <path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            <div class="mt-auto flex flex-wrap gap-3 pt-5">
+              <a
+                [href]="project.githubLink"
+                class="repo-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="('projectsInfo.vc' | translate) + ' — ' + (project.name | translate)"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 shrink-0" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.72c-2.78.62-3.37-1.37-3.37-1.37-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.818c0 .27.18.6.69.49A10.03 10.03 0 0022 12.25C22 6.58 17.52 2 12 2z" />
+                </svg>
+                {{ 'projectsInfo.vc' | translate }}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="repo-arrow h-3.5 w-3.5" aria-hidden="true">
+                  <path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+
+              @if (project.demoLink) {
+                <a
+                  [href]="project.demoLink"
+                  class="repo-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="('projectsInfo.liveDemo' | translate) + ' — ' + (project.name | translate)"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4 shrink-0" aria-hidden="true">
+                    <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6v6M20 4l-9 9" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  {{ 'projectsInfo.liveDemo' | translate }}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="repo-arrow h-3.5 w-3.5" aria-hidden="true">
+                    <path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              }
+            </div>
           </div>
         </article>
       }

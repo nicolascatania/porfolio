@@ -81,6 +81,7 @@ export class ProjectsComponent {
       releaseYearNumber: 2026,
       importance: 9,
       githubLink: 'https://github.com/nicolascatania/BugdetKingg',
+      demoLink: 'https://nicolascatania.github.io/BugdetKingg',
       imageSrcs: [
         'assets/images/bugdetKing/d_home.webp',
         'assets/images/bugdetKing/d_dashboard.webp',

@@ -9,6 +9,7 @@ export interface Project {
     releaseYearNumber: number;
     importance: number;
     githubLink: string;
+    demoLink?: string;
     imageSrcs: string[];
     /**
      * Small focused experiments built to learn one thing. Rendered in a
